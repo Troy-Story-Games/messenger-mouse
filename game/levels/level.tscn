@@ -4,3 +4,5 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_oojed")
+
+[node name="StartPosition" type="Marker2D" parent="."]

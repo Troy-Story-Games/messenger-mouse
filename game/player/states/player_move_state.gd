@@ -86,19 +86,12 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
     if player.facing_direction.x != 0:
         player.flip_anchor.scale.x = sign(player.facing_direction.x)
 
-    if not player.is_on_floor() and not player.is_on_wall() and not just_jumped and player.velocity.y >= 0:
-        player.animation_player.play("fall")
-    elif just_jumped:
+    if not player.is_on_floor() and not player.is_on_wall():
         player.animation_player.play("jump")
-    elif not double_jump:
-        player.animation_player.play("smrslt")
     elif input_vector != Vector2.ZERO and player.is_on_floor():
         player.animation_player.play("run")
     elif player.is_on_floor():
         player.animation_player.play("idle")
-
-    player.collision_shape_2d.position = player.hurtbox_collision_shape_2d.position
-
 
 func process_state(delta: float) -> void:
     just_jumped = false

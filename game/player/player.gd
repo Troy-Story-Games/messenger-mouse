@@ -5,12 +5,14 @@ class_name Player
 
 var direction := Vector2.RIGHT : set = set_direction
 var facing_direction := Vector2.RIGHT : set = set_facing_direction
+var sprite_shader_material: ShaderMaterial
 
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var flip_anchor: Node2D = $FlipAnchor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var sprite_2d: Sprite2D = $FlipAnchor/Sprite2D
 
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState
@@ -26,6 +28,12 @@ func _ready() -> void:
     assert(movement_stats, "movement_stats must be set")
     Events.request_camera_target.emit.call_deferred(remote_transform_2d)
     hurtbox.hurt.connect(take_hit)
+    sprite_shader_material = sprite_2d.material as ShaderMaterial
+    sprite_shader_material.set_shader_parameter("nb_frames", Vector2(sprite_2d.hframes, sprite_2d.vframes))
+
+func _process(_delta: float) -> void:
+    sprite_shader_material.set_shader_parameter("frame_coords", sprite_2d.frame_coords)
+    sprite_shader_material.set_shader_parameter("velocity", Vector2(abs(velocity.x), velocity.y))
 
 func _physics_process(delta: float) -> void:
     fsm.state.process_state(delta)

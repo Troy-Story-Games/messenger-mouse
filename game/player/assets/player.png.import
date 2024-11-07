@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6jyiwx750oxt"
-path="res://.godot/imported/adventurer.png-a31414bcef4868da9c6cd09b9f280e51.ctex"
+uid="uid://pkd5r6j57c6w"
+path="res://.godot/imported/player.png-74f2e6137f71f7677d606c272e4f03b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/player/assets/adventurer.png"
-dest_files=["res://.godot/imported/adventurer.png-a31414bcef4868da9c6cd09b9f280e51.ctex"]
+source_file="res://game/player/assets/player.png"
+dest_files=["res://.godot/imported/player.png-74f2e6137f71f7677d606c272e4f03b3.ctex"]
 
 [params]
 

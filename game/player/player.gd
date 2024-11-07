@@ -9,9 +9,8 @@ var facing_direction := Vector2.RIGHT : set = set_facing_direction
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var flip_anchor: Node2D = $FlipAnchor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var hurtbox: Hurtbox = $FlipAnchor/Hurtbox
+@onready var hurtbox: Hurtbox = $Hurtbox
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var hurtbox_collision_shape_2d: CollisionShape2D = $FlipAnchor/Hurtbox/CollisionShape2D
 
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState

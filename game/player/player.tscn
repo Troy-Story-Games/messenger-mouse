@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=19 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -14,6 +14,8 @@ ground_friction = 1500.0
 ground_jump_force = 350.0
 ground_slide_friction = 90.0
 ground_slide_boost = 70.0
+ground_slide_launch_boost = 100.0
+ground_crouch_walk_max_speed = 12.0
 gravity = 1000.0
 terminal_velocity = 300.0
 air_acceleration = 300.0
@@ -367,72 +369,6 @@ tracks/4/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xqtik"]
-resource_name = "slide"
-length = 0.1
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionPolygon2D:polygon")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array(0, 12, 4, 6, 0, 2, -4, 6)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hurtbox/CollisionShape2D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [4.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Hurtbox/CollisionShape2D:shape:height")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [16.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Hurtbox/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_y1lai"]
 resource_name = "fall"
 length = 0.1
@@ -499,8 +435,92 @@ tracks/4/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_n40f4"]
+resource_name = "skid"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 10, 4, 4, 0, -8, -4, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox/CollisionShape2D:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_am50j"]
+resource_name = "launch"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
 [sub_resource type="Animation" id="Animation_4pmva"]
-resource_name = "crouch"
+resource_name = "slide"
 length = 0.1
 loop_mode = 1
 step = 0.1
@@ -526,7 +546,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 6)]
+"values": [Vector2(0, 3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -562,18 +582,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(0, 12, 4, 6, 0, 2, -4, 6)]
+"values": [PackedVector2Array(0, 10, 4, 6, 0, 0, -4, 6)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xj5lj"]
 _data = {
 "RESET": SubResource("Animation_efl54"),
-"crouch": SubResource("Animation_4pmva"),
 "fall": SubResource("Animation_y1lai"),
 "idle": SubResource("Animation_dwaw4"),
 "jump": SubResource("Animation_7hb83"),
+"launch": SubResource("Animation_am50j"),
 "run": SubResource("Animation_rll56"),
-"slide": SubResource("Animation_xqtik"),
+"skid": SubResource("Animation_n40f4"),
+"slide": SubResource("Animation_4pmva"),
 "walk": SubResource("Animation_py1bn")
 }
 
@@ -586,7 +607,7 @@ movement_stats = SubResource("Resource_2ksf3")
 [node name="Sprite2D" type="Sprite2D" parent="FlipAnchor"]
 material = SubResource("ShaderMaterial_c8vyh")
 texture = ExtResource("3_qcb77")
-hframes = 11
+hframes = 13
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 10, 4, 4, 0, -8, -4, 4)
@@ -604,3 +625,6 @@ libraries = {
 "": SubResource("AnimationLibrary_xj5lj")
 }
 autoplay = "idle"
+
+[node name="CeilingCheckRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -9)

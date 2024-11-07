@@ -14,6 +14,10 @@ class_name MovementStats
 @export var ground_slide_friction: = 90.0
 ## Amount added to current speed when pressing the slide button
 @export var ground_slide_boost: = 70.0
+## Boost applied to ground_jump_force when crouch launching
+@export var ground_slide_launch_boost: = 100.0
+## Max speed while crouch walking
+@export var ground_crouch_walk_max_speed: = 12.0
 
 @export_group("Air Movement")
 ## Fall acceleration (e.g. gravity)

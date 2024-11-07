@@ -13,6 +13,7 @@ var sprite_shader_material: ShaderMaterial
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var sprite_2d: Sprite2D = $FlipAnchor/Sprite2D
+@onready var ceiling_check_ray_cast_2d: RayCast2D = $CeilingCheckRayCast2D
 
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState

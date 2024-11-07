@@ -3,11 +3,9 @@ class_name PlayerMoveState
 
 const COYOTE_JUMP_REACTION_TIME: = 0.2
 
-signal slide()
-signal crouch()
-
 var just_jumped: bool = false
 var double_jump: bool = true
+var sliding: bool = false
 var coyote_jump_timer: SceneTreeTimer
 
 func get_input_vector(player: Player) -> Vector2:
@@ -20,6 +18,15 @@ func get_input_vector(player: Player) -> Vector2:
 func jump(player: Player, force: float) -> void:
     player.velocity.y = -force
 
+func slide_check(player: Player, delta: float) -> void:
+    var slide_just_pressed: bool = Input.is_action_just_pressed("slide")
+    var slide_just_released: bool = Input.is_action_just_released("slide")
+    if player.is_on_floor_only() and player.velocity.x != 0 and slide_just_pressed:
+        sliding = true
+        player.velocity.x += player.movement_stats.ground_slide_boost * sign(player.velocity.x)
+    elif slide_just_released:
+        sliding = false
+
 func jump_check(player: Player) -> void:
     var jump_just_pressed: bool = Input.is_action_just_pressed("jump")
     var jump_just_released: bool = Input.is_action_just_released("jump")
@@ -30,9 +37,6 @@ func jump_check(player: Player) -> void:
         just_jumped = true
     elif (player.is_on_floor() or (coyote_jump_timer and coyote_jump_timer.time_left > 0)) and jump_just_pressed:
         # Regular jump
-        print("regular")
-        if coyote_jump_timer and coyote_jump_timer.time_left > 0:
-            print("coyote saved you")
         jump(player, player.movement_stats.ground_jump_force)
         just_jumped = true
     else:
@@ -41,11 +45,11 @@ func jump_check(player: Player) -> void:
 
         if jump_just_pressed and double_jump == true:
             # Handle double jump
-            print("double")
             jump(player, player.movement_stats.air_jump_force)
             double_jump = false
 
 func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float) -> void:
+    var horizontal_velocity = Vector2(player.velocity.x, 0)
     var accel: = player.movement_stats.ground_acceleration
     var friction: = player.movement_stats.ground_friction
     var speed: = player.movement_stats.ground_max_speed
@@ -54,11 +58,17 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
         friction = player.movement_stats.air_friction
         speed = player.movement_stats.air_max_speed
 
-    if input_vector != Vector2.ZERO:
+    if sliding:  # Sliding
+        friction = player.movement_stats.ground_slide_friction
+        horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, friction * delta)
+    elif input_vector != Vector2.ZERO and (player.velocity.x == 0 or sign(input_vector.x) == sign(player.velocity.x)):  # Walking/Running
         var new_velocity: = player.direction * speed
-        player.velocity = player.velocity.move_toward(new_velocity, accel * delta)
-    else:
-        player.velocity = player.velocity.move_toward(Vector2.ZERO, friction * delta)
+        horizontal_velocity = horizontal_velocity.move_toward(new_velocity, accel * delta)
+    else:  # Friction
+        horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, friction * delta)
+
+    # Set just the horizontal component
+    player.velocity.x = horizontal_velocity.x
 
 func apply_gravity(player: Player, delta: float) -> void:
     player.velocity.y += player.movement_stats.gravity * delta
@@ -74,7 +84,6 @@ func move(player: Player):
 
     # Happens on landing
     if was_in_air and player.is_on_floor():
-        print("land")
         # On landing we get double jump back
         double_jump = true
 
@@ -86,10 +95,17 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
     if player.facing_direction.x != 0:
         player.flip_anchor.scale.x = sign(player.facing_direction.x)
 
-    if not player.is_on_floor() and not player.is_on_wall():
+    if sliding:
+        player.animation_player.play("slide")
+    elif (just_jumped or not double_jump) and player.velocity.y < 0:
         player.animation_player.play("jump")
+    elif not player.is_on_floor() and not player.is_on_wall() and player.velocity.y >= 0:
+        player.animation_player.play("fall")
     elif input_vector != Vector2.ZERO and player.is_on_floor():
-        player.animation_player.play("run")
+        if abs(player.velocity.x) < player.movement_stats.ground_max_speed:
+            player.animation_player.play("walk")
+        else:
+            player.animation_player.play("run")
     elif player.is_on_floor():
         player.animation_player.play("idle")
 
@@ -100,6 +116,7 @@ func process_state(delta: float) -> void:
 
     apply_horizontal_force(player, input_vector, delta)
     jump_check(player)
+    slide_check(player, delta)
     apply_gravity(player, delta)
     update_animations(player, input_vector)
     move(player)

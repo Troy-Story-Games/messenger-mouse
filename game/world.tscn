@@ -13,7 +13,6 @@ script = ExtResource("1_37sjh")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(30, -15)
-limit_smoothed = true
 drag_vertical_enabled = true
 drag_top_margin = 0.5
 script = ExtResource("2_8kmqe")

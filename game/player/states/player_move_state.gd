@@ -127,10 +127,6 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
     # Set just the horizontal component
     player.velocity.x = horizontal_velocity.x
 
-    # TODO: Do we want some sort of boost feeling when you hit top speed?
-    #if abs(player.velocity.x) == player.movement_stats.ground_max_speed:
-    #    player.velocity.x += 80.0 * input_vector.x
-
 func apply_verticle_force(player: Player, delta: float) -> void:
     var accel: = player.movement_stats.gravity
     var max: = player.movement_stats.terminal_velocity

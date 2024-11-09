@@ -43,17 +43,22 @@ func jump_check(player: Player) -> void:
         player.velocity.x = player.get_wall_normal().x * player.movement_stats.wall_jump_speed
         jump(player, player.movement_stats.wall_jump_force)
         just_jumped = true
+        SoundFx.play("jump")
     elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed:
         # Regular jump
         var force = player.movement_stats.ground_jump_force
         if sliding:
+            SoundFx.play("launch")
             force += player.movement_stats.ground_slide_launch_boost
+        else:
+            SoundFx.play("jump")
         jump(player, force)
         just_jumped = true
     elif jump_just_pressed and double_jump == true:
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false
+        SoundFx.play("double_jump")
 
 func climb_check(player: Player) -> void:
     if not player.climb_area_2d.has_overlapping_bodies():
@@ -190,6 +195,17 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
             player.animation_player.play("skid")
     elif player.is_on_floor():
         player.animation_player.play("idle")
+
+    if player.animation_player.is_playing() and player.animation_player.current_animation == "walk":
+        if not player.walk_sound_fx.playing:
+            player.walk_sound_fx.play()
+        player.walk_sound_fx.pitch_scale = 1.60
+    elif player.animation_player.is_playing() and player.animation_player.current_animation == "run":
+        if not player.walk_sound_fx.playing:
+            player.walk_sound_fx.play()
+        player.walk_sound_fx.pitch_scale = 2.2
+    else:
+        player.walk_sound_fx.stop()
 
 func process_state(delta: float) -> void:
     just_jumped = false

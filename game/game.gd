@@ -7,5 +7,5 @@ var current_level: Level
 
 func _ready() -> void:
     ui.start_timer()
-    Music.play("song1", 1, -25)
+    Music.play("song1")
     current_level = $Level01

@@ -11,7 +11,7 @@ func _ready() -> void:
     songs = Utils.load_dict_from_path(songs_path, [".ogg", ".wav", ".mp3"])
 
 
-func play(song_string: String, pitch_scale: float = 1, volume_db: float = 0, crossfade: float = 0.0) -> void:
+func play(song_string: String, pitch_scale: float = 1, volume_db: float = -35.0, crossfade: float = 0.0) -> void:
     if audio_stream_player.playing and crossfade > 0.0:
         var tween: Tween = get_tree().create_tween()
         tween.tween_property(audio_stream_player, "volume_db", -80, crossfade / 2.0)

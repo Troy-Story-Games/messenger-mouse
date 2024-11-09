@@ -9,6 +9,7 @@
 script = ExtResource("1_37sjh")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+offset = Vector2(25, -25)
 script = ExtResource("2_8kmqe")
 
 [node name="Player" parent="." instance=ExtResource("2_i533w")]

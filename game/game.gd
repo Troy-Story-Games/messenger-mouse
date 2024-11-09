@@ -5,3 +5,4 @@ class_name World
 
 func _ready() -> void:
     ui.start_timer()
+    Music.play("song1", 1, -25)

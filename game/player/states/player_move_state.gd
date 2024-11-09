@@ -7,9 +7,13 @@ const WALL_STICK_TIME: = 0.4
 var just_jumped: bool = false
 var double_jump: bool = true
 var sliding: bool = false
+var climbing: bool = false
+var was_just_climbing: bool = false
 var wall_stick: bool = false
-var coyote_jump_timer: SceneTreeTimer
-var wall_stick_timer: SceneTreeTimer
+
+func enter() -> void:
+    var player: Player = actor as Player
+    player.wall_stick_timer.timeout.connect(func(): wall_stick = false)
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO
@@ -39,7 +43,7 @@ func jump_check(player: Player) -> void:
         player.velocity.x = player.get_wall_normal().x * player.movement_stats.wall_jump_speed
         jump(player, player.movement_stats.wall_jump_force)
         just_jumped = true
-    elif (player.is_on_floor() or (coyote_jump_timer and coyote_jump_timer.time_left > 0)) and jump_just_pressed:
+    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed:
         # Regular jump
         var force = player.movement_stats.ground_jump_force
         if sliding:
@@ -51,13 +55,42 @@ func jump_check(player: Player) -> void:
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false
 
+func climb_check(player: Player) -> void:
+    if not player.climb_area_2d.has_overlapping_bodies():
+        climbing = false
+        was_just_climbing = false
+        return
+
+    var climb_action_just_pressed = Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down")
+    var climb_action_pressed = Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down")
+
+    if climb_action_just_pressed:
+        climbing = true
+        was_just_climbing = false
+    elif just_jumped and climbing:
+        was_just_climbing = true
+        climbing = false
+    elif not player.is_on_floor() and not player.is_on_wall() and not climbing and not was_just_climbing and climb_action_pressed:
+        climbing = true  # Grab a laddar from mid-air
+        was_just_climbing = false
+    elif not player.is_on_floor() and not player.is_on_wall() and was_just_climbing and climb_action_pressed and player.velocity.y >= 0:
+        climbing = true
+        was_just_climbing = false
+
+    if not climbing:
+        return
+
+    # down - up b/c up is negative and down is positive
+    var climb_dir: = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+    player.velocity.y = player.movement_stats.climb_verticle_speed * climb_dir
+
 func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float) -> void:
     var horizontal_velocity = Vector2(player.velocity.x, 0)
     var accel: = player.movement_stats.ground_acceleration
     var friction: = player.movement_stats.ground_friction
     var speed: = player.movement_stats.ground_max_speed
 
-    if not player.is_on_floor() and not player.is_on_wall():  # Air
+    if not player.is_on_floor() and not player.is_on_wall() and not climbing:  # Air
         accel = player.movement_stats.air_acceleration
         friction = player.movement_stats.air_friction
         speed = player.movement_stats.air_max_speed
@@ -65,6 +98,10 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
         accel = player.movement_stats.ground_slide_friction
         friction = player.movement_stats.ground_slide_friction
         speed = player.movement_stats.ground_crouch_walk_max_speed
+    elif climbing:
+        accel = player.movement_stats.climb_acceleration
+        friction = player.movement_stats.climb_friction
+        speed = player.movement_stats.climb_horizontal_speed
 
     if input_vector != Vector2.ZERO and (player.velocity.x == 0 or sign(input_vector.x) == sign(player.velocity.x)):  # Walking/Running
         var new_velocity: = player.direction * speed
@@ -75,12 +112,11 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
     if player.is_on_wall_only() and wall_stick:
         var wall_normal_x = sign(player.get_wall_normal().x)
         var input_x = sign(input_vector.x)
-        if wall_normal_x == input_x and wall_stick_timer == null:
-            wall_stick_timer = player.get_tree().create_timer(WALL_STICK_TIME)
-            wall_stick_timer.timeout.connect(func(): wall_stick = false)
+        if wall_normal_x == input_x and player.wall_stick_timer.is_stopped():
+            player.wall_stick_timer.start(WALL_STICK_TIME)
         return  # If we're stuck to the wall, don't apply a horizontal force
     else:
-        wall_stick_timer = null
+        player.wall_stick_timer.stop()
         wall_stick = false
 
     # Set just the horizontal component
@@ -117,7 +153,7 @@ func move(player: Player):
 
     # Just left the ground
     if was_on_floor and not player.is_on_floor() and not just_jumped:
-        coyote_jump_timer = player.get_tree().create_timer(COYOTE_JUMP_REACTION_TIME)
+        player.coyote_jump_timer.start(COYOTE_JUMP_REACTION_TIME)
     if not was_on_wall_only and player.is_on_wall_only() and not just_jumped:
         wall_stick = true
 
@@ -132,6 +168,8 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
             player.animation_player.play("launch")
         else:
             player.animation_player.play("slide")
+    elif climbing:
+        player.animation_player.play("jump")
     elif (just_jumped or not double_jump) and player.velocity.y < 0:
         player.animation_player.play("jump")
     elif not player.is_on_floor() and not player.is_on_wall() and player.velocity.y >= 0:
@@ -152,8 +190,9 @@ func process_state(delta: float) -> void:
     var input_vector: = get_input_vector(player)
 
     apply_horizontal_force(player, input_vector, delta)
+    apply_verticle_force(player, delta)
     jump_check(player)
     slide_check(player, delta)
-    apply_verticle_force(player, delta)
+    climb_check(player)
     update_animations(player, input_vector)
     move(player)

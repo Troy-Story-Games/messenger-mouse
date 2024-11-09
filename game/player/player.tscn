@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=20 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -15,7 +15,11 @@ ground_jump_force = 350.0
 ground_slide_friction = 90.0
 ground_slide_boost = 70.0
 ground_slide_launch_boost = 100.0
-ground_crouch_walk_max_speed = 12.0
+ground_crouch_walk_max_speed = 20.0
+climb_verticle_speed = 75.0
+climb_acceleration = 2000.0
+climb_friction = 2000.0
+climb_horizontal_speed = 20.0
 gravity = 1000.0
 jump_deceleration = 700.0
 terminal_velocity = 300.0
@@ -599,6 +603,10 @@ _data = {
 "walk": SubResource("Animation_py1bn")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ut47c"]
+radius = 4.0
+height = 16.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_1oiqi")
 movement_stats = SubResource("Resource_2ksf3")
@@ -629,3 +637,16 @@ autoplay = "idle"
 
 [node name="CeilingCheckRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -9)
+
+[node name="ClimbArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea2D"]
+shape = SubResource("CapsuleShape2D_ut47c")
+
+[node name="WallStickTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+one_shot = true

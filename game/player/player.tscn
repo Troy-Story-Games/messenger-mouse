@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=21 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
 [ext_resource type="Shader" path="res://game/fx/pixel_art_trail.gdshader" id="3_48ic7"]
 [ext_resource type="Script" path="res://game/damage_boxes/hurtbox.gd" id="3_fatom"]
 [ext_resource type="Texture2D" uid="uid://pkd5r6j57c6w" path="res://game/player/assets/player.png" id="3_qcb77"]
+[ext_resource type="AudioStream" uid="uid://8ger880is7ul" path="res://game/audio/soundfx/sounds/walking.ogg" id="6_nnk34"]
 
 [sub_resource type="Resource" id="Resource_2ksf3"]
 script = ExtResource("2_4b2h1")
@@ -651,3 +652,8 @@ one_shot = true
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="WalkSoundFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_nnk34")
+volume_db = -25.0
+bus = &"SoundFX"

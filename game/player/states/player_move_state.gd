@@ -2,11 +2,14 @@ extends State
 class_name PlayerMoveState
 
 const COYOTE_JUMP_REACTION_TIME: = 0.2
+const WALL_STICK_TIME: = 0.4
 
 var just_jumped: bool = false
 var double_jump: bool = true
 var sliding: bool = false
+var wall_stick: bool = false
 var coyote_jump_timer: SceneTreeTimer
+var wall_stick_timer: SceneTreeTimer
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO
@@ -31,8 +34,7 @@ func slide_check(player: Player, delta: float) -> void:
 
 func jump_check(player: Player) -> void:
     var jump_just_pressed: bool = Input.is_action_just_pressed("jump")
-    var jump_just_released: bool = Input.is_action_just_released("jump")
-    if (player.is_on_wall_only() or (coyote_jump_timer and coyote_jump_timer.time_left > 0)) and jump_just_pressed:
+    if player.is_on_wall_only() and jump_just_pressed:
         # Wall jump
         player.velocity.x = player.get_wall_normal().x * player.movement_stats.wall_jump_speed
         jump(player, player.movement_stats.wall_jump_force)
@@ -44,20 +46,17 @@ func jump_check(player: Player) -> void:
             force += player.movement_stats.ground_slide_launch_boost
         jump(player, force)
         just_jumped = true
-    else:
-        if jump_just_released and player.velocity.y < -player.movement_stats.ground_jump_force / 2:
-            player.velocity.y = -player.movement_stats.ground_jump_force / 2
-
-        if jump_just_pressed and double_jump == true:
-            # Handle double jump
-            jump(player, player.movement_stats.air_jump_force)
-            double_jump = false
+    elif jump_just_pressed and double_jump == true:
+        # Handle double jump
+        jump(player, player.movement_stats.air_jump_force)
+        double_jump = false
 
 func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float) -> void:
     var horizontal_velocity = Vector2(player.velocity.x, 0)
     var accel: = player.movement_stats.ground_acceleration
     var friction: = player.movement_stats.ground_friction
     var speed: = player.movement_stats.ground_max_speed
+
     if not player.is_on_floor() and not player.is_on_wall():  # Air
         accel = player.movement_stats.air_acceleration
         friction = player.movement_stats.air_friction
@@ -73,12 +72,29 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
     else:  # Friction
         horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, friction * delta)
 
+    if player.is_on_wall_only() and wall_stick:
+        var wall_normal_x = sign(player.get_wall_normal().x)
+        var input_x = sign(input_vector.x)
+        if wall_normal_x == input_x and wall_stick_timer == null:
+            wall_stick_timer = player.get_tree().create_timer(WALL_STICK_TIME)
+            wall_stick_timer.timeout.connect(func(): wall_stick = false)
+        return  # If we're stuck to the wall, don't apply a horizontal force
+    else:
+        wall_stick_timer = null
+        wall_stick = false
+
     # Set just the horizontal component
     player.velocity.x = horizontal_velocity.x
 
 func apply_verticle_force(player: Player, delta: float) -> void:
     var accel: = player.movement_stats.gravity
     var max: = player.movement_stats.terminal_velocity
+
+    if player.velocity.y <= 0 and Input.is_action_pressed("jump"):
+        accel = player.movement_stats.jump_deceleration
+    elif player.velocity.y <= 0 and Input.is_action_just_released("jump"):
+        player.velocity.y = player.velocity.y / 2
+
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide
         accel = player.movement_stats.wall_slide_acceleration
         max = player.movement_stats.wall_slide_max_speed
@@ -102,8 +118,8 @@ func move(player: Player):
     # Just left the ground
     if was_on_floor and not player.is_on_floor() and not just_jumped:
         coyote_jump_timer = player.get_tree().create_timer(COYOTE_JUMP_REACTION_TIME)
-    if was_on_wall_only and not player.is_on_floor() and not player.is_on_wall() and not just_jumped:
-        coyote_jump_timer = player.get_tree().create_timer(COYOTE_JUMP_REACTION_TIME)
+    if not was_on_wall_only and player.is_on_wall_only() and not just_jumped:
+        wall_stick = true
 
 func update_animations(player: Player, input_vector: Vector2) -> void:
     if player.facing_direction.x != 0:

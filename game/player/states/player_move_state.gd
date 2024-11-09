@@ -122,6 +122,10 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
     # Set just the horizontal component
     player.velocity.x = horizontal_velocity.x
 
+    # TODO: Do we want some sort of boost feeling when you hit top speed?
+    #if abs(player.velocity.x) == player.movement_stats.ground_max_speed:
+    #    player.velocity.x += 80.0 * input_vector.x
+
 func apply_verticle_force(player: Player, delta: float) -> void:
     var accel: = player.movement_stats.gravity
     var max: = player.movement_stats.terminal_velocity
@@ -162,6 +166,7 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         player.flip_anchor.scale.x = sign(player.facing_direction.x)
 
     if player.is_on_wall_only():
+        # TODO: Wall-slide pose
         player.animation_player.play("jump")
     elif sliding and player.is_on_floor():
         if just_jumped:
@@ -169,8 +174,10 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         else:
             player.animation_player.play("slide")
     elif climbing:
+        # TODO: Climbing animation
         player.animation_player.play("jump")
     elif (just_jumped or not double_jump) and player.velocity.y < 0:
+        # TODO: Double jump animation (maybe a flip)
         player.animation_player.play("jump")
     elif not player.is_on_floor() and not player.is_on_wall() and player.velocity.y >= 0:
         player.animation_player.play("fall")

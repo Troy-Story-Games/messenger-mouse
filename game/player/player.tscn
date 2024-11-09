@@ -608,6 +608,7 @@ radius = 4.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -9)
 script = ExtResource("1_1oiqi")
 movement_stats = SubResource("Resource_2ksf3")
 

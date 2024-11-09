@@ -27,11 +27,11 @@ class_name MovementStats
 ## Max fall speed
 @export var terminal_velocity: = 300.0
 ## Horizontal acceleration in the air
-@export var air_acceleration: = 300.0
+@export var air_acceleration: = 1200.0
 ## Max horizontal speed in the air
 @export var air_max_speed: = 200.0
 ## Friction applied to stop horizontal movement in the air
-@export var air_friction: = 300.0
+@export var air_friction: = 900.0
 ## Force applied when jumping while in the air (double, triple, quadruple, etc. jump)
 @export var air_jump_force: = 350.0
 

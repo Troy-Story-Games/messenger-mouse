@@ -20,8 +20,10 @@ class_name MovementStats
 @export var ground_crouch_walk_max_speed: = 12.0
 
 @export_group("Air Movement")
-## Fall acceleration (e.g. gravity)
+## Fall acceleration applied when the character is moving dowards (e.g. gravity)
 @export var gravity: = 1000.0
+## Fall acceleration applied when the character is still moving upwards
+@export var jump_deceleration: = 700.0
 ## Max fall speed
 @export var terminal_velocity: = 300.0
 ## Horizontal acceleration in the air
@@ -37,7 +39,7 @@ class_name MovementStats
 ## Fall acceleration when wall sliding
 @export var wall_slide_acceleration: = 100.0
 ## Max fall speed when attached to a wall
-@export var wall_slide_max_speed: = 50.0
+@export var wall_slide_max_speed: = 300.0
 ## Upward force when wall jumping
 @export var wall_jump_force: = 350.0
 ## Horizontal speed when wall jumping

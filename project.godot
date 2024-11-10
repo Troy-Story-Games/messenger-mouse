@@ -93,6 +93,9 @@ move_down={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="collectible"
 2d_physics/layer_5="climbable"
+2d_physics/layer_6="environment_damage"
+2d_physics/layer_7="player_hurtbox"
+2d_physics/layer_8="enemy_hurtbox"
 
 [rendering]
 

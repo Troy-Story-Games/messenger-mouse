@@ -9,3 +9,4 @@ func _ready() -> void:
     ui.start_timer()
     Music.play("song1")
     current_level = $Level01
+    RenderingServer.set_default_clear_color(Color.BLACK)

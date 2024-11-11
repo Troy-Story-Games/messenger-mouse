@@ -16,8 +16,10 @@ func set_target(value: RemoteTransform2D):
 
 func apply_screenshake(amount: float, duration: float = 0.3) -> void:
     var tween: = create_tween()
+    var orig_offset = offset
     tween.tween_method(shake, amount, 0.0, duration)
     await tween.finished
+    offset = orig_offset
 
 func shake(amount: float) -> void:
-    offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * amount
+    offset += Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * amount

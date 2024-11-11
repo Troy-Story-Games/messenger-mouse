@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CheatCode" load_steps=2 format=3 uid="uid://dmukt5k6diuwq"]
+
+[ext_resource type="Script" path="res://game/world/cheats/cheat_code.gd" id="1_mi0gp"]
+
+[resource]
+script = ExtResource("1_mi0gp")
+button_combo = Array[String](["move_down", "move_down", "move_down", "move_down", "attack", "attack", "crouch", "attack"])
+cheat_name = "Zoom out"

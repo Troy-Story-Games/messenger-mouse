@@ -17,6 +17,7 @@ var sprite_shader_material: ShaderMaterial
 @onready var wall_stick_timer: Timer = $WallStickTimer
 @onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
 @onready var walk_sound_fx: AudioStreamPlayer2D = $WalkSoundFX
+@onready var attack_animation_player: AnimationPlayer = $AttackAnimationPlayer
 
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState

@@ -10,6 +10,7 @@ var sliding: bool = false
 var climbing: bool = false
 var was_just_climbing: bool = false
 var wall_stick: bool = false
+var attack_animations: = ["side_up", "side_down"]
 
 func enter() -> void:
     var player: Player = actor as Player
@@ -142,14 +143,21 @@ func apply_verticle_force(player: Player, delta: float) -> void:
     player.velocity.y += accel * delta
     player.velocity.y = min(player.velocity.y, max)
 
-func move(player: Player):
+func move(player: Player, delta: float):
     var was_in_air: = not player.is_on_floor()
     var was_on_floor: = player.is_on_floor()
     var was_on_wall_only: = player.is_on_wall_only()
-    var last_velocity: = Vector2(player.velocity)
-    var last_position: = player.position
+    var was_on_wall: = player.is_on_wall()
+    var orig_velocity: = Vector2(player.velocity)
 
     player.move_and_slide()
+
+    # Crash bounce and shake
+    if not was_on_wall and player.is_on_wall() and sliding and abs(orig_velocity.x) >= (player.movement_stats.ground_max_speed * 0.90):
+        Events.request_camera_screenshake.emit(2, 0.3)
+        player.velocity = player.get_wall_normal() * player.movement_stats.ground_slide_wall_crash_bounce
+        player.velocity.y = -player.movement_stats.ground_slide_wall_crash_up_bounce
+        player.move_and_slide()
 
     # Happens on landing
     if was_in_air and player.is_on_floor():
@@ -167,19 +175,24 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         player.flip_anchor.scale.x = sign(player.facing_direction.x)
 
     if player.is_on_wall_only():
-        # TODO: Wall-slide pose
-        player.animation_player.play("jump")
+        var wall_normal: = player.get_wall_normal()
+        if sign(wall_normal.x) == sign(input_vector.x):
+            player.animation_player.play("skid")
+        else:
+            player.animation_player.play("wall_grab")
     elif sliding and player.is_on_floor():
         if just_jumped:
             player.animation_player.play("launch")
         else:
-            player.animation_player.play("slide")
+            player.animation_player.play("crouch")
     elif climbing:
-        # TODO: Climbing animation
-        player.animation_player.play("jump")
+        player.animation_player.play("climb")
     elif (just_jumped or not double_jump) and player.velocity.y < 0:
         # TODO: Double jump animation (maybe a flip)
-        player.animation_player.play("jump")
+        if just_jumped:
+            player.animation_player.play("jump")
+        if not double_jump:
+            player.animation_player.play("flip")
     elif not player.is_on_floor() and not player.is_on_wall() and player.velocity.y >= 0:
         player.animation_player.play("fall")
     elif input_vector != Vector2.ZERO and player.is_on_floor():
@@ -190,7 +203,10 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         if sign(player.velocity.x) != sign(input_vector.x):
             player.animation_player.play("skid")
     elif player.is_on_floor():
-        player.animation_player.play("idle")
+        if Input.is_action_pressed("move_down"):
+            player.animation_player.play("crouch")
+        else:
+            player.animation_player.play("idle")
 
     if player.animation_player.is_playing() and player.animation_player.current_animation == "walk":
         if not player.walk_sound_fx.playing:
@@ -203,6 +219,12 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
     else:
         player.walk_sound_fx.stop()
 
+func update_attack_animations(player: Player) -> void:
+    if Input.is_action_just_pressed("attack"):
+        var next_attack: String = attack_animations.pop_front()
+        attack_animations.append(next_attack)
+        player.attack_animation_player.play(next_attack)
+
 func process_state(delta: float) -> void:
     just_jumped = false
     var player: = actor as Player
@@ -214,4 +236,5 @@ func process_state(delta: float) -> void:
     slide_check(player, delta)
     climb_check(player)
     update_animations(player, input_vector)
-    move(player)
+    update_attack_animations(player)
+    move(player, delta)

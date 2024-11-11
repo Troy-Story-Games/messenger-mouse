@@ -3,6 +3,7 @@ class_name PlayerMoveState
 
 const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
+const COMBO_ATTACK_BUTTON_TIME: = 0.3
 
 var just_jumped: bool = false
 var double_jump: bool = true
@@ -10,7 +11,11 @@ var sliding: bool = false
 var climbing: bool = false
 var was_just_climbing: bool = false
 var wall_stick: bool = false
-var attack_animations: = ["side_up", "side_down"]
+var side_attack_animations: Array[String] = ["side_down", "side_up"]
+var top_attack_animations: Array[String] = ["top_left", "top_right"]
+var bottom_attack_animations: Array[String] = ["bottom_left", "bottom_right"]
+var combo_attack_animations: Array[String] = []
+var last_attack_direction: Vector2 = Vector2.RIGHT
 
 func enter() -> void:
     var player: Player = actor as Player
@@ -35,6 +40,8 @@ func slide_check(player: Player, delta: float) -> void:
         if player.velocity.x != 0:
             player.velocity.x += player.movement_stats.ground_slide_boost * sign(player.velocity.x)
     if not slide_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
+        sliding = false
+    if not player.is_on_floor():
         sliding = false
 
 func jump_check(player: Player) -> void:
@@ -158,15 +165,19 @@ func move(player: Player, delta: float):
         player.velocity = player.get_wall_normal() * player.movement_stats.ground_slide_wall_crash_bounce
         player.velocity.y = -player.movement_stats.ground_slide_wall_crash_up_bounce
         player.move_and_slide()
+        SoundFx.play("slide_bang")
 
     # Happens on landing
     if was_in_air and player.is_on_floor():
         # On landing we get double jump back
         double_jump = true
+        SoundFx.play("landing")
 
     # Just left the ground
     if was_on_floor and not player.is_on_floor() and not just_jumped:
         player.coyote_jump_timer.start(COYOTE_JUMP_REACTION_TIME)
+
+    # Just attached to a wall
     if not was_on_wall_only and player.is_on_wall_only() and not just_jumped:
         wall_stick = true
 
@@ -188,10 +199,9 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
     elif climbing:
         player.animation_player.play("climb")
     elif (just_jumped or not double_jump) and player.velocity.y < 0:
-        # TODO: Double jump animation (maybe a flip)
-        if just_jumped:
+        if just_jumped or was_just_climbing:
             player.animation_player.play("jump")
-        if not double_jump:
+        elif not double_jump:
             player.animation_player.play("flip")
     elif not player.is_on_floor() and not player.is_on_wall() and player.velocity.y >= 0:
         player.animation_player.play("fall")
@@ -208,6 +218,7 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         else:
             player.animation_player.play("idle")
 
+    # Walk and run SoundFX
     if player.animation_player.is_playing() and player.animation_player.current_animation == "walk":
         if not player.walk_sound_fx.playing:
             player.walk_sound_fx.play()
@@ -219,11 +230,38 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
     else:
         player.walk_sound_fx.stop()
 
-func update_attack_animations(player: Player) -> void:
-    if Input.is_action_just_pressed("attack"):
-        var next_attack: String = attack_animations.pop_front()
-        attack_animations.append(next_attack)
-        player.attack_animation_player.play(next_attack)
+func update_attack_animations(player: Player, input_vector: Vector2) -> void:
+    if sliding or climbing or player.is_on_wall_only() or (player.is_on_floor() and Input.is_action_pressed("move_down")):
+        return
+
+    if not Input.is_action_just_pressed("attack"):
+        return
+
+    var attack_direction: = Vector2.RIGHT
+    var attack_list: Array[String] = side_attack_animations
+    if Input.is_action_pressed("move_up"):
+        attack_direction = Vector2.UP
+        attack_list = top_attack_animations
+    elif Input.is_action_pressed("move_down") and not player.is_on_floor() and not player.is_on_wall():
+        attack_direction = Vector2.DOWN
+        attack_list = bottom_attack_animations
+    elif input_vector.x > 0:
+        attack_direction = Vector2.RIGHT
+    elif input_vector.x < 0:
+        attack_direction = Vector2.LEFT
+
+    if player.combo_attack_timer.time_left == 0 or attack_direction != last_attack_direction:
+        player.combo_attack_timer.stop()
+        combo_attack_animations = attack_list.duplicate()
+        last_attack_direction = attack_direction
+
+    player.combo_attack_timer.start(COMBO_ATTACK_BUTTON_TIME)
+    var next_attack: String = combo_attack_animations.pop_front()
+    combo_attack_animations.append(next_attack)
+    player.attack_animation_player.play(next_attack)
+    
+    SoundFx.play("slash")
+
 
 func process_state(delta: float) -> void:
     just_jumped = false
@@ -236,5 +274,5 @@ func process_state(delta: float) -> void:
     slide_check(player, delta)
     climb_check(player)
     update_animations(player, input_vector)
-    update_attack_animations(player)
+    update_attack_animations(player, input_vector)
     move(player, delta)

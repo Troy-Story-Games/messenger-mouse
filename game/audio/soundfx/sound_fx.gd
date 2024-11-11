@@ -11,7 +11,7 @@ func _ready() -> void:
     sounds = Utils.load_dict_from_path(sounds_path, [".ogg", ".wav", ".mp3"])
 
 
-func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -35.0) -> AudioStreamPlayer:
+func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -15.0) -> AudioStreamPlayer:
     for player in sound_players:
         if not player.playing:
             player.pitch_scale = pitch_scale
@@ -25,7 +25,7 @@ func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -35.0
     return null
 
 
-func play_2d(sound_string: String, global_position: Vector2, pitch_scale: float = 1.0, volume_db: float = -35.0, max_distance: float = 0.0) -> AudioStreamPlayer2D:
+func play_2d(sound_string: String, global_position: Vector2, pitch_scale: float = 1.0, volume_db: float = -15.0, max_distance: float = 0.0) -> AudioStreamPlayer2D:
     for player in sound_players_2d:
         if not player.playing:
             player.pitch_scale = pitch_scale

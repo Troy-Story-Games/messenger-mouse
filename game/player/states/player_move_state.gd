@@ -11,6 +11,8 @@ var sliding: bool = false
 var climbing: bool = false
 var was_just_climbing: bool = false
 var wall_stick: bool = false
+var super_jump_enabled: bool = false
+var konami_code_enabled: bool = false
 var side_attack_animations: Array[String] = ["side_down", "side_up"]
 var top_attack_animations: Array[String] = ["top_left", "top_right"]
 var bottom_attack_animations: Array[String] = ["bottom_left", "bottom_right"]
@@ -20,6 +22,48 @@ var last_attack_direction: Vector2 = Vector2.RIGHT
 func enter() -> void:
     var player: Player = actor as Player
     player.wall_stick_timer.timeout.connect(func(): wall_stick = false)
+    Events.toggle_cheat.connect(_on_toggle_cheat)
+
+func _on_toggle_cheat(cheat_name: String) -> void:
+    print_verbose("Toggle cheat! ", cheat_name)
+    var player: Player = actor as Player
+    match cheat_name:
+        "konami_code":
+            if not konami_code_enabled:
+                print_verbose("KONAMI!")
+                konami_code_enabled = true
+                player.movement_stats.ground_max_speed *= 2
+                player.movement_stats.ground_acceleration *= 2
+                player.movement_stats.ground_friction *= 2
+                player.movement_stats.ground_slide_boost *= 2
+                player.movement_stats.ground_crouch_walk_max_speed *= 2
+                player.movement_stats.ground_slide_friction *= 2
+                player.movement_stats.air_max_speed *= 2
+                player.movement_stats.air_acceleration *= 2
+                player.movement_stats.air_friction *= 2
+                player.movement_stats.wall_slide_acceleration *= 2
+                player.movement_stats.wall_slide_max_speed *= 2
+            else:
+                konami_code_enabled = false
+                player.movement_stats.ground_max_speed /= 2
+                player.movement_stats.ground_acceleration /= 2
+                player.movement_stats.ground_friction /= 2
+                player.movement_stats.ground_slide_boost /= 2
+                player.movement_stats.ground_crouch_walk_max_speed /= 2
+                player.movement_stats.ground_slide_friction /= 2
+                player.movement_stats.air_max_speed /= 2
+                player.movement_stats.air_acceleration /= 2
+                player.movement_stats.air_friction /= 2
+                player.movement_stats.wall_slide_acceleration /= 2
+                player.movement_stats.wall_slide_max_speed /= 2
+        "super_jump":
+            if not super_jump_enabled:
+                print_verbose("Super jump!")
+                player.movement_stats.ground_jump_force *= 2
+                super_jump_enabled = true
+            else:
+                super_jump_enabled = false
+                player.movement_stats.ground_jump_force /= 2
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO

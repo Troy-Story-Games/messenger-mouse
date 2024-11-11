@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CheatCode" load_steps=2 format=3 uid="uid://muc08t8bie31"]
+
+[ext_resource type="Script" path="res://game/world/cheats/cheat_code.gd" id="1_dldf3"]
+
+[resource]
+script = ExtResource("1_dldf3")
+button_combo = Array[String](["move_up", "move_up", "move_down", "move_down", "move_left", "move_right", "move_left", "move_right", "crouch", "jump", "pause"])
+cheat_name = "Konami Code"

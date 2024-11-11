@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://b5jbj3ico57k4"]
 
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/levels/level.tscn" id="1_spr3g"]
-[ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world_tiles.tscn" id="2_4imo2"]
+[ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_4imo2"]
 
 [node name="Level01" instance=ExtResource("1_spr3g")]
 

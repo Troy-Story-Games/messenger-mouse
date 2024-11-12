@@ -310,7 +310,7 @@ func update_attack_animations(player: Player, input_vector: Vector2) -> void:
     var next_attack: String = combo_attack_animations.pop_front()
     combo_attack_animations.append(next_attack)
     player.attack_animation_player.play(next_attack)
-    
+
     SoundFx.play("slash")
 
 

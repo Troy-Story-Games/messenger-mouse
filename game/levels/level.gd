@@ -5,7 +5,7 @@ var initialized: bool = false : set = set_initialized
 
 @onready var start_position: Marker2D = $StartPosition
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if initialized:
         return
 

@@ -1,6 +1,8 @@
 extends State
 class_name PlayerMoveState
 
+const JumpDustEffectScene = preload("res://game/fx/jump_dust_effect.tscn")
+
 const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
 const COMBO_ATTACK_BUTTON_TIME: = 0.3
@@ -75,7 +77,7 @@ func get_input_vector(player: Player) -> Vector2:
 func jump(player: Player, force: float) -> void:
     player.velocity.y = -force
 
-func slide_check(player: Player, delta: float) -> void:
+func slide_check(player: Player, _delta: float) -> void:
     var slide_just_pressed: bool = Input.is_action_just_pressed("slide")
     var slide_pressed: bool = Input.is_action_pressed("slide")
 
@@ -96,6 +98,10 @@ func jump_check(player: Player) -> void:
         jump(player, player.movement_stats.wall_jump_force)
         just_jumped = true
         SoundFx.play("jump")
+        var dust_effect: AnimatedSpriteEffect = Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position) as AnimatedSpriteEffect
+        var rotation = deg_to_rad(90 * sign(player.get_wall_normal().x))
+        dust_effect.rotate(rotation)
+        dust_effect.position.x += 5 * sign(player.get_wall_normal().x)
     elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed:
         # Regular jump
         var force = player.movement_stats.ground_jump_force
@@ -106,6 +112,7 @@ func jump_check(player: Player) -> void:
             SoundFx.play("jump")
         jump(player, force)
         just_jumped = true
+        Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position)
     elif jump_just_pressed and double_jump == true:
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
@@ -181,7 +188,7 @@ func apply_horizontal_force(player: Player, input_vector: Vector2, delta: float)
 
 func apply_verticle_force(player: Player, delta: float) -> void:
     var accel: = player.movement_stats.gravity
-    var max: = player.movement_stats.terminal_velocity
+    var max_vel: = player.movement_stats.terminal_velocity
 
     if player.velocity.y <= 0 and Input.is_action_pressed("jump"):
         accel = player.movement_stats.jump_deceleration
@@ -190,11 +197,11 @@ func apply_verticle_force(player: Player, delta: float) -> void:
 
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide
         accel = player.movement_stats.wall_slide_acceleration
-        max = player.movement_stats.wall_slide_max_speed
+        max_vel = player.movement_stats.wall_slide_max_speed
     player.velocity.y += accel * delta
-    player.velocity.y = min(player.velocity.y, max)
+    player.velocity.y = min(player.velocity.y, max_vel)
 
-func move(player: Player, delta: float):
+func move(player: Player, _delta: float):
     var was_in_air: = not player.is_on_floor()
     var was_on_floor: = player.is_on_floor()
     var was_on_wall_only: = player.is_on_wall_only()

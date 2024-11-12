@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=36 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -1335,6 +1335,88 @@ tracks/2/keys = {
 "values": [PackedVector2Array()]
 }
 
+[sub_resource type="Animation" id="Animation_unrvi"]
+resource_name = "bottom_left"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/AttackSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipAnchor/AttackSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-3, 11, -3, 19, 5, 19, 12, 12, 13, 3, 8, 8, 3, 10), PackedVector2Array(-12, 6, -19, 10, -18, 14, -15, 17, -10, 19, 0, 19, 7, 12, 7, 10, -3, 14, -7, 13), PackedVector2Array()]
+}
+
+[sub_resource type="Animation" id="Animation_uuxo5"]
+resource_name = "bottom_right"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/AttackSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipAnchor/AttackSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(3, 10, 3, 19, -7, 19, -13, 11, -13, 3, -11, 3, -4, 10), PackedVector2Array(12, 6, 20, 10, 19, 13, 12, 19, 1, 19, -8, 11, 3, 15), PackedVector2Array()]
+}
+
 [sub_resource type="Animation" id="Animation_ph568"]
 resource_name = "side_down"
 length = 0.1
@@ -1499,88 +1581,6 @@ tracks/2/keys = {
 "values": [PackedVector2Array(3, -10, 3, -19, -7, -19, -13, -8, -13, -2, -11, -2, -6, -9), PackedVector2Array(12, -6, 19, -9, 19, -14, 11, -19, -1, -19, -7, -11, -5, -10, 5, -15), PackedVector2Array()]
 }
 
-[sub_resource type="Animation" id="Animation_unrvi"]
-resource_name = "bottom_left"
-length = 0.1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipAnchor/AttackSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 13]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlipAnchor/AttackSprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(-3, 11, -3, 19, 5, 19, 12, 12, 13, 3, 8, 8, 3, 10), PackedVector2Array(-12, 6, -19, 10, -18, 14, -15, 17, -10, 19, 0, 19, 7, 12, 7, 10, -3, 14, -7, 13), PackedVector2Array()]
-}
-
-[sub_resource type="Animation" id="Animation_uuxo5"]
-resource_name = "bottom_right"
-length = 0.1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipAnchor/AttackSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [15, 16]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlipAnchor/AttackSprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(3, 10, 3, 19, -7, 19, -13, 11, -13, 3, -11, 3, -4, 10), PackedVector2Array(12, 6, 20, 10, 19, 13, 12, 19, 1, 19, -8, 11, 3, 15), PackedVector2Array()]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u8oca"]
 _data = {
 "RESET": SubResource("Animation_8kqet"),
@@ -1595,6 +1595,10 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ut47c"]
 radius = 4.0
 height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8pflo"]
+radius = 6.0
+height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -9)
@@ -1615,6 +1619,8 @@ hframes = 18
 frame = 1
 
 [node name="Hitbox" type="Area2D" parent="FlipAnchor"]
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("6_ohbjh")
 is_storing_targets = true
 
@@ -1667,3 +1673,10 @@ one_shot = true
 stream = ExtResource("6_nnk34")
 volume_db = -15.0
 bus = &"SoundFX"
+
+[node name="CollectionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea2D"]
+shape = SubResource("CapsuleShape2D_8pflo")

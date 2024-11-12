@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3dyjx8whfgvh"]
+
+[ext_resource type="Script" path="res://game/fx/animated_sprite_effect.gd" id="1_wpcg6"]
+
+[node name="AnimatedSpriteEffect" type="AnimatedSprite2D"]
+script = ExtResource("1_wpcg6")

@@ -23,10 +23,6 @@ MainInstances="*res://game/utils/main_instances.gd"
 Music="*res://game/audio/music/music.tscn"
 SoundFx="*res://game/audio/soundfx/sound_fx.tscn"
 
-[debug]
-
-settings/stdout/verbose_stdout=true
-
 [display]
 
 window/size/viewport_width=320

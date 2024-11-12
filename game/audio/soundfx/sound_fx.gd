@@ -20,7 +20,6 @@ func random_pitch_scale(pitch_scale: float, pitch_scale_random: float) -> float:
 func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -15.0, pitch_scale_random: float = 0.3) -> AudioStreamPlayer:
     if pitch_scale_random != 0.0:
         pitch_scale = random_pitch_scale(pitch_scale, pitch_scale_random)
-        print("Using pitch: ", pitch_scale)
 
     for player in sound_players:
         if not player.playing:

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CheatCode" load_steps=2 format=3 uid="uid://dabb08gb07x2a"]
+
+[ext_resource type="Script" path="res://game/world/cheats/cheat_code.gd" id="1_kdnju"]
+
+[resource]
+script = ExtResource("1_kdnju")
+button_combo = Array[String](["move_left", "move_left", "move_left", "move_left", "attack", "attack", "jump", "pause"])
+cheat_name = "Long trail effect"

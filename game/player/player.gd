@@ -6,6 +6,7 @@ class_name Player
 var direction := Vector2.RIGHT : set = set_direction
 var facing_direction := Vector2.RIGHT : set = set_facing_direction
 var sprite_shader_material: ShaderMaterial
+var long_trail: bool = false
 
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var flip_anchor: Node2D = $FlipAnchor
@@ -39,6 +40,16 @@ func _ready() -> void:
     sprite_shader_material = sprite_2d.material as ShaderMaterial
     sprite_shader_material.set_shader_parameter("nb_frames", Vector2(sprite_2d.hframes, sprite_2d.vframes))
     collection_area_2d.area_entered.connect(collect_item)
+    Events.toggle_cheat.connect(_on_toggle_cheat)
+
+func _on_toggle_cheat(cheat_name: String) -> void:
+    if cheat_name == "long_trail":
+        if not long_trail:
+            long_trail = true
+            sprite_shader_material.set_shader_parameter("trail_size", 50)
+        else:
+            long_trail = false
+            sprite_shader_material.set_shader_parameter("trail_size", 12)
 
 func _process(_delta: float) -> void:
     sprite_shader_material.set_shader_parameter("frame_coords", sprite_2d.frame_coords)

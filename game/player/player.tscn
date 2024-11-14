@@ -28,6 +28,7 @@ climb_horizontal_speed = 20.0
 gravity = 1000.0
 jump_deceleration = 700.0
 terminal_velocity = 300.0
+fast_fall_terminal_velocity = 480.0
 air_acceleration = 1200.0
 air_max_speed = 200.0
 air_friction = 900.0

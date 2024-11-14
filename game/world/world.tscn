@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/world/world.gd" id="1_c40t4"]
 [ext_resource type="PackedScene" uid="uid://dn610j483y666" path="res://game/ui/ui.tscn" id="2_pmuhb"]
 [ext_resource type="Script" path="res://game/player/player_camera.gd" id="3_b112w"]
-[ext_resource type="PackedScene" uid="uid://b5jbj3ico57k4" path="res://game/levels/level_01.tscn" id="4_sqmc1"]
+[ext_resource type="PackedScene" uid="uid://b5jbj3ico57k4" path="res://game/levels/level_test.tscn" id="4_sqmc1"]
 [ext_resource type="PackedScene" uid="uid://c8bfy6cxbdm23" path="res://game/player/player.tscn" id="5_87y6g"]
 [ext_resource type="Script" path="res://game/world/cheats/cheat_code_listener.gd" id="6_alwes"]
 
@@ -18,9 +18,9 @@ drag_vertical_enabled = true
 drag_top_margin = 0.5
 script = ExtResource("3_b112w")
 
-[node name="Level01" parent="." instance=ExtResource("4_sqmc1")]
-
 [node name="Player" parent="." instance=ExtResource("5_87y6g")]
 
 [node name="CheatCodeListener" type="Node" parent="."]
 script = ExtResource("6_alwes")
+
+[node name="LevelTest" parent="." instance=ExtResource("4_sqmc1")]

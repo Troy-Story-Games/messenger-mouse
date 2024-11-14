@@ -194,6 +194,9 @@ func apply_verticle_force(player: Player, delta: float) -> void:
         accel = player.movement_stats.jump_deceleration
     elif player.velocity.y <= 0 and Input.is_action_just_released("jump"):
         player.velocity.y = player.velocity.y / 2
+    
+    if player.velocity.y >= 0 and Input.is_action_just_pressed("move_down"):
+        player.velocity.y = player.movement_stats.fast_fall_terminal_velocity
 
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide
         accel = player.movement_stats.wall_slide_acceleration

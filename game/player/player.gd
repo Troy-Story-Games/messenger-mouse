@@ -84,3 +84,7 @@ func take_hit(_other_hitbox: Hitbox) -> void:
 
 func collect_item(item: Collectible) -> void:
     item.collect()
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+    print("Left level!")
+    queue_free()

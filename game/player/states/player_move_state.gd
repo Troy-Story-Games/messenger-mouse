@@ -102,7 +102,7 @@ func jump_check(player: Player) -> void:
         var rotation = deg_to_rad(90 * sign(player.get_wall_normal().x))
         dust_effect.rotate(rotation)
         dust_effect.position.x += 5 * sign(player.get_wall_normal().x)
-    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed:
+    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
         # Regular jump
         var force = player.movement_stats.ground_jump_force
         if sliding:
@@ -113,7 +113,7 @@ func jump_check(player: Player) -> void:
         jump(player, force)
         just_jumped = true
         Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position)
-    elif jump_just_pressed and double_jump == true:
+    elif jump_just_pressed and double_jump == true and not player.ceiling_check_ray_cast_2d.is_colliding():
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false

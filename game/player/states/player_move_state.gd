@@ -234,6 +234,7 @@ func move(player: Player, _delta: float):
     # Just attached to a wall
     if not was_on_wall_only and player.is_on_wall_only() and not just_jumped:
         wall_stick = true
+        double_jump = true
 
 func update_animations(player: Player, input_vector: Vector2) -> void:
     if player.facing_direction.x != 0:

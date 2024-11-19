@@ -8,6 +8,7 @@ var facing_direction := Vector2.RIGHT : set = set_facing_direction
 var sprite_shader_material: ShaderMaterial
 var long_trail: bool = false
 
+
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var flip_anchor: Node2D = $FlipAnchor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -26,6 +27,9 @@ var long_trail: bool = false
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState
 @onready var fsm: FSM = FSM.new().set_state(move_state)
 
+# Stats
+@onready var stats: Stats = MainInstances.player_stats as Stats
+
 func _enter_tree() -> void:
     MainInstances.player = self
 
@@ -35,12 +39,13 @@ func _exit_tree() -> void:
 func _ready() -> void:
     assert(movement_stats, "movement_stats must be set")
     Events.request_camera_target.emit.call_deferred(remote_transform_2d)
-    hurtbox.hurt.connect(take_hit)
+    hurtbox.hurt.connect(_on_hurtbox_hurt)
     hurtbox.environment_damage.connect(take_environment_hit)
     sprite_shader_material = sprite_2d.material as ShaderMaterial
     sprite_shader_material.set_shader_parameter("nb_frames", Vector2(sprite_2d.hframes, sprite_2d.vframes))
     collection_area_2d.area_entered.connect(collect_item)
     Events.toggle_cheat.connect(_on_toggle_cheat)
+    stats.no_health.connect(_on_player_no_health)
 
 func _on_toggle_cheat(cheat_name: String) -> void:
     if cheat_name == "long_trail":
@@ -72,15 +77,22 @@ func set_facing_direction(value: Vector2) -> void:
     facing_direction = value
 
 func take_environment_hit() -> void:
-    take_hit(null)
+    take_hit(1)
 
-func take_hit(_other_hitbox: Hitbox) -> void:
-    # TODO: make sure we continue to handle null other_hitbox from take_environment_hit
-    print("take_hit()")
+func _on_hurtbox_hurt(other_hitbox: Hitbox) -> void:
+    take_hit(other_hitbox.damage)
+
+func take_hit(damage: float) -> void:
     hurtbox.is_invincible = true
+    stats.health -= damage
+    Events.player_hurt.emit()
     Events.request_camera_screenshake.emit(4, 0.3)
     await get_tree().create_timer(0.5).timeout
     hurtbox.is_invincible = false
+
+func _on_player_no_health() -> void:
+    Events.player_died.emit()
+    queue_free()  # TODO: Death effect
 
 func collect_item(item: Collectible) -> void:
     item.collect()

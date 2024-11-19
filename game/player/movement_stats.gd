@@ -18,7 +18,7 @@ class_name MovementStats
 ## Boost applied to ground_jump_force when crouch jumping
 @export var ground_slide_launch_boost: = 100.0
 ## Max speed while crouch walking
-@export var ground_crouch_walk_max_speed: = 20.0
+@export var ground_crouch_walk_max_speed: = 50.0
 ## Amount of bounce back when crashing into a wall
 @export var ground_slide_wall_crash_bounce: = 250.0
 ## Amount of up-bounce added when crashing into a wall

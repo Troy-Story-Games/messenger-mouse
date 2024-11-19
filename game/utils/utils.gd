@@ -1,5 +1,17 @@
 extends Node
 
+const levels_path = "res://game/level/levels/"
+
+var levels: Array[PackedScene] = []
+
+func _ready() -> void:
+    var level_dict: Dictionary = Utils.load_dict_from_path(levels_path)
+    for key in level_dict:
+        levels.append(level_dict[key])
+
+func get_level(idx: int) -> PackedScene:
+    return levels[idx]
+
 func instantiate_scene_on_level(scene: PackedScene, position: Vector2) -> Node:
     var node: = scene.instantiate()
     var main = get_tree().current_scene as World

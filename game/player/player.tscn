@@ -1602,6 +1602,7 @@ radius = 6.0
 height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_1oiqi")
 movement_stats = SubResource("Resource_2ksf3")
 

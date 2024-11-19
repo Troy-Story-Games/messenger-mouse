@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx4duxj7u14f6"]
+
+[ext_resource type="Script" path="res://game/level/level.gd" id="1_oojed"]
+[ext_resource type="Script" path="res://game/player/camera_limits.gd" id="2_c3aqe"]
+[ext_resource type="Texture2D" uid="uid://p6waudhqsime" path="res://game/world/assets/door.png" id="3_5l5ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyhi4"]
+size = Vector2(16, 16)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_oojed")
+
+[node name="CameraLimits" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_c3aqe")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[node name="LevelExit" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 64
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelExit"]
+texture = ExtResource("3_5l5ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
+shape = SubResource("RectangleShape2D_lyhi4")
+
+[connection signal="area_entered" from="LevelExit" to="." method="_on_level_exit_area_entered"]

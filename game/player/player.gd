@@ -91,6 +91,9 @@ func take_hit(damage: float) -> void:
     hurtbox.is_invincible = false
 
 func _on_player_no_health() -> void:
+    die()
+
+func die() -> void:
     Events.player_died.emit()
     queue_free()  # TODO: Death effect
 
@@ -98,5 +101,4 @@ func collect_item(item: Collectible) -> void:
     item.collect()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-    print("Left level!")
-    queue_free()
+    die()

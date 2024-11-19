@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyvn3bwydg07u"]
 
-[ext_resource type="Texture2D" uid="uid://dqah5ekqsvv7p" path="res://game/levels/assets/monochrome_tilemap_packed.png" id="1_f3h6a"]
+[ext_resource type="Texture2D" uid="uid://dqah5ekqsvv7p" path="res://game/level/assets/monochrome_tilemap_packed.png" id="1_f3h6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sooor"]
 resource_name = "World Tileset"

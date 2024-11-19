@@ -61,8 +61,6 @@ func _physics_process(_delta: float) -> void:
         pressed_action = "pause"
     elif Input.is_action_just_pressed("attack"):
         pressed_action = "attack"
-    elif Input.is_action_just_pressed("slide"):
-        pressed_action = "slide"
 
     if not pressed_action:
         return

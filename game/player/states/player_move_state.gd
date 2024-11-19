@@ -78,8 +78,8 @@ func jump(player: Player, force: float) -> void:
     player.velocity.y = -force
 
 func slide_check(player: Player, _delta: float) -> void:
-    var slide_just_pressed: bool = Input.is_action_just_pressed("slide")
-    var slide_pressed: bool = Input.is_action_pressed("slide")
+    var slide_just_pressed: bool = Input.is_action_just_pressed("crouch")
+    var slide_pressed: bool = Input.is_action_pressed("crouch")
 
     if player.is_on_floor() and slide_just_pressed:
         sliding = true

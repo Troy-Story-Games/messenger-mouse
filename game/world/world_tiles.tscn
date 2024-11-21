@@ -1404,5 +1404,5 @@ terrain_set_0/terrain_8/color = Color(0.25, 0.40625, 0.5, 1)
 sources/0 = SubResource("TileSetAtlasSource_sooor")
 
 [node name="WorldTiles" type="TileMapLayer"]
-z_index = -1
+z_index = -99
 tile_set = SubResource("TileSet_7b87s")

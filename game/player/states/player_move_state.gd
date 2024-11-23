@@ -7,6 +7,7 @@ const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
 const COMBO_ATTACK_BUTTON_TIME: = 0.3
 
+var unlimited_slide_boost: bool = false
 var just_jumped: bool = false
 var double_jump: bool = true
 var sliding: bool = false
@@ -66,6 +67,11 @@ func _on_toggle_cheat(cheat_name: String) -> void:
             else:
                 super_jump_enabled = false
                 player.movement_stats.ground_jump_force /= 2
+        "unlimited_slide_boost":
+            if unlimited_slide_boost:
+                unlimited_slide_boost = false
+            else:
+                unlimited_slide_boost = true
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO
@@ -80,12 +86,17 @@ func jump(player: Player, force: float) -> void:
 func slide_check(player: Player, _delta: float) -> void:
     var slide_just_pressed: bool = Input.is_action_just_pressed("crouch")
     var slide_pressed: bool = Input.is_action_pressed("crouch")
+    var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.ground_slide_boost * 3)
+
+    if unlimited_slide_boost:
+        max_velocity_with_boost *= 9999.0
 
     if player.is_on_floor() and slide_just_pressed:
         sliding = true
         if player.velocity.x != 0:
             player.velocity.x += player.movement_stats.ground_slide_boost * sign(player.velocity.x)
-    if not slide_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
+            player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)
+    if not slide_pressed and not player.is_ceiling_raycast_colliding():
         sliding = false
     if not player.is_on_floor():
         sliding = false
@@ -102,7 +113,7 @@ func jump_check(player: Player) -> void:
         var rotation = deg_to_rad(90 * sign(player.get_wall_normal().x))
         dust_effect.rotate(rotation)
         dust_effect.position.x += 5 * sign(player.get_wall_normal().x)
-    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
+    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed and not player.is_ceiling_raycast_colliding():
         # Regular jump
         var force = player.movement_stats.ground_jump_force
         if sliding:
@@ -113,7 +124,7 @@ func jump_check(player: Player) -> void:
         jump(player, force)
         just_jumped = true
         Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position)
-    elif jump_just_pressed and double_jump == true and not player.ceiling_check_ray_cast_2d.is_colliding():
+    elif jump_just_pressed and double_jump == true and not player.is_ceiling_raycast_colliding():
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false

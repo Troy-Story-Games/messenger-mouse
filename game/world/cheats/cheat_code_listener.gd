@@ -28,6 +28,7 @@ func check_sequence() -> void:
         # We matched partial at least - check if we're done
         if current_seq == cheat_code.button_combo:
             print_verbose("Cheat activated! ", cheat_name)
+            SoundFx.play("cheat_code")
             Events.toggle_cheat.emit(cheat_name)
             input_timer.stop()
             current_seq.clear()

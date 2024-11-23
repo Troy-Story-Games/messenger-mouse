@@ -8,13 +8,13 @@ var facing_direction := Vector2.RIGHT : set = set_facing_direction
 var sprite_shader_material: ShaderMaterial
 var long_trail: bool = false
 
-
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 @onready var flip_anchor: Node2D = $FlipAnchor
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var sprite_2d: Sprite2D = $FlipAnchor/Sprite2D
-@onready var ceiling_check_ray_cast_2d: RayCast2D = $CeilingCheckRayCast2D
+@onready var ceiling_check_left_ray_cast_2d: RayCast2D = $CeilingCheckLeftRayCast2D
+@onready var ceiling_check_right_ray_cast_2d: RayCast2D = $CeilingCheckRightRayCast2D
 @onready var climb_area_2d: Area2D = $ClimbArea2D
 @onready var wall_stick_timer: Timer = $WallStickTimer
 @onready var coyote_jump_timer: Timer = $CoyoteJumpTimer
@@ -102,3 +102,6 @@ func collect_item(item: Collectible) -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
     die()
+
+func is_ceiling_raycast_colliding() -> bool:
+    return ceiling_check_left_ray_cast_2d.is_colliding() or ceiling_check_right_ray_cast_2d.is_colliding()

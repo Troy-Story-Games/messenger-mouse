@@ -101,6 +101,12 @@ func slide_check(player: Player, _delta: float) -> void:
     if not player.is_on_floor():
         sliding = false
 
+    # Fallback in case player gets stuck
+    if player.is_floor_raycast_colliding() and player.is_ceiling_raycast_colliding() and not sliding:
+        # We have to be stuck!!
+        print_debug("STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK")
+        sliding = true
+
 func jump_check(player: Player) -> void:
     var jump_just_pressed: bool = Input.is_action_just_pressed("jump")
     if player.is_on_wall_only() and jump_just_pressed:

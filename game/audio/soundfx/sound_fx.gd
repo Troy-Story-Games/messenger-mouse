@@ -30,7 +30,7 @@ func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -15.0
             player.process_mode = Node.PROCESS_MODE_ALWAYS
             player.play()
             return player
-    push_error("[UNBOXING] WARNING: Too many sounds playing at once!")
+    print_debug("WARNING: Too many sounds playing at once!")
     return null
 
 
@@ -48,5 +48,5 @@ func play_2d(sound_string: String, global_position: Vector2, pitch_scale: float 
             player.max_distance = max_distance
             player.play()
             return player
-    push_error("[UNBOXING] WARNING: Too many sounds playing at once!")
+    print_debug("WARNING: Too many sounds playing at once!")
     return null

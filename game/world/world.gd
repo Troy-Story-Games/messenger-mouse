@@ -4,7 +4,7 @@ class_name World
 const PlayerScene = preload("res://game/player/player.tscn")
 
 var current_level: Level
-var current_level_idx: int = 2
+var current_level_idx: int = 3
 var zoom_out_enabled: bool = false
 var last_checkpoint: Vector2
 

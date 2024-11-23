@@ -7,6 +7,7 @@ const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
 const COMBO_ATTACK_BUTTON_TIME: = 0.3
 
+var unlimited_jump: bool = false
 var unlimited_slide_boost: bool = false
 var just_jumped: bool = false
 var double_jump: bool = true
@@ -72,6 +73,12 @@ func _on_toggle_cheat(cheat_name: String) -> void:
                 unlimited_slide_boost = false
             else:
                 unlimited_slide_boost = true
+        "infinite_jump":
+            if unlimited_jump:
+                unlimited_jump = false
+            else:
+                print("unlimit jump")
+                unlimited_jump = true
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO
@@ -104,8 +111,11 @@ func slide_check(player: Player, _delta: float) -> void:
     # Fallback in case player gets stuck
     if player.is_floor_raycast_colliding() and player.is_ceiling_raycast_colliding() and not sliding:
         # We have to be stuck!!
-        print_debug("STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK STUCK")
+        print_debug("STUCK!!!")
         sliding = true
+
+func can_double_jump() -> bool:
+    return double_jump or unlimited_jump
 
 func jump_check(player: Player) -> void:
     var jump_just_pressed: bool = Input.is_action_just_pressed("jump")
@@ -130,7 +140,7 @@ func jump_check(player: Player) -> void:
         jump(player, force)
         just_jumped = true
         Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position)
-    elif jump_just_pressed and double_jump == true and not player.is_ceiling_raycast_colliding():
+    elif jump_just_pressed and can_double_jump() and not player.is_ceiling_raycast_colliding():
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false

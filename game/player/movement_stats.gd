@@ -1,6 +1,9 @@
 extends Resource
 class_name MovementStats
 
+@export_group("Movement Modifiers")
+@export var enemy_kill_boost: = 70.0
+
 @export_group("Ground Movement")
 ## Horizontal acceleration for a character, applied when on the ground
 ## while holding left or right direction until ground_max_speed is reached

@@ -1633,13 +1633,11 @@ libraries = {
 "": SubResource("AnimationLibrary_u8oca")
 }
 
-[node name="CeilingCheckLeftRayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-4, 0)
+[node name="CeilingCheckRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -9)
 
-[node name="CeilingCheckRightRayCast2D" type="RayCast2D" parent="."]
-position = Vector2(4, 0)
-target_position = Vector2(0, -9)
+[node name="FloorCheckRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
 
 [node name="ClimbArea2D" type="Area2D" parent="."]
 collision_layer = 0

@@ -5,7 +5,7 @@ const JumpDustEffectScene = preload("res://game/fx/jump_dust_effect.tscn")
 
 const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
-const COMBO_ATTACK_BUTTON_TIME: = 0.3
+const COMBO_ATTACK_BUTTON_TIME: = 1.0
 
 var unlimited_jump: bool = false
 var unlimited_slide_boost: bool = false
@@ -27,6 +27,21 @@ func enter() -> void:
     var player: Player = actor as Player
     player.wall_stick_timer.timeout.connect(func(): wall_stick = false)
     Events.toggle_cheat.connect(_on_toggle_cheat)
+    Events.enemy_killed.connect(_on_enemy_killed)
+
+func _on_enemy_killed() -> void:
+    var player: Player = actor as Player
+    var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.enemy_kill_boost * 2)
+    
+    if player.velocity.x != 0:
+        player.velocity.x += player.movement_stats.enemy_kill_boost * sign(player.velocity.x)
+        player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)
+
+    if not player.is_on_floor() and not player.is_on_ceiling() and not player.is_on_wall():
+        double_jump = true
+        if player.velocity.y > 0:
+            player.velocity.y = 0
+        player.velocity.y -= player.movement_stats.enemy_kill_air_boost
 
 func _on_toggle_cheat(cheat_name: String) -> void:
     print_verbose("Toggle cheat! ", cheat_name)
@@ -318,7 +333,7 @@ func update_attack_animations(player: Player, input_vector: Vector2) -> void:
 
     if not Input.is_action_just_pressed("attack"):
         return
-
+    player.hitbox.clear_stored_targets()
     var attack_direction: = Vector2.RIGHT
     var attack_list: Array[String] = side_attack_animations
     if Input.is_action_pressed("move_up"):

@@ -1,8 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://eacnnv1j1co1"]
+[gd_scene load_steps=11 format=3 uid="uid://eacnnv1j1co1"]
 
 [ext_resource type="PackedScene" uid="uid://dasv4t5os4ab6" path="res://game/enemy/enemy.tscn" id="1_xai6e"]
 [ext_resource type="Script" path="res://game/enemy/flying_enemy.gd" id="2_eaiml"]
 [ext_resource type="Texture2D" uid="uid://cs4nhs47lmct0" path="res://game/enemy/assets/flying_enemy.png" id="2_gcjek"]
+[ext_resource type="Script" path="res://game/stats/stats.gd" id="3_84suu"]
+
+[sub_resource type="Resource" id="Resource_khrx7"]
+resource_local_to_scene = true
+script = ExtResource("3_84suu")
+max_health = 1.0
+
+[sub_resource type="Animation" id="Animation_hgefl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_vvodv"]
 resource_name = "fly"
@@ -22,21 +43,6 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_hgefl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2c4l"]
 _data = {
 "RESET": SubResource("Animation_hgefl"),
@@ -44,14 +50,15 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj8dt"]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yanie"]
-radius = 6.0
+radius = 5.0
 
 [node name="FlyingEnemy" instance=ExtResource("1_xai6e")]
 collision_layer = 4
 script = ExtResource("2_eaiml")
+stats = SubResource("Resource_khrx7")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_gcjek")

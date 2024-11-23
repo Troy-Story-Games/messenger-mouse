@@ -11,7 +11,8 @@
 
 [sub_resource type="Resource" id="Resource_2ksf3"]
 script = ExtResource("2_4b2h1")
-enemy_kill_boost = 70.0
+enemy_kill_boost = 75.0
+enemy_kill_air_boost = 500.0
 ground_acceleration = 300.0
 ground_max_speed = 200.0
 ground_friction = 1500.0
@@ -1439,7 +1440,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(9, -13, 17, -9, 19, -4, 19, 3, 0, 3, 0, -4, 0, -14, 3, -14), PackedVector2Array(11, -7, 19, 0, 19, 12, 10, 19, 0, 6, 0, 0, 0, -11), PackedVector2Array()]
+"values": [PackedVector2Array(14, -17, 23, -12, 29, -4, 29, 3, 0, 3, 0, -4, -5, -21, 6, -19), PackedVector2Array(16, -14, 26, -3, 26, 16, 0, 24, 0, 6, 0, 0, 0, -21), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_82i5a"]
@@ -1477,10 +1478,10 @@ tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0667, 0.1334, 0.2),
+"times": PackedFloat32Array(0, 0.0667, 0.133333, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(10, 8, 4, 10, -7, 10, -11, 8, -14, 3, -14, 0, -13, -4, -10, -4, -8, -2, -5, -2, 4, -2), PackedVector2Array(-14, 4, -4, 10, 16, 11, 28, 8, 35, 1, 37, -8, 32, -17, 19, -21, 6, -20, 3, -18, 0, -15, 0, -8, 0, 0, -7, 1, -14, -1, -16, 0), PackedVector2Array(0, 0, 1, -19, 1, -25, 14, -22, 21, -9, 18, -3, 14, -1), PackedVector2Array()]
+"values": [PackedVector2Array(10, 8, 4, 10, -7, 10, -11, 8, -14, 3, -14, 0, -13, -4, -10, -4, -8, -2, -5, -2, 4, -2), PackedVector2Array(-14, 4, -4, 10, 16, 11, 28, 8, 35, 1, 37, -8, 32, -17, 19, -21, 6, -20, 3, -18, 0, -15, 0, -8, 0, 0, -7, 1, -14, -1, -16, 0), PackedVector2Array(-14, 4, -4, 10, 16, 11, 28, 8, 35, 1, 37, -8, 32, -17, 19, -21, 6, -20, 3, -18, 0, -15, 0, -8, 0, 0, -7, 1, -14, -1, -16, 0), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_0rj0j"]

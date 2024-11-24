@@ -159,6 +159,29 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Options"
 
+[node name="Leaderboard" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qdl4o")
+theme_override_styles/focus = SubResource("StyleBoxFlat_d57g1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tvrpg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vqohc")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_v5it3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gchnk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5uxvs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_16qfq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bbs6m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
+text = "Leaderboard"
+
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -184,4 +207,5 @@ text = "Quit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameContinue" to="." method="_on_new_game_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

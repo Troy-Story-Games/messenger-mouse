@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dl5f0i7ogijos"]
+[gd_scene load_steps=52 format=3 uid="uid://dl5f0i7ogijos"]
 
 [ext_resource type="Script" path="res://game/ui/options.gd" id="1_8tisi"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_uehsl"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dmwa71qxlu6tx" path="res://game/ui/assets/attack_control.png" id="7_1evox"]
 [ext_resource type="Texture2D" uid="uid://c0gwrlapr2usq" path="res://game/ui/assets/slide_jump_control.png" id="8_0gplv"]
 [ext_resource type="Texture2D" uid="uid://pkd5r6j57c6w" path="res://game/player/assets/player.png" id="9_1fw54"]
+[ext_resource type="Texture2D" uid="uid://yyho5fgdaf31" path="res://game/ui/assets/slider_grabber.png" id="10_ri03l"]
+[ext_resource type="Texture2D" uid="uid://dxu1xt7l7ff0p" path="res://game/ui/assets/slider_grabber_highlight.png" id="11_kpmyg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebuf"]
 bg_color = Color(1, 1, 1, 1)
@@ -50,11 +52,13 @@ border_color = Color(1, 1, 1, 1)
 color = Color(0.431373, 0.529412, 1, 1)
 thickness = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yerlp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sevi7"]
 bg_color = Color(0.431373, 0.529412, 1, 1)
-border_width_left = 6
-border_width_right = 6
-border_color = Color(0.431373, 0.529412, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5n75"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,6 +68,12 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wig6"]
 bg_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yerlp"]
+bg_color = Color(0.431373, 0.529412, 1, 1)
+border_width_left = 6
+border_width_right = 6
+border_color = Color(0.431373, 0.529412, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfivv"]
 bg_color = Color(0.027451, 0.12549, 0.603922, 1)
@@ -277,6 +287,14 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kpcno"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+thickness = 5
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_nmcv6"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+
 [node name="Options" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -352,16 +370,17 @@ theme_override_constants/margin_bottom = 2
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
-theme_override_styles/tab_focus = SubResource("StyleBoxFlat_yerlp")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_sevi7")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_m5n75")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_hmmpm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_5wig6")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_yerlp")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_yerlp")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_jfivv")
-current_tab = 0
+current_tab = 1
 
 [node name="Controls" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -619,7 +638,6 @@ animation = &"double_jump"
 autoplay = "idle"
 
 [node name="Sound" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -631,9 +649,86 @@ metadata/_tab_index = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_80620")
 
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Master"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+text = "Master   "
+
+[node name="MasterHSlider" type="HSlider" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Master"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_ri03l")
+theme_override_icons/grabber_highlight = ExtResource("11_kpmyg")
+theme_override_styles/slider = SubResource("StyleBoxLine_kpcno")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_nmcv6")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nmcv6")
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Music"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+text = "Music       "
+
+[node name="MusicHSlider" type="HSlider" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Music"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_ri03l")
+theme_override_icons/grabber_highlight = ExtResource("11_kpmyg")
+theme_override_styles/slider = SubResource("StyleBoxLine_kpcno")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_nmcv6")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nmcv6")
+max_value = 1.0
+step = 0.05
+
+[node name="SoundFX" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/SoundFX"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+text = "Sound FX"
+
+[node name="SoundFXHSlider" type="HSlider" parent="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/SoundFX"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_icons/grabber = ExtResource("10_ri03l")
+theme_override_icons/grabber_highlight = ExtResource("11_kpmyg")
+theme_override_styles/slider = SubResource("StyleBoxLine_kpcno")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_nmcv6")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_nmcv6")
+max_value = 1.0
+step = 0.05
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Master/MasterHSlider" to="." method="_on_master_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/Music/MusicHSlider" to="." method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MarginContainer2/TabContainer/Sound/Panel/CenterContainer/VBoxContainer/SoundFX/SoundFXHSlider" to="." method="_on_sound_fxh_slider_value_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

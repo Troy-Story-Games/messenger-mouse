@@ -32,7 +32,7 @@ func enter() -> void:
 func _on_enemy_killed(enemy: Enemy) -> void:
     var player: Player = actor as Player
     var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.enemy_kill_boost * 2)
-    
+
     if player.velocity.x != 0:
         player.velocity.x += player.movement_stats.enemy_kill_boost * sign(player.velocity.x)
         player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)

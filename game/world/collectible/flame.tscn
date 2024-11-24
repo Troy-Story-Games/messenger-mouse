@@ -1,9 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b81cdgypw2roy"]
 
 [ext_resource type="PackedScene" uid="uid://dsoyxuxvgfpfd" path="res://game/world/collectible/collectible.tscn" id="1_1q8ag"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_faknk"]
-load_path = "res://.godot/imported/coin.png-d52846dd3bb428e037333e5fc28f4b40.ctex"
+[ext_resource type="Texture2D" uid="uid://brg353xxf3be2" path="res://game/world/collectible/assets/flame.png" id="2_22rs3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gcg22"]
 radius = 5.0
@@ -35,7 +33,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -47,13 +45,14 @@ _data = {
 "coin": SubResource("Animation_kndc1")
 }
 
-[node name="Coin" instance=ExtResource("1_1q8ag")]
+[node name="Flame" instance=ExtResource("1_1q8ag")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = SubResource("CompressedTexture2D_faknk")
+texture = ExtResource("2_22rs3")
 hframes = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_gcg22")
 
 [node name="AnimationPlayer" parent="." index="2"]

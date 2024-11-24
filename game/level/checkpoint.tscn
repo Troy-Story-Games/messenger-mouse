@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/level/checkpoint.gd" id="1_3a7q2"]
 [ext_resource type="Texture2D" uid="uid://c03a6ti57cn44" path="res://game/level/assets/checkpoint.png" id="2_dc7hs"]
-[ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/coin.tscn" id="3_0vp2n"]
+[ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="3_0vp2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igts1"]
 size = Vector2(96, 6962)

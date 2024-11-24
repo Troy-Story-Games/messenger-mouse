@@ -1,7 +1,7 @@
 extends Control
 class_name Options
 
-var animation_list: Array[String] = ["idle", "walk", "run", "jump", "fall", "double_jump", "slide", "launch"]
+var animation_list: Array[String] = ["idle", "walk", "run", "jump", "fall", "double_jump", "slide", "launch", "climb"]
 
 @onready var back_button: Button = $VBoxContainer/MarginContainer/HBoxContainer/BackButton
 @onready var animated_sprite_2d: AnimatedSprite2D = $VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/AnimatedSprite/AnimatedSprite2D

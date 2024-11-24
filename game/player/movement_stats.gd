@@ -3,7 +3,7 @@ class_name MovementStats
 
 @export_group("Movement Modifiers")
 @export var enemy_kill_boost: = 75.0
-@export var enemy_kill_air_boost: = 500.0
+@export var enemy_kill_air_boost: = 250.0
 
 @export_group("Ground Movement")
 ## Horizontal acceleration for a character, applied when on the ground

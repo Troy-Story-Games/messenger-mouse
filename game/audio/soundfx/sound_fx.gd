@@ -34,7 +34,7 @@ func play(sound_string: String, pitch_scale: float = 1, volume_db: float = -15.0
     return null
 
 
-func play_2d(sound_string: String, global_position: Vector2, pitch_scale: float = 1.0, volume_db: float = -15.0, max_distance: float = 0.0, pitch_scale_random: float = 0.1) -> AudioStreamPlayer2D:
+func play_2d(sound_string: String, global_position: Vector2, pitch_scale: float = 1.0, volume_db: float = -15.0, max_distance: float = 450, pitch_scale_random: float = 0.1) -> AudioStreamPlayer2D:
     if pitch_scale_random != 0.0:
         pitch_scale = random_pitch_scale(pitch_scale, pitch_scale_random)
 

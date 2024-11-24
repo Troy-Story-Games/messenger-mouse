@@ -23,7 +23,7 @@ func instantiate_scene_on_level(scene: PackedScene, position: Vector2) -> Node:
         else:
             # NOTE: fallback to make it work if no level
             main.add_child(node)
-    
+
     return node
 
 func load_dict_from_path(dir_path: String, file_exts: Array[String] = [".tscn"]):

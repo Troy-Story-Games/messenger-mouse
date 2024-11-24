@@ -13,8 +13,6 @@ var last_checkpoint: Vector2
 
 func _ready() -> void:
     ui.start_timer()
-    Music.play("song1")
-    RenderingServer.set_default_clear_color(Color.BLACK)
     Events.toggle_cheat.connect(_on_toggle_cheat)
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.player_died.connect(_on_player_died)

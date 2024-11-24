@@ -1,0 +1,639 @@
+[gd_scene load_steps=47 format=3 uid="uid://dl5f0i7ogijos"]
+
+[ext_resource type="Script" path="res://game/ui/options.gd" id="1_8tisi"]
+[ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_uehsl"]
+[ext_resource type="Texture2D" uid="uid://cp3nxusi7bdhv" path="res://game/ui/assets/left_control.png" id="3_7vnme"]
+[ext_resource type="Texture2D" uid="uid://ipwlcbic3eyu" path="res://game/ui/assets/jump_control.png" id="3_g543n"]
+[ext_resource type="Texture2D" uid="uid://dn7yi2qd5abvf" path="res://game/ui/assets/right_control.png" id="4_g2cuy"]
+[ext_resource type="Texture2D" uid="uid://ois4dld68umn" path="res://game/ui/assets/slide_control.png" id="6_fysg2"]
+[ext_resource type="Texture2D" uid="uid://dmwa71qxlu6tx" path="res://game/ui/assets/attack_control.png" id="7_1evox"]
+[ext_resource type="Texture2D" uid="uid://c0gwrlapr2usq" path="res://game/ui/assets/slide_jump_control.png" id="8_0gplv"]
+[ext_resource type="Texture2D" uid="uid://pkd5r6j57c6w" path="res://game/player/assets/player.png" id="9_1fw54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebuf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fhgtm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5vlk6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ls0u"]
+bg_color = Color(0.027451, 0.12549, 0.603922, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.027451, 0.12549, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2m6mr"]
+bg_color = Color(0.431373, 0.529412, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx4b7"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qryo4"]
+color = Color(0.431373, 0.529412, 1, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yerlp"]
+bg_color = Color(0.431373, 0.529412, 1, 1)
+border_width_left = 6
+border_width_right = 6
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5n75"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmmpm"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wig6"]
+bg_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfivv"]
+bg_color = Color(0.027451, 0.12549, 0.603922, 1)
+border_width_left = 6
+border_width_right = 6
+border_color = Color(0.027451, 0.12549, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80620"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_f3a2l"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_n83q0"]
+color = Color(1, 1, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 4
+vertical = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fryqw"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(5632, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yayy4"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(5888, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6nxu"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(6144, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brgbf"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(3840, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdow5"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_684s2"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvcds"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_156qy"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l42cm"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpu46"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xcpx"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db1yc"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ttm2"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(3584, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_016uo"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(4352, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfu6p"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(2816, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dugn6"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(3072, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4ydq"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(3328, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ayvb"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(4096, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxd73"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(2048, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wftoo"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(2304, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpy3w"]
+atlas = ExtResource("9_1fw54")
+region = Rect2(2560, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16nqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fryqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yayy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6nxu")
+}],
+"loop": true,
+"name": &"double_jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brgbf")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdow5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_684s2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvcds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_156qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l42cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpu46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xcpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db1yc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ttm2")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_016uo")
+}],
+"loop": true,
+"name": &"launch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfu6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dugn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4ydq")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ayvb")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxd73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wftoo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpy3w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tisi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4ebuf")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_fhgtm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5vlk6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_6ls0u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_6ls0u")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_2m6mr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2m6mr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_6ls0u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ls0u")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_sx4b7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sx4b7")
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_qryo4")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_styles/tab_focus = SubResource("StyleBoxFlat_yerlp")
+theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_m5n75")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_hmmpm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5wig6")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_yerlp")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_yerlp")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_jfivv")
+current_tab = 0
+
+[node name="Controls" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_tab_index = 0
+
+[node name="ControlsPanel" type="Panel" parent="VBoxContainer/MarginContainer2/TabContainer/Controls"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_80620")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlItems" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer"]
+layout_mode = 2
+
+[node name="RunControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Run"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_7vnme")
+
+[node name="Controller2" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_g2cuy")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/RunControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "A,D,LEFT,RIGHT"
+
+[node name="ClimbControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Climb"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_7vnme")
+
+[node name="Controller2" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_g2cuy")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/ClimbControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "W,S,up,down"
+
+[node name="JumpControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/JumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Jump"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/JumpControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/JumpControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_g543n")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/JumpControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/JumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "SPACE"
+
+[node name="SlideControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Slide, Crouch"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_fysg2")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "CNTRL"
+
+[node name="AttackControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/AttackControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Attack"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/AttackControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/AttackControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_1evox")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/AttackControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/AttackControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "L-Mouse,J,k"
+
+[node name="DoubleJumpControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Double Jump"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_g543n")
+
+[node name="Controller2" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_g543n")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/DoubleJumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "SPACE-x2"
+
+[node name="SlideJumpControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Slide Launch"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_fysg2")
+
+[node name="Controller2" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_0gplv")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "CNTRL+SPACE"
+
+[node name="AnimatedSprite" type="CenterContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/AnimatedSprite"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_16nqw")
+animation = &"double_jump"
+autoplay = "idle"
+
+[node name="Sound" type="MarginContainer" parent="VBoxContainer/MarginContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2/TabContainer/Sound"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_80620")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

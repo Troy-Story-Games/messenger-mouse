@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=36 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_2ksf3"]
 script = ExtResource("2_4b2h1")
 enemy_kill_boost = 75.0
-enemy_kill_air_boost = 500.0
+enemy_kill_air_boost = 250.0
 ground_acceleration = 300.0
 ground_max_speed = 200.0
 ground_friction = 1500.0
@@ -1585,6 +1585,9 @@ height = 16.0
 radius = 6.0
 height = 20.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7j52"]
+size = Vector2(8, 8)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_1oiqi")
@@ -1672,4 +1675,13 @@ shape = SubResource("CapsuleShape2D_8pflo")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(3.2, 3.1)
 
+[node name="HeadJumpArea2D" type="Area2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadJumpArea2D"]
+shape = SubResource("RectangleShape2D_w7j52")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="HeadJumpArea2D" to="." method="_on_head_jump_area_2d_body_entered"]

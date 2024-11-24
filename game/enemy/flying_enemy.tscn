@@ -50,22 +50,23 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj8dt"]
-radius = 8.0
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yanie"]
-radius = 5.0
+radius = 8.0
 
 [node name="FlyingEnemy" instance=ExtResource("1_xai6e")]
-collision_layer = 4
 script = ExtResource("2_eaiml")
 stats = SubResource("Resource_khrx7")
+bouncy_enemy = true
 
 [node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_gcjek")
 hframes = 2
 
 [node name="CollisionPolygon2D" parent="." index="1"]
-polygon = PackedVector2Array(0, 5, 4, 2, 0, -5, -4, 2)
+polygon = PackedVector2Array(0, 10, 7, 2, 0, -9, -7, 2)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -73,16 +74,18 @@ libraries = {
 }
 autoplay = "fly"
 
-[node name="Hurtbox" parent="." index="3"]
-collision_layer = 128
-collision_mask = 0
-
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_jj8dt")
 
-[node name="Hitbox" parent="." index="4"]
-collision_layer = 0
-collision_mask = 64
-
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_yanie")
+
+[node name="FireTimer" type="Timer" parent="." index="5"]
+wait_time = 2.5
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
+scale = Vector2(3.2, 3.2)
+
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

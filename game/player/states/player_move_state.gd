@@ -29,7 +29,7 @@ func enter() -> void:
     Events.toggle_cheat.connect(_on_toggle_cheat)
     Events.enemy_killed.connect(_on_enemy_killed)
 
-func _on_enemy_killed() -> void:
+func _on_enemy_killed(enemy: Enemy) -> void:
     var player: Player = actor as Player
     var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.enemy_kill_boost * 2)
     
@@ -37,7 +37,7 @@ func _on_enemy_killed() -> void:
         player.velocity.x += player.movement_stats.enemy_kill_boost * sign(player.velocity.x)
         player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)
 
-    if not player.is_on_floor() and not player.is_on_ceiling() and not player.is_on_wall():
+    if enemy.bouncy_enemy and not player.is_on_floor() and not player.is_on_ceiling() and not player.is_on_wall():
         double_jump = true
         if player.velocity.y > 0:
             player.velocity.y = 0
@@ -237,7 +237,8 @@ func apply_verticle_force(player: Player, delta: float) -> void:
     elif player.velocity.y <= 0 and Input.is_action_just_released("jump"):
         player.velocity.y = player.velocity.y / 2
 
-    if player.velocity.y >= 0 and Input.is_action_just_pressed("move_down"):
+    # Fast fall
+    if Input.is_action_just_pressed("crouch"):
         player.velocity.y = player.movement_stats.fast_fall_terminal_velocity
 
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide

@@ -90,6 +90,7 @@ func take_hit(damage: float) -> void:
     Events.request_camera_screenshake.emit(4, 0.3)
     await get_tree().create_timer(0.5).timeout
     hurtbox.is_invincible = false
+    SoundFx.play("player_hurt")
 
 func _on_player_no_health() -> void:
     die()
@@ -109,3 +110,12 @@ func is_ceiling_raycast_colliding() -> bool:
 
 func is_floor_raycast_colliding() -> bool:
     return floor_check_ray_cast_2d.is_colliding()
+
+func _on_head_jump_area_2d_body_entered(body: Node2D) -> void:
+    var enemy: Enemy = body as Enemy
+    if enemy.head_kill_enemy:
+        # If they're not bouncy, give a little hop
+        if not enemy.bouncy_enemy:
+            velocity.y = 0
+            velocity.y -= movement_stats.enemy_kill_air_boost
+        enemy.die()

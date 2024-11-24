@@ -1,20 +1,92 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn610j483y666"]
+[gd_scene load_steps=7 format=3 uid="uid://dn610j483y666"]
 
 [ext_resource type="Script" path="res://game/ui/ui.gd" id="1_2geob"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_0sk53"]
+[ext_resource type="Texture2D" uid="uid://b5o5nklcsrdnp" path="res://game/ui/assets/ui_frame.png" id="2_alosx"]
+[ext_resource type="Texture2D" uid="uid://brg353xxf3be2" path="res://game/world/collectible/assets/flame.png" id="4_7xfxj"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xa7ki"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h0hx7"]
+color = Color(0.431373, 0.529412, 1, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 8
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_2geob")
 
-[node name="Control" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 10.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_alosx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 16.0
 size_flags_vertical = 0
 theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = -4
 
-[node name="Clock" type="Label" parent="Control"]
+[node name="Clock" type="Label" parent="Control/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_0sk53")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 16
 text = "99:99:99"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_right = 0.12
+offset_right = 528.0
+offset_bottom = 15.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2"]
+layout_mode = 2
+
+[node name="Control" type="MarginContainer" parent="Control/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+theme_override_constants/margin_top = -1
+
+[node name="Control" type="Control" parent="Control/MarginContainer2/HBoxContainer/Control"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer2/HBoxContainer/Control/Control"]
+texture = ExtResource("4_7xfxj")
+centered = false
+hframes = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer2/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxLine_xa7ki")
+theme_override_styles/fill = SubResource("StyleBoxLine_h0hx7")
+value = 50.0
+show_percentage = false

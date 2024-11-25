@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_spr3g"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_4imo2"]
 [ext_resource type="PackedScene" uid="uid://eacnnv1j1co1" path="res://game/enemy/flying_enemy.tscn" id="3_mpnkv"]
-[ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/coin.tscn" id="4_2o4tr"]
+[ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="4_2o4tr"]
 
 [node name="LevelTest" instance=ExtResource("1_spr3g")]
 

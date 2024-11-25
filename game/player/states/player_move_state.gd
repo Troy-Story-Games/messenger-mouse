@@ -5,8 +5,10 @@ const JumpDustEffectScene = preload("res://game/fx/jump_dust_effect.tscn")
 
 const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
-const COMBO_ATTACK_BUTTON_TIME: = 0.3
+const COMBO_ATTACK_BUTTON_TIME: = 1.0
 
+var unlimited_jump: bool = false
+var unlimited_slide_boost: bool = false
 var just_jumped: bool = false
 var double_jump: bool = true
 var sliding: bool = false
@@ -25,6 +27,21 @@ func enter() -> void:
     var player: Player = actor as Player
     player.wall_stick_timer.timeout.connect(func(): wall_stick = false)
     Events.toggle_cheat.connect(_on_toggle_cheat)
+    Events.enemy_killed.connect(_on_enemy_killed)
+
+func _on_enemy_killed(enemy: Enemy) -> void:
+    var player: Player = actor as Player
+    var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.enemy_kill_boost * 2)
+
+    if player.velocity.x != 0:
+        player.velocity.x += player.movement_stats.enemy_kill_boost * sign(player.velocity.x)
+        player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)
+
+    if enemy.bouncy_enemy and not player.is_on_floor() and not player.is_on_ceiling() and not player.is_on_wall():
+        double_jump = true
+        if player.velocity.y > 0:
+            player.velocity.y = 0
+        player.velocity.y -= player.movement_stats.enemy_kill_air_boost
 
 func _on_toggle_cheat(cheat_name: String) -> void:
     print_verbose("Toggle cheat! ", cheat_name)
@@ -66,6 +83,17 @@ func _on_toggle_cheat(cheat_name: String) -> void:
             else:
                 super_jump_enabled = false
                 player.movement_stats.ground_jump_force /= 2
+        "unlimited_slide_boost":
+            if unlimited_slide_boost:
+                unlimited_slide_boost = false
+            else:
+                unlimited_slide_boost = true
+        "infinite_jump":
+            if unlimited_jump:
+                unlimited_jump = false
+            else:
+                print("unlimit jump")
+                unlimited_jump = true
 
 func get_input_vector(player: Player) -> Vector2:
     var input_vector: = Vector2.ZERO
@@ -80,15 +108,29 @@ func jump(player: Player, force: float) -> void:
 func slide_check(player: Player, _delta: float) -> void:
     var slide_just_pressed: bool = Input.is_action_just_pressed("crouch")
     var slide_pressed: bool = Input.is_action_pressed("crouch")
+    var max_velocity_with_boost = player.movement_stats.ground_max_speed + (player.movement_stats.ground_slide_boost * 3)
+
+    if unlimited_slide_boost:
+        max_velocity_with_boost *= 9999.0
 
     if player.is_on_floor() and slide_just_pressed:
         sliding = true
         if player.velocity.x != 0:
             player.velocity.x += player.movement_stats.ground_slide_boost * sign(player.velocity.x)
-    if not slide_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
+            player.velocity.x = clamp(abs(player.velocity.x), 0, max_velocity_with_boost) * sign(player.velocity.x)
+    if not slide_pressed and not player.is_ceiling_raycast_colliding():
         sliding = false
     if not player.is_on_floor():
         sliding = false
+
+    # Fallback in case player gets stuck
+    if player.is_floor_raycast_colliding() and player.is_ceiling_raycast_colliding() and not sliding:
+        # We have to be stuck!!
+        print_debug("STUCK!!!")
+        sliding = true
+
+func can_double_jump() -> bool:
+    return double_jump or unlimited_jump
 
 func jump_check(player: Player) -> void:
     var jump_just_pressed: bool = Input.is_action_just_pressed("jump")
@@ -102,7 +144,7 @@ func jump_check(player: Player) -> void:
         var rotation = deg_to_rad(90 * sign(player.get_wall_normal().x))
         dust_effect.rotate(rotation)
         dust_effect.position.x += 5 * sign(player.get_wall_normal().x)
-    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed and not player.ceiling_check_ray_cast_2d.is_colliding():
+    elif ((player.is_on_floor() or climbing) or player.coyote_jump_timer.time_left > 0) and jump_just_pressed and not player.is_ceiling_raycast_colliding():
         # Regular jump
         var force = player.movement_stats.ground_jump_force
         if sliding:
@@ -113,7 +155,7 @@ func jump_check(player: Player) -> void:
         jump(player, force)
         just_jumped = true
         Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position)
-    elif jump_just_pressed and double_jump == true and not player.ceiling_check_ray_cast_2d.is_colliding():
+    elif jump_just_pressed and can_double_jump() and not player.is_ceiling_raycast_colliding():
         # Handle double jump
         jump(player, player.movement_stats.air_jump_force)
         double_jump = false
@@ -195,7 +237,8 @@ func apply_verticle_force(player: Player, delta: float) -> void:
     elif player.velocity.y <= 0 and Input.is_action_just_released("jump"):
         player.velocity.y = player.velocity.y / 2
 
-    if player.velocity.y >= 0 and Input.is_action_just_pressed("move_down"):
+    # Fast fall
+    if Input.is_action_just_pressed("crouch"):
         player.velocity.y = player.movement_stats.fast_fall_terminal_velocity
 
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide
@@ -291,7 +334,7 @@ func update_attack_animations(player: Player, input_vector: Vector2) -> void:
 
     if not Input.is_action_just_pressed("attack"):
         return
-
+    player.hitbox.clear_stored_targets()
     var attack_direction: = Vector2.RIGHT
     var attack_list: Array[String] = side_attack_animations
     if Input.is_action_pressed("move_up"):

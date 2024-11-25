@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://by3l6514s6uja"]
+
+[ext_resource type="Texture2D" uid="uid://bly4l6ofwovte" path="res://game/enemy/assets/enemy_bullet.png" id="1_0gh0m"]
+[ext_resource type="Script" path="res://game/enemy/enemy_bullet.gd" id="1_xxy7g"]
+[ext_resource type="Script" path="res://game/damage_boxes/hitbox.gd" id="2_h4w4r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trrfo"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmn61"]
+radius = 4.0
+
+[node name="EnemyBullet" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_xxy7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0gh0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_trrfo")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("2_h4w4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_dmn61")
+
+[connection signal="hit_hurtbox" from="Hitbox" to="." method="_on_hitbox_hit_hurtbox"]

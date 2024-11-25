@@ -46,8 +46,6 @@ class_name MovementStats
 @export var jump_deceleration: = 700.0
 ## Max fall speed
 @export var terminal_velocity: = 300.0
-## Max fall speed with fast fall
-@export var fast_fall_terminal_velocity: = 480.0
 ## Horizontal acceleration in the air. Added to current horizontal movement in the air
 ## only when holding a directional button.
 @export var air_acceleration: = 1200.0

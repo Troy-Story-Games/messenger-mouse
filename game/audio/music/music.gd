@@ -28,6 +28,10 @@ func play(song_string: String, pitch_scale: float = 1, volume_db: float = -25.0,
         var tween: Tween = get_tree().create_tween()
         tween.tween_property(audio_stream_player, "volume_db", volume_db, crossfade / 2.0)
 
+func is_playing(song_name: String) -> bool:
+    if audio_stream_player.playing and song_playing == song_name:
+        return true
+    return false
 
 func _on_audio_stream_player_finished() -> void:
     audio_stream_player.play()

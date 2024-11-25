@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://4rg5ocshlkvo"]
+
+[ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_38qab"]
+[ext_resource type="Script" path="res://game/ui/leaderboard.gd" id="1_i4r2u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drmds"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sg4mx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uddr4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx0gf"]
+bg_color = Color(0.027451, 0.12549, 0.603922, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.027451, 0.12549, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s67gh"]
+bg_color = Color(0.431373, 0.529412, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tjmx"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o7vb6"]
+color = Color(0.431373, 0.529412, 1, 1)
+thickness = 4
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4r2u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_38qab")
+theme_override_font_sizes/font_size = 24
+text = "Leaderboard"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackButton" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_38qab")
+theme_override_styles/focus = SubResource("StyleBoxFlat_drmds")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_sg4mx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uddr4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_gx0gf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gx0gf")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_s67gh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s67gh")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_gx0gf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gx0gf")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_8tjmx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8tjmx")
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_o7vb6")
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

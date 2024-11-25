@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=36 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -11,6 +11,8 @@
 
 [sub_resource type="Resource" id="Resource_2ksf3"]
 script = ExtResource("2_4b2h1")
+enemy_kill_boost = 75.0
+enemy_kill_air_boost = 250.0
 ground_acceleration = 300.0
 ground_max_speed = 200.0
 ground_friction = 1500.0
@@ -1356,7 +1358,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(-3, 11, -3, 19, 5, 19, 12, 12, 13, 3, 8, 8, 3, 10), PackedVector2Array(-12, 6, -19, 10, -18, 14, -15, 17, -10, 19, 0, 19, 7, 12, 7, 10, -3, 14, -7, 13), PackedVector2Array()]
+"values": [PackedVector2Array(-3, 11, -3, 19, 5, 19, 12, 12, 13, 3, 11, -4, 1, -5, -3, 1), PackedVector2Array(-12, 6, -19, 10, -18, 14, -15, 17, -10, 19, 0, 19, 7, 12, 7, 10, -3, 14, -7, 13), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_uuxo5"]
@@ -1438,13 +1440,13 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(9, -13, 17, -9, 19, -4, 19, 3, 10, 3, 9, -5, 3, -12, 3, -14), PackedVector2Array(11, -7, 19, 0, 19, 12, 10, 19, 5, 13, 14, 5), PackedVector2Array()]
+"values": [PackedVector2Array(14, -17, 23, -12, 29, -4, 29, 3, 0, 3, 0, -4, -5, -21, 6, -19), PackedVector2Array(16, -14, 26, -3, 26, 16, 0, 24, 0, 6, 0, 0, 0, -21), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_82i5a"]
 resource_name = "side_up"
-length = 0.1
-step = 0.05
+length = 0.2
+step = 0.0667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1452,7 +1454,7 @@ tracks/0/path = NodePath("FlipAnchor/AttackSprite2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -1464,10 +1466,10 @@ tracks/1/path = NodePath("FlipAnchor/AttackSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [3, 4]
+"values": [3, 4, 5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1476,10 +1478,10 @@ tracks/2/path = NodePath("FlipAnchor/Hitbox/CollisionPolygon2D:polygon")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(10, -3, 19, -3, 19, 5, 11, 12, 3, 13, 9, 5), PackedVector2Array(6, -12, 9, -19, 15, -18, 19, -11, 19, 0, 12, 7, 9, 6, 15, -2), PackedVector2Array()]
+"values": [PackedVector2Array(10, 8, 4, 10, -7, 10, -11, 8, -14, 3, -14, 0, -13, -4, -10, -4, -8, -2, -5, -2, 4, -2), PackedVector2Array(-14, 4, -4, 10, 16, 11, 28, 8, 35, 1, 37, -8, 32, -17, 19, -21, 6, -20, 3, -18, 0, -15, 0, -8, 0, 0, -7, 1, -14, -1, -16, 0), PackedVector2Array(-14, 4, -4, 10, 16, 11, 28, 8, 35, 1, 37, -8, 32, -17, 19, -21, 6, -20, 3, -18, 0, -15, 0, -8, 0, 0, -7, 1, -14, -1, -16, 0), PackedVector2Array()]
 }
 
 [sub_resource type="Animation" id="Animation_0rj0j"]
@@ -1583,6 +1585,9 @@ height = 16.0
 radius = 6.0
 height = 20.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7j52"]
+size = Vector2(8, 8)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_1oiqi")
@@ -1636,6 +1641,9 @@ libraries = {
 [node name="CeilingCheckRayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, -9)
 
+[node name="FloorCheckRayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+
 [node name="ClimbArea2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
@@ -1667,4 +1675,13 @@ shape = SubResource("CapsuleShape2D_8pflo")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(3.2, 3.1)
 
+[node name="HeadJumpArea2D" type="Area2D" parent="."]
+position = Vector2(0, 10)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadJumpArea2D"]
+shape = SubResource("RectangleShape2D_w7j52")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="HeadJumpArea2D" to="." method="_on_head_jump_area_2d_body_entered"]

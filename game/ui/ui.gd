@@ -4,7 +4,7 @@ class_name UI
 var running: bool = false
 var time_ms: = 0.0 : set = set_time_ms
 
-@onready var clock: Label = $Control/Clock
+@onready var clock: Label = $Control/MarginContainer/Clock
 
 func start_timer() -> void:
     time_ms = 0.0

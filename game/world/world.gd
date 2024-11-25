@@ -35,12 +35,14 @@ func _on_player_died() -> void:
     call_deferred("respawn")
 
 func respawn() -> void:
+    print_debug("respawn player at ", last_checkpoint)
     var player: Player = PlayerScene.instantiate()
     add_child(player)
     player.global_position = last_checkpoint
 
 func next_level() -> void:
     if current_level_idx >= len(Utils.levels):
+        # TODO: Win - credits
         print("End of game... for now wrap around")
         current_level_idx = 0
 

@@ -9,8 +9,6 @@ const GroundEnemyScene: PackedScene = preload("res://game/enemy/ground_enemy.tsc
 
 var spawned_enemy: Enemy
 
-@onready var spawn_timer: Timer = $SpawnTimer
-
 func _ready() -> void:
     assert(enemy_type, "No enemy type for spawner")
     Events.player_died.connect(_on_player_died)

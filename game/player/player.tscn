@@ -1672,9 +1672,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea2D"]
 shape = SubResource("CapsuleShape2D_8pflo")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(3.2, 3.1)
-
 [node name="HeadJumpArea2D" type="Area2D" parent="."]
 position = Vector2(0, 10)
 collision_layer = 0
@@ -1683,5 +1680,4 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeadJumpArea2D"]
 shape = SubResource("RectangleShape2D_w7j52")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="body_entered" from="HeadJumpArea2D" to="." method="_on_head_jump_area_2d_body_entered"]

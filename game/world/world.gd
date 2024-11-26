@@ -12,7 +12,6 @@ var last_checkpoint: Vector2
 @onready var ui: UI = $UI
 
 func _ready() -> void:
-    ui.start_timer()
     Events.toggle_cheat.connect(_on_toggle_cheat)
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.player_died.connect(_on_player_died)
@@ -52,6 +51,16 @@ func next_level() -> void:
     current_level = Utils.get_level(current_level_idx).instantiate()
     add_child(current_level)
     last_checkpoint = current_level.start_position.global_position
+
+    if current_level_idx == 0:
+        await get_tree().create_timer(0.5).timeout
+        ui.show_tutorial()
+        get_tree().paused = true
+        await ui.ui_tutorial_complete
+        get_tree().paused = false
+        ui.start_timer()
+    else:
+        ui.start_timer()
 
 func _on_next_level() -> void:
     current_level_idx += 1

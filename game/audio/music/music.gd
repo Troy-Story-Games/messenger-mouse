@@ -6,10 +6,8 @@ var song_playing: String = ""
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-
 func _ready() -> void:
     songs = Utils.load_dict_from_path(songs_path, [".ogg", ".wav", ".mp3"])
-
 
 func play(song_string: String, pitch_scale: float = 1, volume_db: float = -25.0, crossfade: float = 0.0) -> void:
     if audio_stream_player.playing and crossfade > 0.0:

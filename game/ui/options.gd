@@ -11,9 +11,11 @@ var animation_list: Array[String] = ["idle", "walk", "run", "jump", "fall", "dou
 
 func _ready() -> void:
     back_button.grab_focus()
-    master_h_slider.set_value_no_signal(get_volume("Master"))
-    music_h_slider.set_value_no_signal(get_volume("Music"))
-    sound_fxh_slider.set_value_no_signal(get_volume("SoundFX"))
+
+    var volume = SaveAndLoad.save_data.get("volume")
+    master_h_slider.set_value_no_signal(volume.Master)
+    music_h_slider.set_value_no_signal(volume.Music)
+    sound_fxh_slider.set_value_no_signal(volume.SoundFX)
 
 func _input(event: InputEvent) -> void:
     if not event is InputEventKey:
@@ -24,6 +26,7 @@ func _input(event: InputEvent) -> void:
         go_back()
 
 func go_back() -> void:
+    SaveAndLoad.save_game()
     get_tree().change_scene_to_file("res://game/ui/main_menu.tscn")
 
 func _on_back_button_pressed() -> void:
@@ -34,14 +37,9 @@ func _on_timer_timeout() -> void:
     animation_list.append(old)
     animated_sprite_2d.play(animation_list[0])
 
-func get_volume(bus_name: String) -> float:
-    var idx: = AudioServer.get_bus_index(bus_name)
-    var volume_db: = AudioServer.get_bus_volume_db(idx)
-    return db_to_linear(volume_db)
-
 func set_volume(bus_name: String, value: float) -> void:
-    var idx: = AudioServer.get_bus_index(bus_name)
-    AudioServer.set_bus_volume_db(idx, linear_to_db(value))
+    SaveAndLoad.save_data.volume[bus_name] = value
+    Utils.set_volume(bus_name, value)
 
 func _on_master_h_slider_value_changed(value: float) -> void:
     set_volume("Master", value)

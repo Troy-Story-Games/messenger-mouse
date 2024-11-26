@@ -27,6 +27,7 @@ MainInstances="*res://game/utils/main_instances.gd"
 Music="*res://game/audio/music/music.tscn"
 SoundFx="*res://game/audio/soundfx/sound_fx.tscn"
 SaveAndLoad="*res://game/utils/save_and_load.gd"
+VolumeManager="*res://game/utils/volume_manager.gd"
 
 [display]
 

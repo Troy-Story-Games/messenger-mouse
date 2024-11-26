@@ -12,6 +12,14 @@ func _ready() -> void:
 func get_level(idx: int) -> PackedScene:
     return levels[idx]
 
+func set_volume(bus_name: String, value: float) -> void:
+    var idx: = AudioServer.get_bus_index(bus_name)
+    AudioServer.set_bus_volume_db(idx, linear_to_db(value))
+
+func menu_beep(_unused: int = 0) -> void:
+    if not SoundFx.is_playing("menu_beep"):
+        SoundFx.play("menu_beep", 1, -15, 0)
+
 func instantiate_scene_on_level(scene: PackedScene, position: Vector2) -> Node:
     var node: = scene.instantiate()
     node.position = position

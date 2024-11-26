@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ijv2t8ul05bd"]
+[gd_scene load_steps=15 format=3 uid="uid://ijv2t8ul05bd"]
 
 [ext_resource type="Script" path="res://game/ui/pause_menu.gd" id="1_khoi7"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_3qqyd"]
+[ext_resource type="Script" path="res://game/ui/beep_ui/beep_button.gd" id="3_w5aca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84d8p"]
 bg_color = Color(1, 1, 1, 1)
@@ -122,6 +123,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_uohbi")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
 text = "Resume"
+script = ExtResource("3_w5aca")
 
 [node name="SaveAndQuit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

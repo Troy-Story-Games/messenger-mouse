@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://xm33a5h72j2v"]
+[gd_scene load_steps=16 format=3 uid="uid://xm33a5h72j2v"]
 
 [ext_resource type="Script" path="res://game/ui/main_menu.gd" id="1_l8wle"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_qdl4o"]
+[ext_resource type="Script" path="res://game/ui/beep_ui/beep_button.gd" id="3_1421p"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_rbd3o"]
 color = Color(0.431373, 0.529412, 1, 1)
@@ -135,6 +136,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "New Game"
+script = ExtResource("3_1421p")
 
 [node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -158,6 +160,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Options"
+script = ExtResource("3_1421p")
 
 [node name="Leaderboard" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -181,6 +184,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Leaderboard"
+script = ExtResource("3_1421p")
 
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -204,6 +208,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Quit"
+script = ExtResource("3_1421p")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameContinue" to="." method="_on_new_game_continue_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

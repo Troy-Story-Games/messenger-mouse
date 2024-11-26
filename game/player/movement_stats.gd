@@ -9,6 +9,8 @@ class_name MovementStats
 ## Horizontal acceleration for a character, applied when on the ground
 ## while holding left or right direction until ground_max_speed is reached
 @export var ground_acceleration: = 300.0
+## Threshold to switch to running
+@export var ground_run_threshold: = 150.0
 ## Max horizontal speed
 @export var ground_max_speed: = 200.0
 ## Friction applied to stop the charater when not moving

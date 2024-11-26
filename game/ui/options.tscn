@@ -547,7 +547,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
 theme_override_font_sizes/font_size = 20
-text = "CNTRL"
+text = "K,Z"
 
 [node name="AttackControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
 layout_mode = 2
@@ -576,7 +576,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
 theme_override_font_sizes/font_size = 20
-text = "L-Mouse,J,k"
+text = "J,X"
 
 [node name="DoubleJumpControl" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
 layout_mode = 2
@@ -619,7 +619,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
 theme_override_font_sizes/font_size = 20
-text = "Slide Launch"
+text = "Launch"
 
 [node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/SlideJumpControl"]
 custom_minimum_size = Vector2(10, 0)
@@ -644,7 +644,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
 theme_override_font_sizes/font_size = 20
-text = "CNTRL+SPACE"
+text = "K+SPACE,Z+SPACE"
 
 [node name="AnimatedSprite" type="CenterContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer"]
 layout_mode = 2

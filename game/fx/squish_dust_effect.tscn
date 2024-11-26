@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://dec1jc43wlayv"]
+
+[ext_resource type="PackedScene" uid="uid://d3dyjx8whfgvh" path="res://game/fx/animated_sprite_effect.tscn" id="1_q8uf0"]
+[ext_resource type="Texture2D" uid="uid://yryjj8fs8kno" path="res://game/fx/assets/squish_dust_effect.png" id="2_oaic5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5583m"]
+atlas = ExtResource("2_oaic5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnvsd"]
+atlas = ExtResource("2_oaic5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eem63"]
+atlas = ExtResource("2_oaic5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66yd7"]
+atlas = ExtResource("2_oaic5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1oni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5583m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnvsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eem63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66yd7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="SquishDustEffect" instance=ExtResource("1_q8uf0")]
+sprite_frames = SubResource("SpriteFrames_a1oni")

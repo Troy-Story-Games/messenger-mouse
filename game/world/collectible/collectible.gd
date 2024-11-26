@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func collect() -> void:
     SoundFx.play("collect_coin")
+    Events.flame_collected.emit()
     start_visible = true
     hide()
     collision_shape_2d.set_deferred("disabled", true)

@@ -317,7 +317,7 @@ anchors_preset = -1
 anchor_left = 0.12
 anchor_right = 0.12
 offset_left = 0.200005
-offset_right = 431.2
+offset_right = 391.2
 offset_bottom = 15.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Flame"]
@@ -341,21 +341,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 4
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/Flame/HBoxContainer/MarginContainer"]
+[node name="FlameProgressBar" type="ProgressBar" parent="Control/Flame/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/background = SubResource("StyleBoxLine_xa7ki")
 theme_override_styles/fill = SubResource("StyleBoxLine_h0hx7")
-value = 50.0
+value = 100.0
 show_percentage = false
 
 [node name="Secrets" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.803
-anchor_right = 0.803
-offset_left = 0.0799561
-offset_right = 62.08
+anchor_left = 0.741
+anchor_right = 0.741
+offset_left = -0.240051
+offset_right = 61.76
 offset_bottom = 17.0
 theme_override_constants/margin_top = -3
 
@@ -363,22 +363,22 @@ theme_override_constants/margin_top = -3
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Control/Secrets/HBoxContainer"]
-custom_minimum_size = Vector2(12, 0)
+custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
 [node name="SecretsFoundLabel" type="Label" parent="Control/Secrets/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0sk53")
 theme_override_font_sizes/font_size = 16
-text = "0/99"
+text = "00/99"
 
 [node name="Cheats" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.903
-anchor_right = 0.903
-offset_left = 0.0799561
-offset_right = 62.08
+anchor_left = 0.872
+anchor_right = 0.872
+offset_left = -0.0800171
+offset_right = 61.92
 offset_bottom = 17.0
 theme_override_constants/margin_top = -3
 
@@ -386,14 +386,14 @@ theme_override_constants/margin_top = -3
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Control/Cheats/HBoxContainer"]
-custom_minimum_size = Vector2(12, 0)
+custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
 [node name="CheatsFoundLabel" type="Label" parent="Control/Cheats/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0sk53")
 theme_override_font_sizes/font_size = 16
-text = "0/99"
+text = "00/99"
 
 [node name="Tutorial" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -428,7 +428,7 @@ theme_override_font_sizes/font_size = 8
 text = "Level timer"
 
 [node name="Spacer" type="Control" parent="Control/Tutorial/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 
 [node name="FlameTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
@@ -450,7 +450,7 @@ theme_override_font_sizes/font_size = 8
 text = "Don't let the flame run out!"
 
 [node name="Spacer2" type="Control" parent="Control/Tutorial/HBoxContainer"]
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 
 [node name="SecretsTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
@@ -474,7 +474,7 @@ Found"
 horizontal_alignment = 1
 
 [node name="Spacer3" type="Control" parent="Control/Tutorial/HBoxContainer"]
-custom_minimum_size = Vector2(28, 0)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="CheatsTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]

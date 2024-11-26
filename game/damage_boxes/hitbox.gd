@@ -10,18 +10,18 @@ var knockback := Vector2.ZERO
 var stored_targets := []
 
 func _ready() -> void:
-    area_entered.connect(_on_hurtbox_entered)
+	area_entered.connect(_on_hurtbox_entered)
 
 func clear_stored_targets() -> void:
-    stored_targets.clear()
+	stored_targets.clear()
 
 func _on_hurtbox_entered(hurtbox: Hurtbox) -> void:
-    if hurtbox.is_invincible:
-        return
-    if is_storing_targets:
-        if hurtbox in stored_targets:
-            return
-        else:
-            stored_targets.append(hurtbox)
-    hit_hurtbox.emit(hurtbox)
-    hurtbox.hurt.emit(self)
+	if hurtbox.is_invincible:
+		return
+	if is_storing_targets:
+		if hurtbox in stored_targets:
+			return
+		else:
+			stored_targets.append(hurtbox)
+	hit_hurtbox.emit(hurtbox)
+	hurtbox.hurt.emit(self)

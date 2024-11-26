@@ -30,8 +30,8 @@ SaveAndLoad="*res://game/utils/save_and_load.gd"
 
 [display]
 
-window/size/viewport_width=600
-window/size/viewport_height=338
+window/size/viewport_width=640
+window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
@@ -124,4 +124,5 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.122252, 0.122252, 0.122252, 1)

@@ -23,7 +23,6 @@ var long_trail: bool = false
 @onready var combo_attack_timer: Timer = $ComboAttackTimer
 @onready var collection_area_2d: Area2D = $CollectionArea2D
 @onready var hitbox: Hitbox = $FlipAnchor/Hitbox
-@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState

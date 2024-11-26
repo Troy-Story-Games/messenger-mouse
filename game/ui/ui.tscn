@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn610j483y666"]
+[gd_scene load_steps=10 format=3 uid="uid://dn610j483y666"]
 
 [ext_resource type="Script" path="res://game/ui/ui.gd" id="1_2geob"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_0sk53"]
@@ -16,6 +16,45 @@ color = Color(0.431373, 0.529412, 1, 1)
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 8
+
+[sub_resource type="Animation" id="Animation_1e1xx"]
+resource_name = "flame"
+length = 0.8
+loop_mode = 1
+step = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer2/HBoxContainer/Control/Control/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_8uqs6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer2/HBoxContainer/Control/Control/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hv28o"]
+_data = {
+"RESET": SubResource("Animation_8uqs6"),
+"flame": SubResource("Animation_1e1xx")
+}
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -59,7 +98,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12
 anchor_right = 0.12
-offset_right = 528.0
+offset_left = 0.200005
+offset_right = 458.2
 offset_bottom = 15.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2"]
@@ -90,3 +130,9 @@ theme_override_styles/background = SubResource("StyleBoxLine_xa7ki")
 theme_override_styles/fill = SubResource("StyleBoxLine_h0hx7")
 value = 50.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hv28o")
+}
+autoplay = "flame"

@@ -99,7 +99,7 @@ anchors_preset = -1
 anchor_left = 0.12
 anchor_right = 0.12
 offset_left = 0.200005
-offset_right = 458.2
+offset_right = 486.2
 offset_bottom = 15.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2"]

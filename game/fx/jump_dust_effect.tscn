@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bd5la4bhfigmt"]
 
 [ext_resource type="PackedScene" uid="uid://d3dyjx8whfgvh" path="res://game/fx/animated_sprite_effect.tscn" id="1_7mgrn"]
-[ext_resource type="Texture2D" uid="uid://b23rkmeph3w0f" path="res://game/player/assets/dust_effects.png" id="2_4chik"]
+[ext_resource type="Texture2D" uid="uid://b23rkmeph3w0f" path="res://game/fx/assets/dust_effects.png" id="2_4chik"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l05oy"]
 atlas = ExtResource("2_4chik")

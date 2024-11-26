@@ -11,7 +11,7 @@
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -56.0
 offset_top = -1155.0
-offset_right = 11343.0
+offset_right = 9256.0
 offset_bottom = 45.0
 metadata/_edit_lock_ = true
 
@@ -59,1039 +59,1045 @@ position = Vector2(8960, -504)
 [node name="Flame" parent="Flames" index="0" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -16)
 
-[node name="Flame236" parent="Flames" index="1" instance=ExtResource("5_a7r0a")]
+[node name="Flame347" parent="Flames" index="1" instance=ExtResource("5_a7r0a")]
+position = Vector2(-16, -552)
+
+[node name="Flame348" parent="Flames" index="2" instance=ExtResource("5_a7r0a")]
+position = Vector2(-16, -1111)
+
+[node name="Flame236" parent="Flames" index="3" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -352)
 
-[node name="Flame237" parent="Flames" index="2" instance=ExtResource("5_a7r0a")]
+[node name="Flame237" parent="Flames" index="4" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -336)
 
-[node name="Flame238" parent="Flames" index="3" instance=ExtResource("5_a7r0a")]
+[node name="Flame238" parent="Flames" index="5" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -320)
 
-[node name="Flame239" parent="Flames" index="4" instance=ExtResource("5_a7r0a")]
+[node name="Flame239" parent="Flames" index="6" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -304)
 
-[node name="Flame240" parent="Flames" index="5" instance=ExtResource("5_a7r0a")]
+[node name="Flame240" parent="Flames" index="7" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -352)
 
-[node name="Flame241" parent="Flames" index="6" instance=ExtResource("5_a7r0a")]
+[node name="Flame241" parent="Flames" index="8" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -336)
 
-[node name="Flame242" parent="Flames" index="7" instance=ExtResource("5_a7r0a")]
+[node name="Flame242" parent="Flames" index="9" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -320)
 
-[node name="Flame243" parent="Flames" index="8" instance=ExtResource("5_a7r0a")]
+[node name="Flame243" parent="Flames" index="10" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -304)
 
-[node name="Flame244" parent="Flames" index="9" instance=ExtResource("5_a7r0a")]
+[node name="Flame244" parent="Flames" index="11" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -352)
 
-[node name="Flame245" parent="Flames" index="10" instance=ExtResource("5_a7r0a")]
+[node name="Flame245" parent="Flames" index="12" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -336)
 
-[node name="Flame246" parent="Flames" index="11" instance=ExtResource("5_a7r0a")]
+[node name="Flame246" parent="Flames" index="13" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -320)
 
-[node name="Flame247" parent="Flames" index="12" instance=ExtResource("5_a7r0a")]
+[node name="Flame247" parent="Flames" index="14" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -304)
 
-[node name="Flame248" parent="Flames" index="13" instance=ExtResource("5_a7r0a")]
+[node name="Flame248" parent="Flames" index="15" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -352)
 
-[node name="Flame249" parent="Flames" index="14" instance=ExtResource("5_a7r0a")]
+[node name="Flame249" parent="Flames" index="16" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -336)
 
-[node name="Flame250" parent="Flames" index="15" instance=ExtResource("5_a7r0a")]
+[node name="Flame250" parent="Flames" index="17" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -320)
 
-[node name="Flame251" parent="Flames" index="16" instance=ExtResource("5_a7r0a")]
+[node name="Flame251" parent="Flames" index="18" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -304)
 
-[node name="Flame252" parent="Flames" index="17" instance=ExtResource("5_a7r0a")]
+[node name="Flame252" parent="Flames" index="19" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -352)
 
-[node name="Flame253" parent="Flames" index="18" instance=ExtResource("5_a7r0a")]
+[node name="Flame253" parent="Flames" index="20" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -336)
 
-[node name="Flame254" parent="Flames" index="19" instance=ExtResource("5_a7r0a")]
+[node name="Flame254" parent="Flames" index="21" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -320)
 
-[node name="Flame255" parent="Flames" index="20" instance=ExtResource("5_a7r0a")]
+[node name="Flame255" parent="Flames" index="22" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -304)
 
-[node name="Flame256" parent="Flames" index="21" instance=ExtResource("5_a7r0a")]
+[node name="Flame256" parent="Flames" index="23" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -352)
 
-[node name="Flame257" parent="Flames" index="22" instance=ExtResource("5_a7r0a")]
+[node name="Flame257" parent="Flames" index="24" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -336)
 
-[node name="Flame258" parent="Flames" index="23" instance=ExtResource("5_a7r0a")]
+[node name="Flame258" parent="Flames" index="25" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -320)
 
-[node name="Flame259" parent="Flames" index="24" instance=ExtResource("5_a7r0a")]
+[node name="Flame259" parent="Flames" index="26" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -304)
 
-[node name="Flame260" parent="Flames" index="25" instance=ExtResource("5_a7r0a")]
+[node name="Flame260" parent="Flames" index="27" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -352)
 
-[node name="Flame261" parent="Flames" index="26" instance=ExtResource("5_a7r0a")]
+[node name="Flame261" parent="Flames" index="28" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -336)
 
-[node name="Flame262" parent="Flames" index="27" instance=ExtResource("5_a7r0a")]
+[node name="Flame262" parent="Flames" index="29" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -320)
 
-[node name="Flame263" parent="Flames" index="28" instance=ExtResource("5_a7r0a")]
+[node name="Flame263" parent="Flames" index="30" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -304)
 
-[node name="Flame264" parent="Flames" index="29" instance=ExtResource("5_a7r0a")]
+[node name="Flame264" parent="Flames" index="31" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -352)
 
-[node name="Flame265" parent="Flames" index="30" instance=ExtResource("5_a7r0a")]
+[node name="Flame265" parent="Flames" index="32" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -336)
 
-[node name="Flame266" parent="Flames" index="31" instance=ExtResource("5_a7r0a")]
+[node name="Flame266" parent="Flames" index="33" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -320)
 
-[node name="Flame267" parent="Flames" index="32" instance=ExtResource("5_a7r0a")]
+[node name="Flame267" parent="Flames" index="34" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -304)
 
-[node name="Flame268" parent="Flames" index="33" instance=ExtResource("5_a7r0a")]
+[node name="Flame268" parent="Flames" index="35" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -352)
 
-[node name="Flame269" parent="Flames" index="34" instance=ExtResource("5_a7r0a")]
+[node name="Flame269" parent="Flames" index="36" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -336)
 
-[node name="Flame270" parent="Flames" index="35" instance=ExtResource("5_a7r0a")]
+[node name="Flame270" parent="Flames" index="37" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -320)
 
-[node name="Flame271" parent="Flames" index="36" instance=ExtResource("5_a7r0a")]
+[node name="Flame271" parent="Flames" index="38" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -304)
 
-[node name="Flame272" parent="Flames" index="37" instance=ExtResource("5_a7r0a")]
+[node name="Flame272" parent="Flames" index="39" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -352)
 
-[node name="Flame273" parent="Flames" index="38" instance=ExtResource("5_a7r0a")]
+[node name="Flame273" parent="Flames" index="40" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -336)
 
-[node name="Flame274" parent="Flames" index="39" instance=ExtResource("5_a7r0a")]
+[node name="Flame274" parent="Flames" index="41" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -320)
 
-[node name="Flame275" parent="Flames" index="40" instance=ExtResource("5_a7r0a")]
+[node name="Flame275" parent="Flames" index="42" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -304)
 
-[node name="Flame276" parent="Flames" index="41" instance=ExtResource("5_a7r0a")]
+[node name="Flame276" parent="Flames" index="43" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -288)
 
-[node name="Flame277" parent="Flames" index="42" instance=ExtResource("5_a7r0a")]
+[node name="Flame277" parent="Flames" index="44" instance=ExtResource("5_a7r0a")]
 position = Vector2(3392, -272)
 
-[node name="Flame278" parent="Flames" index="43" instance=ExtResource("5_a7r0a")]
+[node name="Flame278" parent="Flames" index="45" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -288)
 
-[node name="Flame279" parent="Flames" index="44" instance=ExtResource("5_a7r0a")]
+[node name="Flame279" parent="Flames" index="46" instance=ExtResource("5_a7r0a")]
 position = Vector2(3408, -272)
 
-[node name="Flame280" parent="Flames" index="45" instance=ExtResource("5_a7r0a")]
+[node name="Flame280" parent="Flames" index="47" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -288)
 
-[node name="Flame281" parent="Flames" index="46" instance=ExtResource("5_a7r0a")]
+[node name="Flame281" parent="Flames" index="48" instance=ExtResource("5_a7r0a")]
 position = Vector2(3424, -272)
 
-[node name="Flame282" parent="Flames" index="47" instance=ExtResource("5_a7r0a")]
+[node name="Flame282" parent="Flames" index="49" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -288)
 
-[node name="Flame283" parent="Flames" index="48" instance=ExtResource("5_a7r0a")]
+[node name="Flame283" parent="Flames" index="50" instance=ExtResource("5_a7r0a")]
 position = Vector2(3440, -272)
 
-[node name="Flame284" parent="Flames" index="49" instance=ExtResource("5_a7r0a")]
+[node name="Flame284" parent="Flames" index="51" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -288)
 
-[node name="Flame285" parent="Flames" index="50" instance=ExtResource("5_a7r0a")]
+[node name="Flame285" parent="Flames" index="52" instance=ExtResource("5_a7r0a")]
 position = Vector2(3456, -272)
 
-[node name="Flame286" parent="Flames" index="51" instance=ExtResource("5_a7r0a")]
+[node name="Flame286" parent="Flames" index="53" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -288)
 
-[node name="Flame287" parent="Flames" index="52" instance=ExtResource("5_a7r0a")]
+[node name="Flame287" parent="Flames" index="54" instance=ExtResource("5_a7r0a")]
 position = Vector2(3472, -272)
 
-[node name="Flame288" parent="Flames" index="53" instance=ExtResource("5_a7r0a")]
+[node name="Flame288" parent="Flames" index="55" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -288)
 
-[node name="Flame289" parent="Flames" index="54" instance=ExtResource("5_a7r0a")]
+[node name="Flame289" parent="Flames" index="56" instance=ExtResource("5_a7r0a")]
 position = Vector2(3488, -272)
 
-[node name="Flame290" parent="Flames" index="55" instance=ExtResource("5_a7r0a")]
+[node name="Flame290" parent="Flames" index="57" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -288)
 
-[node name="Flame291" parent="Flames" index="56" instance=ExtResource("5_a7r0a")]
+[node name="Flame291" parent="Flames" index="58" instance=ExtResource("5_a7r0a")]
 position = Vector2(3504, -272)
 
-[node name="Flame292" parent="Flames" index="57" instance=ExtResource("5_a7r0a")]
+[node name="Flame292" parent="Flames" index="59" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -288)
 
-[node name="Flame293" parent="Flames" index="58" instance=ExtResource("5_a7r0a")]
+[node name="Flame293" parent="Flames" index="60" instance=ExtResource("5_a7r0a")]
 position = Vector2(3520, -272)
 
-[node name="Flame294" parent="Flames" index="59" instance=ExtResource("5_a7r0a")]
+[node name="Flame294" parent="Flames" index="61" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -288)
 
-[node name="Flame295" parent="Flames" index="60" instance=ExtResource("5_a7r0a")]
+[node name="Flame295" parent="Flames" index="62" instance=ExtResource("5_a7r0a")]
 position = Vector2(3536, -272)
 
-[node name="Flame2" parent="Flames" index="61" instance=ExtResource("5_a7r0a")]
+[node name="Flame2" parent="Flames" index="63" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -16)
 
-[node name="Flame3" parent="Flames" index="62" instance=ExtResource("5_a7r0a")]
+[node name="Flame3" parent="Flames" index="64" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -16)
 
-[node name="Flame4" parent="Flames" index="63" instance=ExtResource("5_a7r0a")]
+[node name="Flame4" parent="Flames" index="65" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -16)
 
-[node name="Flame5" parent="Flames" index="64" instance=ExtResource("5_a7r0a")]
+[node name="Flame5" parent="Flames" index="66" instance=ExtResource("5_a7r0a")]
 position = Vector2(1672, -32)
 
-[node name="Flame6" parent="Flames" index="65" instance=ExtResource("5_a7r0a")]
+[node name="Flame6" parent="Flames" index="67" instance=ExtResource("5_a7r0a")]
 position = Vector2(1688, -32)
 
-[node name="Flame7" parent="Flames" index="66" instance=ExtResource("5_a7r0a")]
+[node name="Flame7" parent="Flames" index="68" instance=ExtResource("5_a7r0a")]
 position = Vector2(1704, -32)
 
-[node name="Flame8" parent="Flames" index="67" instance=ExtResource("5_a7r0a")]
+[node name="Flame8" parent="Flames" index="69" instance=ExtResource("5_a7r0a")]
 position = Vector2(1720, -32)
 
-[node name="Flame13" parent="Flames" index="68" instance=ExtResource("5_a7r0a")]
+[node name="Flame13" parent="Flames" index="70" instance=ExtResource("5_a7r0a")]
 position = Vector2(1848, -48)
 
-[node name="Flame14" parent="Flames" index="69" instance=ExtResource("5_a7r0a")]
+[node name="Flame14" parent="Flames" index="71" instance=ExtResource("5_a7r0a")]
 position = Vector2(1864, -48)
 
-[node name="Flame15" parent="Flames" index="70" instance=ExtResource("5_a7r0a")]
+[node name="Flame15" parent="Flames" index="72" instance=ExtResource("5_a7r0a")]
 position = Vector2(1880, -48)
 
-[node name="Flame16" parent="Flames" index="71" instance=ExtResource("5_a7r0a")]
+[node name="Flame16" parent="Flames" index="73" instance=ExtResource("5_a7r0a")]
 position = Vector2(1896, -48)
 
-[node name="Flame17" parent="Flames" index="72" instance=ExtResource("5_a7r0a")]
+[node name="Flame17" parent="Flames" index="74" instance=ExtResource("5_a7r0a")]
 position = Vector2(2024, -80)
 
-[node name="Flame18" parent="Flames" index="73" instance=ExtResource("5_a7r0a")]
+[node name="Flame18" parent="Flames" index="75" instance=ExtResource("5_a7r0a")]
 position = Vector2(2040, -80)
 
-[node name="Flame19" parent="Flames" index="74" instance=ExtResource("5_a7r0a")]
+[node name="Flame19" parent="Flames" index="76" instance=ExtResource("5_a7r0a")]
 position = Vector2(2056, -80)
 
-[node name="Flame20" parent="Flames" index="75" instance=ExtResource("5_a7r0a")]
+[node name="Flame20" parent="Flames" index="77" instance=ExtResource("5_a7r0a")]
 position = Vector2(2072, -80)
 
-[node name="Flame21" parent="Flames" index="76" instance=ExtResource("5_a7r0a")]
+[node name="Flame21" parent="Flames" index="78" instance=ExtResource("5_a7r0a")]
 position = Vector2(2216, -128)
 
-[node name="Flame22" parent="Flames" index="77" instance=ExtResource("5_a7r0a")]
+[node name="Flame22" parent="Flames" index="79" instance=ExtResource("5_a7r0a")]
 position = Vector2(2232, -128)
 
-[node name="Flame23" parent="Flames" index="78" instance=ExtResource("5_a7r0a")]
+[node name="Flame23" parent="Flames" index="80" instance=ExtResource("5_a7r0a")]
 position = Vector2(2248, -128)
 
-[node name="Flame24" parent="Flames" index="79" instance=ExtResource("5_a7r0a")]
+[node name="Flame24" parent="Flames" index="81" instance=ExtResource("5_a7r0a")]
 position = Vector2(2264, -128)
 
-[node name="Flame25" parent="Flames" index="80" instance=ExtResource("5_a7r0a")]
+[node name="Flame25" parent="Flames" index="82" instance=ExtResource("5_a7r0a")]
 position = Vector2(2416, -208)
 
-[node name="Flame26" parent="Flames" index="81" instance=ExtResource("5_a7r0a")]
+[node name="Flame26" parent="Flames" index="83" instance=ExtResource("5_a7r0a")]
 position = Vector2(2432, -208)
 
-[node name="Flame27" parent="Flames" index="82" instance=ExtResource("5_a7r0a")]
+[node name="Flame27" parent="Flames" index="84" instance=ExtResource("5_a7r0a")]
 position = Vector2(2448, -208)
 
-[node name="Flame28" parent="Flames" index="83" instance=ExtResource("5_a7r0a")]
+[node name="Flame28" parent="Flames" index="85" instance=ExtResource("5_a7r0a")]
 position = Vector2(2464, -208)
 
-[node name="Flame68" parent="Flames" index="84" instance=ExtResource("5_a7r0a")]
+[node name="Flame68" parent="Flames" index="86" instance=ExtResource("5_a7r0a")]
 position = Vector2(2520, -336)
 
-[node name="Flame69" parent="Flames" index="85" instance=ExtResource("5_a7r0a")]
+[node name="Flame69" parent="Flames" index="87" instance=ExtResource("5_a7r0a")]
 position = Vector2(2536, -336)
 
-[node name="Flame70" parent="Flames" index="86" instance=ExtResource("5_a7r0a")]
+[node name="Flame70" parent="Flames" index="88" instance=ExtResource("5_a7r0a")]
 position = Vector2(2552, -336)
 
-[node name="Flame296" parent="Flames" index="87" instance=ExtResource("5_a7r0a")]
+[node name="Flame296" parent="Flames" index="89" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -328)
 
-[node name="Flame297" parent="Flames" index="88" instance=ExtResource("5_a7r0a")]
+[node name="Flame297" parent="Flames" index="90" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -312)
 
-[node name="Flame298" parent="Flames" index="89" instance=ExtResource("5_a7r0a")]
+[node name="Flame298" parent="Flames" index="91" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -296)
 
-[node name="Flame299" parent="Flames" index="90" instance=ExtResource("5_a7r0a")]
+[node name="Flame299" parent="Flames" index="92" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -280)
 
-[node name="Flame300" parent="Flames" index="91" instance=ExtResource("5_a7r0a")]
+[node name="Flame300" parent="Flames" index="93" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -264)
 
-[node name="Flame301" parent="Flames" index="92" instance=ExtResource("5_a7r0a")]
+[node name="Flame301" parent="Flames" index="94" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -248)
 
-[node name="Flame302" parent="Flames" index="93" instance=ExtResource("5_a7r0a")]
+[node name="Flame302" parent="Flames" index="95" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -232)
 
-[node name="Flame303" parent="Flames" index="94" instance=ExtResource("5_a7r0a")]
+[node name="Flame303" parent="Flames" index="96" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -216)
 
-[node name="Flame304" parent="Flames" index="95" instance=ExtResource("5_a7r0a")]
+[node name="Flame304" parent="Flames" index="97" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -200)
 
-[node name="Flame305" parent="Flames" index="96" instance=ExtResource("5_a7r0a")]
+[node name="Flame305" parent="Flames" index="98" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -184)
 
-[node name="Flame306" parent="Flames" index="97" instance=ExtResource("5_a7r0a")]
+[node name="Flame306" parent="Flames" index="99" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -168)
 
-[node name="Flame307" parent="Flames" index="98" instance=ExtResource("5_a7r0a")]
+[node name="Flame307" parent="Flames" index="100" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -152)
 
-[node name="Flame308" parent="Flames" index="99" instance=ExtResource("5_a7r0a")]
+[node name="Flame308" parent="Flames" index="101" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -136)
 
-[node name="Flame309" parent="Flames" index="100" instance=ExtResource("5_a7r0a")]
+[node name="Flame309" parent="Flames" index="102" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -120)
 
-[node name="Flame310" parent="Flames" index="101" instance=ExtResource("5_a7r0a")]
+[node name="Flame310" parent="Flames" index="103" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -104)
 
-[node name="Flame311" parent="Flames" index="102" instance=ExtResource("5_a7r0a")]
+[node name="Flame311" parent="Flames" index="104" instance=ExtResource("5_a7r0a")]
 position = Vector2(2600, -88)
 
-[node name="Flame312" parent="Flames" index="103" instance=ExtResource("5_a7r0a")]
+[node name="Flame312" parent="Flames" index="105" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -184)
 
-[node name="Flame313" parent="Flames" index="104" instance=ExtResource("5_a7r0a")]
+[node name="Flame313" parent="Flames" index="106" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -168)
 
-[node name="Flame314" parent="Flames" index="105" instance=ExtResource("5_a7r0a")]
+[node name="Flame314" parent="Flames" index="107" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -152)
 
-[node name="Flame315" parent="Flames" index="106" instance=ExtResource("5_a7r0a")]
+[node name="Flame315" parent="Flames" index="108" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -136)
 
-[node name="Flame316" parent="Flames" index="107" instance=ExtResource("5_a7r0a")]
+[node name="Flame316" parent="Flames" index="109" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -120)
 
-[node name="Flame317" parent="Flames" index="108" instance=ExtResource("5_a7r0a")]
+[node name="Flame317" parent="Flames" index="110" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -104)
 
-[node name="Flame318" parent="Flames" index="109" instance=ExtResource("5_a7r0a")]
+[node name="Flame318" parent="Flames" index="111" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -88)
 
-[node name="Flame319" parent="Flames" index="110" instance=ExtResource("5_a7r0a")]
+[node name="Flame319" parent="Flames" index="112" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -72)
 
-[node name="Flame320" parent="Flames" index="111" instance=ExtResource("5_a7r0a")]
+[node name="Flame320" parent="Flames" index="113" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -56)
 
-[node name="Flame321" parent="Flames" index="112" instance=ExtResource("5_a7r0a")]
+[node name="Flame321" parent="Flames" index="114" instance=ExtResource("5_a7r0a")]
 position = Vector2(5272, -40)
 
-[node name="Flame29" parent="Flames" index="113" instance=ExtResource("5_a7r0a")]
+[node name="Flame29" parent="Flames" index="115" instance=ExtResource("5_a7r0a")]
 position = Vector2(3208, -16)
 
-[node name="Flame30" parent="Flames" index="114" instance=ExtResource("5_a7r0a")]
+[node name="Flame30" parent="Flames" index="116" instance=ExtResource("5_a7r0a")]
 position = Vector2(3224, -16)
 
-[node name="Flame31" parent="Flames" index="115" instance=ExtResource("5_a7r0a")]
+[node name="Flame31" parent="Flames" index="117" instance=ExtResource("5_a7r0a")]
 position = Vector2(3240, -16)
 
-[node name="Flame32" parent="Flames" index="116" instance=ExtResource("5_a7r0a")]
+[node name="Flame32" parent="Flames" index="118" instance=ExtResource("5_a7r0a")]
 position = Vector2(3256, -16)
 
-[node name="Flame33" parent="Flames" index="117" instance=ExtResource("5_a7r0a")]
+[node name="Flame33" parent="Flames" index="119" instance=ExtResource("5_a7r0a")]
 position = Vector2(3416, -16)
 
-[node name="Flame34" parent="Flames" index="118" instance=ExtResource("5_a7r0a")]
+[node name="Flame34" parent="Flames" index="120" instance=ExtResource("5_a7r0a")]
 position = Vector2(3432, -16)
 
-[node name="Flame35" parent="Flames" index="119" instance=ExtResource("5_a7r0a")]
+[node name="Flame35" parent="Flames" index="121" instance=ExtResource("5_a7r0a")]
 position = Vector2(3448, -16)
 
-[node name="Flame36" parent="Flames" index="120" instance=ExtResource("5_a7r0a")]
+[node name="Flame36" parent="Flames" index="122" instance=ExtResource("5_a7r0a")]
 position = Vector2(3464, -16)
 
-[node name="Flame37" parent="Flames" index="121" instance=ExtResource("5_a7r0a")]
+[node name="Flame37" parent="Flames" index="123" instance=ExtResource("5_a7r0a")]
 position = Vector2(3640, -16)
 
-[node name="Flame38" parent="Flames" index="122" instance=ExtResource("5_a7r0a")]
+[node name="Flame38" parent="Flames" index="124" instance=ExtResource("5_a7r0a")]
 position = Vector2(3656, -16)
 
-[node name="Flame39" parent="Flames" index="123" instance=ExtResource("5_a7r0a")]
+[node name="Flame39" parent="Flames" index="125" instance=ExtResource("5_a7r0a")]
 position = Vector2(3672, -16)
 
-[node name="Flame40" parent="Flames" index="124" instance=ExtResource("5_a7r0a")]
+[node name="Flame40" parent="Flames" index="126" instance=ExtResource("5_a7r0a")]
 position = Vector2(3688, -16)
 
-[node name="Flame41" parent="Flames" index="125" instance=ExtResource("5_a7r0a")]
+[node name="Flame41" parent="Flames" index="127" instance=ExtResource("5_a7r0a")]
 position = Vector2(4184, -88)
 
-[node name="Flame42" parent="Flames" index="126" instance=ExtResource("5_a7r0a")]
+[node name="Flame42" parent="Flames" index="128" instance=ExtResource("5_a7r0a")]
 position = Vector2(4200, -88)
 
-[node name="Flame43" parent="Flames" index="127" instance=ExtResource("5_a7r0a")]
+[node name="Flame43" parent="Flames" index="129" instance=ExtResource("5_a7r0a")]
 position = Vector2(4216, -88)
 
-[node name="Flame44" parent="Flames" index="128" instance=ExtResource("5_a7r0a")]
+[node name="Flame44" parent="Flames" index="130" instance=ExtResource("5_a7r0a")]
 position = Vector2(4232, -88)
 
-[node name="Flame49" parent="Flames" index="129" instance=ExtResource("5_a7r0a")]
+[node name="Flame49" parent="Flames" index="131" instance=ExtResource("5_a7r0a")]
 position = Vector2(4408, -48)
 
-[node name="Flame50" parent="Flames" index="130" instance=ExtResource("5_a7r0a")]
+[node name="Flame50" parent="Flames" index="132" instance=ExtResource("5_a7r0a")]
 position = Vector2(4424, -48)
 
-[node name="Flame51" parent="Flames" index="131" instance=ExtResource("5_a7r0a")]
+[node name="Flame51" parent="Flames" index="133" instance=ExtResource("5_a7r0a")]
 position = Vector2(4440, -48)
 
-[node name="Flame52" parent="Flames" index="132" instance=ExtResource("5_a7r0a")]
+[node name="Flame52" parent="Flames" index="134" instance=ExtResource("5_a7r0a")]
 position = Vector2(4456, -48)
 
-[node name="Flame53" parent="Flames" index="133" instance=ExtResource("5_a7r0a")]
+[node name="Flame53" parent="Flames" index="135" instance=ExtResource("5_a7r0a")]
 position = Vector2(4552, -80)
 
-[node name="Flame54" parent="Flames" index="134" instance=ExtResource("5_a7r0a")]
+[node name="Flame54" parent="Flames" index="136" instance=ExtResource("5_a7r0a")]
 position = Vector2(4568, -80)
 
-[node name="Flame55" parent="Flames" index="135" instance=ExtResource("5_a7r0a")]
+[node name="Flame55" parent="Flames" index="137" instance=ExtResource("5_a7r0a")]
 position = Vector2(4584, -80)
 
-[node name="Flame56" parent="Flames" index="136" instance=ExtResource("5_a7r0a")]
+[node name="Flame56" parent="Flames" index="138" instance=ExtResource("5_a7r0a")]
 position = Vector2(4600, -80)
 
-[node name="Flame57" parent="Flames" index="137" instance=ExtResource("5_a7r0a")]
+[node name="Flame57" parent="Flames" index="139" instance=ExtResource("5_a7r0a")]
 position = Vector2(4696, -112)
 
-[node name="Flame58" parent="Flames" index="138" instance=ExtResource("5_a7r0a")]
+[node name="Flame58" parent="Flames" index="140" instance=ExtResource("5_a7r0a")]
 position = Vector2(4712, -112)
 
-[node name="Flame59" parent="Flames" index="139" instance=ExtResource("5_a7r0a")]
+[node name="Flame59" parent="Flames" index="141" instance=ExtResource("5_a7r0a")]
 position = Vector2(4728, -112)
 
-[node name="Flame60" parent="Flames" index="140" instance=ExtResource("5_a7r0a")]
+[node name="Flame60" parent="Flames" index="142" instance=ExtResource("5_a7r0a")]
 position = Vector2(4744, -112)
 
-[node name="Flame61" parent="Flames" index="141" instance=ExtResource("5_a7r0a")]
+[node name="Flame61" parent="Flames" index="143" instance=ExtResource("5_a7r0a")]
 position = Vector2(5176, -216)
 
-[node name="Flame65" parent="Flames" index="142" instance=ExtResource("5_a7r0a")]
+[node name="Flame65" parent="Flames" index="144" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -71)
 
-[node name="Flame87" parent="Flames" index="143" instance=ExtResource("5_a7r0a")]
+[node name="Flame87" parent="Flames" index="145" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -56)
 
-[node name="Flame165" parent="Flames" index="144" instance=ExtResource("5_a7r0a")]
+[node name="Flame165" parent="Flames" index="146" instance=ExtResource("5_a7r0a")]
 position = Vector2(5160, -94)
 
-[node name="Flame166" parent="Flames" index="145" instance=ExtResource("5_a7r0a")]
+[node name="Flame166" parent="Flames" index="147" instance=ExtResource("5_a7r0a")]
 position = Vector2(5160, -79)
 
-[node name="Flame167" parent="Flames" index="146" instance=ExtResource("5_a7r0a")]
+[node name="Flame167" parent="Flames" index="148" instance=ExtResource("5_a7r0a")]
 position = Vector2(5080, -199)
 
-[node name="Flame168" parent="Flames" index="147" instance=ExtResource("5_a7r0a")]
+[node name="Flame168" parent="Flames" index="149" instance=ExtResource("5_a7r0a")]
 position = Vector2(5080, -184)
 
-[node name="Flame66" parent="Flames" index="148" instance=ExtResource("5_a7r0a")]
+[node name="Flame66" parent="Flames" index="150" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -152)
 
-[node name="Flame86" parent="Flames" index="149" instance=ExtResource("5_a7r0a")]
+[node name="Flame86" parent="Flames" index="151" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -168)
 
-[node name="Flame88" parent="Flames" index="150" instance=ExtResource("5_a7r0a")]
+[node name="Flame88" parent="Flames" index="152" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -248)
 
-[node name="Flame89" parent="Flames" index="151" instance=ExtResource("5_a7r0a")]
+[node name="Flame89" parent="Flames" index="153" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -264)
 
-[node name="Flame90" parent="Flames" index="152" instance=ExtResource("5_a7r0a")]
+[node name="Flame90" parent="Flames" index="154" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -339)
 
-[node name="Flame91" parent="Flames" index="153" instance=ExtResource("5_a7r0a")]
+[node name="Flame91" parent="Flames" index="155" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -355)
 
-[node name="Flame92" parent="Flames" index="154" instance=ExtResource("5_a7r0a")]
+[node name="Flame92" parent="Flames" index="156" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -431)
 
-[node name="Flame93" parent="Flames" index="155" instance=ExtResource("5_a7r0a")]
+[node name="Flame93" parent="Flames" index="157" instance=ExtResource("5_a7r0a")]
 position = Vector2(5768, -447)
 
-[node name="Flame94" parent="Flames" index="156" instance=ExtResource("5_a7r0a")]
+[node name="Flame94" parent="Flames" index="158" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -524)
 
-[node name="Flame95" parent="Flames" index="157" instance=ExtResource("5_a7r0a")]
+[node name="Flame95" parent="Flames" index="159" instance=ExtResource("5_a7r0a")]
 position = Vector2(5720, -540)
 
-[node name="Flame96" parent="Flames" index="158" instance=ExtResource("5_a7r0a")]
+[node name="Flame96" parent="Flames" index="160" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -536)
 
-[node name="Flame97" parent="Flames" index="159" instance=ExtResource("5_a7r0a")]
+[node name="Flame97" parent="Flames" index="161" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -552)
 
-[node name="Flame98" parent="Flames" index="160" instance=ExtResource("5_a7r0a")]
+[node name="Flame98" parent="Flames" index="162" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -504)
 
-[node name="Flame99" parent="Flames" index="161" instance=ExtResource("5_a7r0a")]
+[node name="Flame99" parent="Flames" index="163" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -520)
 
-[node name="Flame100" parent="Flames" index="162" instance=ExtResource("5_a7r0a")]
+[node name="Flame100" parent="Flames" index="164" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -472)
 
-[node name="Flame101" parent="Flames" index="163" instance=ExtResource("5_a7r0a")]
+[node name="Flame101" parent="Flames" index="165" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -488)
 
-[node name="Flame102" parent="Flames" index="164" instance=ExtResource("5_a7r0a")]
+[node name="Flame102" parent="Flames" index="166" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -440)
 
-[node name="Flame103" parent="Flames" index="165" instance=ExtResource("5_a7r0a")]
+[node name="Flame103" parent="Flames" index="167" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -456)
 
-[node name="Flame104" parent="Flames" index="166" instance=ExtResource("5_a7r0a")]
+[node name="Flame104" parent="Flames" index="168" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -408)
 
-[node name="Flame105" parent="Flames" index="167" instance=ExtResource("5_a7r0a")]
+[node name="Flame105" parent="Flames" index="169" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -424)
 
-[node name="Flame106" parent="Flames" index="168" instance=ExtResource("5_a7r0a")]
+[node name="Flame106" parent="Flames" index="170" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -376)
 
-[node name="Flame107" parent="Flames" index="169" instance=ExtResource("5_a7r0a")]
+[node name="Flame107" parent="Flames" index="171" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -392)
 
-[node name="Flame108" parent="Flames" index="170" instance=ExtResource("5_a7r0a")]
+[node name="Flame108" parent="Flames" index="172" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -344)
 
-[node name="Flame109" parent="Flames" index="171" instance=ExtResource("5_a7r0a")]
+[node name="Flame109" parent="Flames" index="173" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -360)
 
-[node name="Flame110" parent="Flames" index="172" instance=ExtResource("5_a7r0a")]
+[node name="Flame110" parent="Flames" index="174" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -312)
 
-[node name="Flame111" parent="Flames" index="173" instance=ExtResource("5_a7r0a")]
+[node name="Flame111" parent="Flames" index="175" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -328)
 
-[node name="Flame112" parent="Flames" index="174" instance=ExtResource("5_a7r0a")]
+[node name="Flame112" parent="Flames" index="176" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -280)
 
-[node name="Flame113" parent="Flames" index="175" instance=ExtResource("5_a7r0a")]
+[node name="Flame113" parent="Flames" index="177" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -296)
 
-[node name="Flame114" parent="Flames" index="176" instance=ExtResource("5_a7r0a")]
+[node name="Flame114" parent="Flames" index="178" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -248)
 
-[node name="Flame115" parent="Flames" index="177" instance=ExtResource("5_a7r0a")]
+[node name="Flame115" parent="Flames" index="179" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -264)
 
-[node name="Flame116" parent="Flames" index="178" instance=ExtResource("5_a7r0a")]
+[node name="Flame116" parent="Flames" index="180" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -216)
 
-[node name="Flame117" parent="Flames" index="179" instance=ExtResource("5_a7r0a")]
+[node name="Flame117" parent="Flames" index="181" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -232)
 
-[node name="Flame118" parent="Flames" index="180" instance=ExtResource("5_a7r0a")]
+[node name="Flame118" parent="Flames" index="182" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -184)
 
-[node name="Flame120" parent="Flames" index="181" instance=ExtResource("5_a7r0a")]
+[node name="Flame120" parent="Flames" index="183" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -168)
 
-[node name="Flame121" parent="Flames" index="182" instance=ExtResource("5_a7r0a")]
+[node name="Flame121" parent="Flames" index="184" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -152)
 
-[node name="Flame122" parent="Flames" index="183" instance=ExtResource("5_a7r0a")]
+[node name="Flame122" parent="Flames" index="185" instance=ExtResource("5_a7r0a")]
 position = Vector2(6536, -71)
 
-[node name="Flame123" parent="Flames" index="184" instance=ExtResource("5_a7r0a")]
+[node name="Flame123" parent="Flames" index="186" instance=ExtResource("5_a7r0a")]
 position = Vector2(6536, -55)
 
-[node name="Flame124" parent="Flames" index="185" instance=ExtResource("5_a7r0a")]
+[node name="Flame124" parent="Flames" index="187" instance=ExtResource("5_a7r0a")]
 position = Vector2(6504, -168)
 
-[node name="Flame125" parent="Flames" index="186" instance=ExtResource("5_a7r0a")]
+[node name="Flame125" parent="Flames" index="188" instance=ExtResource("5_a7r0a")]
 position = Vector2(6504, -152)
 
-[node name="Flame126" parent="Flames" index="187" instance=ExtResource("5_a7r0a")]
+[node name="Flame126" parent="Flames" index="189" instance=ExtResource("5_a7r0a")]
 position = Vector2(6552, -240)
 
-[node name="Flame127" parent="Flames" index="188" instance=ExtResource("5_a7r0a")]
+[node name="Flame127" parent="Flames" index="190" instance=ExtResource("5_a7r0a")]
 position = Vector2(6568, -240)
 
-[node name="Flame128" parent="Flames" index="189" instance=ExtResource("5_a7r0a")]
+[node name="Flame128" parent="Flames" index="191" instance=ExtResource("5_a7r0a")]
 position = Vector2(6584, -240)
 
-[node name="Flame129" parent="Flames" index="190" instance=ExtResource("5_a7r0a")]
+[node name="Flame129" parent="Flames" index="192" instance=ExtResource("5_a7r0a")]
 position = Vector2(6536, -240)
 
-[node name="Flame119" parent="Flames" index="191" instance=ExtResource("5_a7r0a")]
+[node name="Flame119" parent="Flames" index="193" instance=ExtResource("5_a7r0a")]
 position = Vector2(5896, -200)
 
-[node name="Flame62" parent="Flames" index="192" instance=ExtResource("5_a7r0a")]
+[node name="Flame62" parent="Flames" index="194" instance=ExtResource("5_a7r0a")]
 position = Vector2(5192, -216)
 
-[node name="Flame63" parent="Flames" index="193" instance=ExtResource("5_a7r0a")]
+[node name="Flame63" parent="Flames" index="195" instance=ExtResource("5_a7r0a")]
 position = Vector2(5208, -216)
 
-[node name="Flame64" parent="Flames" index="194" instance=ExtResource("5_a7r0a")]
+[node name="Flame64" parent="Flames" index="196" instance=ExtResource("5_a7r0a")]
 position = Vector2(5224, -216)
 
-[node name="Flame67" parent="Flames" index="195" instance=ExtResource("5_a7r0a")]
+[node name="Flame67" parent="Flames" index="197" instance=ExtResource("5_a7r0a")]
 position = Vector2(5416, -56)
 
-[node name="Flame72" parent="Flames" index="196" instance=ExtResource("5_a7r0a")]
+[node name="Flame72" parent="Flames" index="198" instance=ExtResource("5_a7r0a")]
 position = Vector2(5416, -72)
 
-[node name="Flame73" parent="Flames" index="197" instance=ExtResource("5_a7r0a")]
+[node name="Flame73" parent="Flames" index="199" instance=ExtResource("5_a7r0a")]
 position = Vector2(5432, -72)
 
-[node name="Flame74" parent="Flames" index="198" instance=ExtResource("5_a7r0a")]
+[node name="Flame74" parent="Flames" index="200" instance=ExtResource("5_a7r0a")]
 position = Vector2(5448, -72)
 
-[node name="Flame75" parent="Flames" index="199" instance=ExtResource("5_a7r0a")]
+[node name="Flame75" parent="Flames" index="201" instance=ExtResource("5_a7r0a")]
 position = Vector2(5464, -72)
 
-[node name="Flame76" parent="Flames" index="200" instance=ExtResource("5_a7r0a")]
+[node name="Flame76" parent="Flames" index="202" instance=ExtResource("5_a7r0a")]
 position = Vector2(5480, -72)
 
-[node name="Flame77" parent="Flames" index="201" instance=ExtResource("5_a7r0a")]
+[node name="Flame77" parent="Flames" index="203" instance=ExtResource("5_a7r0a")]
 position = Vector2(5496, -72)
 
-[node name="Flame80" parent="Flames" index="202" instance=ExtResource("5_a7r0a")]
+[node name="Flame80" parent="Flames" index="204" instance=ExtResource("5_a7r0a")]
 position = Vector2(5432, -40)
 
-[node name="Flame81" parent="Flames" index="203" instance=ExtResource("5_a7r0a")]
+[node name="Flame81" parent="Flames" index="205" instance=ExtResource("5_a7r0a")]
 position = Vector2(5448, -40)
 
-[node name="Flame82" parent="Flames" index="204" instance=ExtResource("5_a7r0a")]
+[node name="Flame82" parent="Flames" index="206" instance=ExtResource("5_a7r0a")]
 position = Vector2(5464, -40)
 
-[node name="Flame83" parent="Flames" index="205" instance=ExtResource("5_a7r0a")]
+[node name="Flame83" parent="Flames" index="207" instance=ExtResource("5_a7r0a")]
 position = Vector2(5480, -40)
 
-[node name="Flame84" parent="Flames" index="206" instance=ExtResource("5_a7r0a")]
+[node name="Flame84" parent="Flames" index="208" instance=ExtResource("5_a7r0a")]
 position = Vector2(5496, -40)
 
-[node name="Flame85" parent="Flames" index="207" instance=ExtResource("5_a7r0a")]
+[node name="Flame85" parent="Flames" index="209" instance=ExtResource("5_a7r0a")]
 position = Vector2(5512, -40)
 
-[node name="Flame78" parent="Flames" index="208" instance=ExtResource("5_a7r0a")]
+[node name="Flame78" parent="Flames" index="210" instance=ExtResource("5_a7r0a")]
 position = Vector2(5512, -72)
 
-[node name="Flame79" parent="Flames" index="209" instance=ExtResource("5_a7r0a")]
+[node name="Flame79" parent="Flames" index="211" instance=ExtResource("5_a7r0a")]
 position = Vector2(5512, -56)
 
-[node name="Flame71" parent="Flames" index="210" instance=ExtResource("5_a7r0a")]
+[node name="Flame71" parent="Flames" index="212" instance=ExtResource("5_a7r0a")]
 position = Vector2(5416, -40)
 
-[node name="Flame130" parent="Flames" index="211" instance=ExtResource("5_a7r0a")]
+[node name="Flame130" parent="Flames" index="213" instance=ExtResource("5_a7r0a")]
 position = Vector2(7112, -56)
 
-[node name="Flame146" parent="Flames" index="212" instance=ExtResource("5_a7r0a")]
+[node name="Flame146" parent="Flames" index="214" instance=ExtResource("5_a7r0a")]
 position = Vector2(7112, -40)
 
-[node name="Flame131" parent="Flames" index="213" instance=ExtResource("5_a7r0a")]
+[node name="Flame131" parent="Flames" index="215" instance=ExtResource("5_a7r0a")]
 position = Vector2(7112, -72)
 
-[node name="Flame132" parent="Flames" index="214" instance=ExtResource("5_a7r0a")]
+[node name="Flame132" parent="Flames" index="216" instance=ExtResource("5_a7r0a")]
 position = Vector2(7128, -72)
 
-[node name="Flame133" parent="Flames" index="215" instance=ExtResource("5_a7r0a")]
+[node name="Flame133" parent="Flames" index="217" instance=ExtResource("5_a7r0a")]
 position = Vector2(7144, -72)
 
-[node name="Flame322" parent="Flames" index="216" instance=ExtResource("5_a7r0a")]
+[node name="Flame322" parent="Flames" index="218" instance=ExtResource("5_a7r0a")]
 position = Vector2(6608, -576)
 
-[node name="Flame134" parent="Flames" index="217" instance=ExtResource("5_a7r0a")]
+[node name="Flame134" parent="Flames" index="219" instance=ExtResource("5_a7r0a")]
 position = Vector2(7160, -72)
 
-[node name="Flame135" parent="Flames" index="218" instance=ExtResource("5_a7r0a")]
+[node name="Flame135" parent="Flames" index="220" instance=ExtResource("5_a7r0a")]
 position = Vector2(7176, -72)
 
-[node name="Flame136" parent="Flames" index="219" instance=ExtResource("5_a7r0a")]
+[node name="Flame136" parent="Flames" index="221" instance=ExtResource("5_a7r0a")]
 position = Vector2(7192, -72)
 
-[node name="Flame137" parent="Flames" index="220" instance=ExtResource("5_a7r0a")]
+[node name="Flame137" parent="Flames" index="222" instance=ExtResource("5_a7r0a")]
 position = Vector2(7128, -8)
 
-[node name="Flame138" parent="Flames" index="221" instance=ExtResource("5_a7r0a")]
+[node name="Flame138" parent="Flames" index="223" instance=ExtResource("5_a7r0a")]
 position = Vector2(7144, -8)
 
-[node name="Flame139" parent="Flames" index="222" instance=ExtResource("5_a7r0a")]
+[node name="Flame139" parent="Flames" index="224" instance=ExtResource("5_a7r0a")]
 position = Vector2(7160, -8)
 
-[node name="Flame140" parent="Flames" index="223" instance=ExtResource("5_a7r0a")]
+[node name="Flame140" parent="Flames" index="225" instance=ExtResource("5_a7r0a")]
 position = Vector2(7176, -8)
 
-[node name="Flame141" parent="Flames" index="224" instance=ExtResource("5_a7r0a")]
+[node name="Flame141" parent="Flames" index="226" instance=ExtResource("5_a7r0a")]
 position = Vector2(7192, -8)
 
-[node name="Flame142" parent="Flames" index="225" instance=ExtResource("5_a7r0a")]
+[node name="Flame142" parent="Flames" index="227" instance=ExtResource("5_a7r0a")]
 position = Vector2(7208, -8)
 
-[node name="Flame154" parent="Flames" index="226" instance=ExtResource("5_a7r0a")]
+[node name="Flame154" parent="Flames" index="228" instance=ExtResource("5_a7r0a")]
 position = Vector2(7225, -8)
 
-[node name="Flame155" parent="Flames" index="227" instance=ExtResource("5_a7r0a")]
+[node name="Flame155" parent="Flames" index="229" instance=ExtResource("5_a7r0a")]
 position = Vector2(7241, -8)
 
-[node name="Flame156" parent="Flames" index="228" instance=ExtResource("5_a7r0a")]
+[node name="Flame156" parent="Flames" index="230" instance=ExtResource("5_a7r0a")]
 position = Vector2(7257, -8)
 
-[node name="Flame157" parent="Flames" index="229" instance=ExtResource("5_a7r0a")]
+[node name="Flame157" parent="Flames" index="231" instance=ExtResource("5_a7r0a")]
 position = Vector2(7273, -8)
 
-[node name="Flame143" parent="Flames" index="230" instance=ExtResource("5_a7r0a")]
+[node name="Flame143" parent="Flames" index="232" instance=ExtResource("5_a7r0a")]
 position = Vector2(7208, -72)
 
-[node name="Flame144" parent="Flames" index="231" instance=ExtResource("5_a7r0a")]
+[node name="Flame144" parent="Flames" index="233" instance=ExtResource("5_a7r0a")]
 position = Vector2(7224, -72)
 
-[node name="Flame147" parent="Flames" index="232" instance=ExtResource("5_a7r0a")]
+[node name="Flame147" parent="Flames" index="234" instance=ExtResource("5_a7r0a")]
 position = Vector2(7240, -72)
 
-[node name="Flame148" parent="Flames" index="233" instance=ExtResource("5_a7r0a")]
+[node name="Flame148" parent="Flames" index="235" instance=ExtResource("5_a7r0a")]
 position = Vector2(7256, -72)
 
-[node name="Flame149" parent="Flames" index="234" instance=ExtResource("5_a7r0a")]
+[node name="Flame149" parent="Flames" index="236" instance=ExtResource("5_a7r0a")]
 position = Vector2(7272, -72)
 
-[node name="Flame150" parent="Flames" index="235" instance=ExtResource("5_a7r0a")]
+[node name="Flame150" parent="Flames" index="237" instance=ExtResource("5_a7r0a")]
 position = Vector2(7288, -72)
 
-[node name="Flame151" parent="Flames" index="236" instance=ExtResource("5_a7r0a")]
+[node name="Flame151" parent="Flames" index="238" instance=ExtResource("5_a7r0a")]
 position = Vector2(7288, -56)
 
-[node name="Flame152" parent="Flames" index="237" instance=ExtResource("5_a7r0a")]
+[node name="Flame152" parent="Flames" index="239" instance=ExtResource("5_a7r0a")]
 position = Vector2(7288, -40)
 
-[node name="Flame153" parent="Flames" index="238" instance=ExtResource("5_a7r0a")]
+[node name="Flame153" parent="Flames" index="240" instance=ExtResource("5_a7r0a")]
 position = Vector2(7288, -8)
 
-[node name="Flame158" parent="Flames" index="239" instance=ExtResource("5_a7r0a")]
+[node name="Flame158" parent="Flames" index="241" instance=ExtResource("5_a7r0a")]
 position = Vector2(7705, -8)
 
-[node name="Flame159" parent="Flames" index="240" instance=ExtResource("5_a7r0a")]
+[node name="Flame159" parent="Flames" index="242" instance=ExtResource("5_a7r0a")]
 position = Vector2(7721, -8)
 
-[node name="Flame160" parent="Flames" index="241" instance=ExtResource("5_a7r0a")]
+[node name="Flame160" parent="Flames" index="243" instance=ExtResource("5_a7r0a")]
 position = Vector2(7736, -8)
 
-[node name="Flame161" parent="Flames" index="242" instance=ExtResource("5_a7r0a")]
+[node name="Flame161" parent="Flames" index="244" instance=ExtResource("5_a7r0a")]
 position = Vector2(7784, -40)
 
-[node name="Flame162" parent="Flames" index="243" instance=ExtResource("5_a7r0a")]
+[node name="Flame162" parent="Flames" index="245" instance=ExtResource("5_a7r0a")]
 position = Vector2(7800, -56)
 
-[node name="Flame163" parent="Flames" index="244" instance=ExtResource("5_a7r0a")]
+[node name="Flame163" parent="Flames" index="246" instance=ExtResource("5_a7r0a")]
 position = Vector2(7816, -72)
 
-[node name="Flame164" parent="Flames" index="245" instance=ExtResource("5_a7r0a")]
+[node name="Flame164" parent="Flames" index="247" instance=ExtResource("5_a7r0a")]
 position = Vector2(7832, -88)
 
-[node name="Flame323" parent="Flames" index="246" instance=ExtResource("5_a7r0a")]
+[node name="Flame323" parent="Flames" index="248" instance=ExtResource("5_a7r0a")]
 position = Vector2(9168, -320)
 
-[node name="Flame324" parent="Flames" index="247" instance=ExtResource("5_a7r0a")]
+[node name="Flame324" parent="Flames" index="249" instance=ExtResource("5_a7r0a")]
 position = Vector2(9152, -320)
 
-[node name="Flame325" parent="Flames" index="248" instance=ExtResource("5_a7r0a")]
+[node name="Flame325" parent="Flames" index="250" instance=ExtResource("5_a7r0a")]
 position = Vector2(9136, -320)
 
-[node name="Flame326" parent="Flames" index="249" instance=ExtResource("5_a7r0a")]
+[node name="Flame326" parent="Flames" index="251" instance=ExtResource("5_a7r0a")]
 position = Vector2(9120, -320)
 
-[node name="Flame327" parent="Flames" index="250" instance=ExtResource("5_a7r0a")]
+[node name="Flame327" parent="Flames" index="252" instance=ExtResource("5_a7r0a")]
 position = Vector2(9104, -320)
 
-[node name="Flame328" parent="Flames" index="251" instance=ExtResource("5_a7r0a")]
+[node name="Flame328" parent="Flames" index="253" instance=ExtResource("5_a7r0a")]
 position = Vector2(9088, -320)
 
-[node name="Flame335" parent="Flames" index="252" instance=ExtResource("5_a7r0a")]
+[node name="Flame335" parent="Flames" index="254" instance=ExtResource("5_a7r0a")]
 position = Vector2(8969, -697)
 
-[node name="Flame336" parent="Flames" index="253" instance=ExtResource("5_a7r0a")]
+[node name="Flame336" parent="Flames" index="255" instance=ExtResource("5_a7r0a")]
 position = Vector2(8953, -697)
 
-[node name="Flame337" parent="Flames" index="254" instance=ExtResource("5_a7r0a")]
+[node name="Flame337" parent="Flames" index="256" instance=ExtResource("5_a7r0a")]
 position = Vector2(8937, -697)
 
-[node name="Flame338" parent="Flames" index="255" instance=ExtResource("5_a7r0a")]
+[node name="Flame338" parent="Flames" index="257" instance=ExtResource("5_a7r0a")]
 position = Vector2(8921, -697)
 
-[node name="Flame339" parent="Flames" index="256" instance=ExtResource("5_a7r0a")]
+[node name="Flame339" parent="Flames" index="258" instance=ExtResource("5_a7r0a")]
 position = Vector2(8905, -697)
 
-[node name="Flame340" parent="Flames" index="257" instance=ExtResource("5_a7r0a")]
+[node name="Flame340" parent="Flames" index="259" instance=ExtResource("5_a7r0a")]
 position = Vector2(8889, -697)
 
-[node name="Flame341" parent="Flames" index="258" instance=ExtResource("5_a7r0a")]
+[node name="Flame341" parent="Flames" index="260" instance=ExtResource("5_a7r0a")]
 position = Vector2(8969, -729)
 
-[node name="Flame342" parent="Flames" index="259" instance=ExtResource("5_a7r0a")]
+[node name="Flame342" parent="Flames" index="261" instance=ExtResource("5_a7r0a")]
 position = Vector2(8953, -729)
 
-[node name="Flame343" parent="Flames" index="260" instance=ExtResource("5_a7r0a")]
+[node name="Flame343" parent="Flames" index="262" instance=ExtResource("5_a7r0a")]
 position = Vector2(8937, -729)
 
-[node name="Flame344" parent="Flames" index="261" instance=ExtResource("5_a7r0a")]
+[node name="Flame344" parent="Flames" index="263" instance=ExtResource("5_a7r0a")]
 position = Vector2(8921, -729)
 
-[node name="Flame345" parent="Flames" index="262" instance=ExtResource("5_a7r0a")]
+[node name="Flame345" parent="Flames" index="264" instance=ExtResource("5_a7r0a")]
 position = Vector2(8905, -729)
 
-[node name="Flame346" parent="Flames" index="263" instance=ExtResource("5_a7r0a")]
+[node name="Flame346" parent="Flames" index="265" instance=ExtResource("5_a7r0a")]
 position = Vector2(8889, -729)
 
-[node name="Flame329" parent="Flames" index="264" instance=ExtResource("5_a7r0a")]
+[node name="Flame329" parent="Flames" index="266" instance=ExtResource("5_a7r0a")]
 position = Vector2(8848, -504)
 
-[node name="Flame330" parent="Flames" index="265" instance=ExtResource("5_a7r0a")]
+[node name="Flame330" parent="Flames" index="267" instance=ExtResource("5_a7r0a")]
 position = Vector2(8832, -504)
 
-[node name="Flame331" parent="Flames" index="266" instance=ExtResource("5_a7r0a")]
+[node name="Flame331" parent="Flames" index="268" instance=ExtResource("5_a7r0a")]
 position = Vector2(8816, -504)
 
-[node name="Flame332" parent="Flames" index="267" instance=ExtResource("5_a7r0a")]
+[node name="Flame332" parent="Flames" index="269" instance=ExtResource("5_a7r0a")]
 position = Vector2(8704, -504)
 
-[node name="Flame333" parent="Flames" index="268" instance=ExtResource("5_a7r0a")]
+[node name="Flame333" parent="Flames" index="270" instance=ExtResource("5_a7r0a")]
 position = Vector2(8688, -504)
 
-[node name="Flame334" parent="Flames" index="269" instance=ExtResource("5_a7r0a")]
+[node name="Flame334" parent="Flames" index="271" instance=ExtResource("5_a7r0a")]
 position = Vector2(8672, -504)
 
-[node name="Flame145" parent="Flames" index="270" instance=ExtResource("5_a7r0a")]
+[node name="Flame145" parent="Flames" index="272" instance=ExtResource("5_a7r0a")]
 position = Vector2(7112, -8)
 
-[node name="Flame45" parent="Flames" index="271" instance=ExtResource("5_a7r0a")]
+[node name="Flame45" parent="Flames" index="273" instance=ExtResource("5_a7r0a")]
 position = Vector2(4184, -104)
 
-[node name="Flame46" parent="Flames" index="272" instance=ExtResource("5_a7r0a")]
+[node name="Flame46" parent="Flames" index="274" instance=ExtResource("5_a7r0a")]
 position = Vector2(4200, -104)
 
-[node name="Flame47" parent="Flames" index="273" instance=ExtResource("5_a7r0a")]
+[node name="Flame47" parent="Flames" index="275" instance=ExtResource("5_a7r0a")]
 position = Vector2(4216, -104)
 
-[node name="Flame48" parent="Flames" index="274" instance=ExtResource("5_a7r0a")]
+[node name="Flame48" parent="Flames" index="276" instance=ExtResource("5_a7r0a")]
 position = Vector2(4232, -104)
 
-[node name="Flame9" parent="Flames" index="275" instance=ExtResource("5_a7r0a")]
+[node name="Flame9" parent="Flames" index="277" instance=ExtResource("5_a7r0a")]
 position = Vector2(425, -16)
 
-[node name="Flame10" parent="Flames" index="276" instance=ExtResource("5_a7r0a")]
+[node name="Flame10" parent="Flames" index="278" instance=ExtResource("5_a7r0a")]
 position = Vector2(441, -16)
 
-[node name="Flame11" parent="Flames" index="277" instance=ExtResource("5_a7r0a")]
+[node name="Flame11" parent="Flames" index="279" instance=ExtResource("5_a7r0a")]
 position = Vector2(457, -16)
 
-[node name="Flame12" parent="Flames" index="278" instance=ExtResource("5_a7r0a")]
+[node name="Flame12" parent="Flames" index="280" instance=ExtResource("5_a7r0a")]
 position = Vector2(473, -16)
 
-[node name="Flame169" parent="Flames" index="279" instance=ExtResource("5_a7r0a")]
+[node name="Flame169" parent="Flames" index="281" instance=ExtResource("5_a7r0a")]
 position = Vector2(152, -648)
 
-[node name="Flame170" parent="Flames" index="280" instance=ExtResource("5_a7r0a")]
+[node name="Flame170" parent="Flames" index="282" instance=ExtResource("5_a7r0a")]
 position = Vector2(136, -648)
 
-[node name="Flame171" parent="Flames" index="281" instance=ExtResource("5_a7r0a")]
+[node name="Flame171" parent="Flames" index="283" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -648)
 
-[node name="Flame173" parent="Flames" index="282" instance=ExtResource("5_a7r0a")]
+[node name="Flame173" parent="Flames" index="284" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -648)
 
-[node name="Flame174" parent="Flames" index="283" instance=ExtResource("5_a7r0a")]
+[node name="Flame174" parent="Flames" index="285" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -648)
 
-[node name="Flame175" parent="Flames" index="284" instance=ExtResource("5_a7r0a")]
+[node name="Flame175" parent="Flames" index="286" instance=ExtResource("5_a7r0a")]
 position = Vector2(168, -648)
 
-[node name="Flame176" parent="Flames" index="285" instance=ExtResource("5_a7r0a")]
+[node name="Flame176" parent="Flames" index="287" instance=ExtResource("5_a7r0a")]
 position = Vector2(248, -648)
 
-[node name="Flame177" parent="Flames" index="286" instance=ExtResource("5_a7r0a")]
+[node name="Flame177" parent="Flames" index="288" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -648)
 
-[node name="Flame178" parent="Flames" index="287" instance=ExtResource("5_a7r0a")]
+[node name="Flame178" parent="Flames" index="289" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -648)
 
-[node name="Flame179" parent="Flames" index="288" instance=ExtResource("5_a7r0a")]
+[node name="Flame179" parent="Flames" index="290" instance=ExtResource("5_a7r0a")]
 position = Vector2(296, -648)
 
-[node name="Flame180" parent="Flames" index="289" instance=ExtResource("5_a7r0a")]
+[node name="Flame180" parent="Flames" index="291" instance=ExtResource("5_a7r0a")]
 position = Vector2(280, -648)
 
-[node name="Flame182" parent="Flames" index="290" instance=ExtResource("5_a7r0a")]
+[node name="Flame182" parent="Flames" index="292" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -664)
 
-[node name="Flame183" parent="Flames" index="291" instance=ExtResource("5_a7r0a")]
+[node name="Flame183" parent="Flames" index="293" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -648)
 
-[node name="Flame181" parent="Flames" index="292" instance=ExtResource("5_a7r0a")]
+[node name="Flame181" parent="Flames" index="294" instance=ExtResource("5_a7r0a")]
 position = Vector2(264, -648)
 
-[node name="Flame172" parent="Flames" index="293" instance=ExtResource("5_a7r0a")]
+[node name="Flame172" parent="Flames" index="295" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -664)
 
-[node name="Flame184" parent="Flames" index="294" instance=ExtResource("5_a7r0a")]
+[node name="Flame184" parent="Flames" index="296" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -680)
 
-[node name="Flame185" parent="Flames" index="295" instance=ExtResource("5_a7r0a")]
+[node name="Flame185" parent="Flames" index="297" instance=ExtResource("5_a7r0a")]
 position = Vector2(136, -680)
 
-[node name="Flame186" parent="Flames" index="296" instance=ExtResource("5_a7r0a")]
+[node name="Flame186" parent="Flames" index="298" instance=ExtResource("5_a7r0a")]
 position = Vector2(152, -680)
 
-[node name="Flame187" parent="Flames" index="297" instance=ExtResource("5_a7r0a")]
+[node name="Flame187" parent="Flames" index="299" instance=ExtResource("5_a7r0a")]
 position = Vector2(168, -680)
 
-[node name="Flame188" parent="Flames" index="298" instance=ExtResource("5_a7r0a")]
+[node name="Flame188" parent="Flames" index="300" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -680)
 
-[node name="Flame189" parent="Flames" index="299" instance=ExtResource("5_a7r0a")]
+[node name="Flame189" parent="Flames" index="301" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -680)
 
-[node name="Flame190" parent="Flames" index="300" instance=ExtResource("5_a7r0a")]
+[node name="Flame190" parent="Flames" index="302" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -680)
 
-[node name="Flame191" parent="Flames" index="301" instance=ExtResource("5_a7r0a")]
+[node name="Flame191" parent="Flames" index="303" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -680)
 
-[node name="Flame192" parent="Flames" index="302" instance=ExtResource("5_a7r0a")]
+[node name="Flame192" parent="Flames" index="304" instance=ExtResource("5_a7r0a")]
 position = Vector2(248, -680)
 
-[node name="Flame193" parent="Flames" index="303" instance=ExtResource("5_a7r0a")]
+[node name="Flame193" parent="Flames" index="305" instance=ExtResource("5_a7r0a")]
 position = Vector2(264, -680)
 
-[node name="Flame194" parent="Flames" index="304" instance=ExtResource("5_a7r0a")]
+[node name="Flame194" parent="Flames" index="306" instance=ExtResource("5_a7r0a")]
 position = Vector2(280, -680)
 
-[node name="Flame195" parent="Flames" index="305" instance=ExtResource("5_a7r0a")]
+[node name="Flame195" parent="Flames" index="307" instance=ExtResource("5_a7r0a")]
 position = Vector2(296, -680)
 
-[node name="Flame196" parent="Flames" index="306" instance=ExtResource("5_a7r0a")]
+[node name="Flame196" parent="Flames" index="308" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -680)
 
-[node name="Flame197" parent="Flames" index="307" instance=ExtResource("5_a7r0a")]
+[node name="Flame197" parent="Flames" index="309" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -696)
 
-[node name="Flame198" parent="Flames" index="308" instance=ExtResource("5_a7r0a")]
+[node name="Flame198" parent="Flames" index="310" instance=ExtResource("5_a7r0a")]
 position = Vector2(136, -696)
 
-[node name="Flame199" parent="Flames" index="309" instance=ExtResource("5_a7r0a")]
+[node name="Flame199" parent="Flames" index="311" instance=ExtResource("5_a7r0a")]
 position = Vector2(152, -696)
 
-[node name="Flame200" parent="Flames" index="310" instance=ExtResource("5_a7r0a")]
+[node name="Flame200" parent="Flames" index="312" instance=ExtResource("5_a7r0a")]
 position = Vector2(168, -696)
 
-[node name="Flame201" parent="Flames" index="311" instance=ExtResource("5_a7r0a")]
+[node name="Flame201" parent="Flames" index="313" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -696)
 
-[node name="Flame202" parent="Flames" index="312" instance=ExtResource("5_a7r0a")]
+[node name="Flame202" parent="Flames" index="314" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -696)
 
-[node name="Flame203" parent="Flames" index="313" instance=ExtResource("5_a7r0a")]
+[node name="Flame203" parent="Flames" index="315" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -696)
 
-[node name="Flame204" parent="Flames" index="314" instance=ExtResource("5_a7r0a")]
+[node name="Flame204" parent="Flames" index="316" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -696)
 
-[node name="Flame205" parent="Flames" index="315" instance=ExtResource("5_a7r0a")]
+[node name="Flame205" parent="Flames" index="317" instance=ExtResource("5_a7r0a")]
 position = Vector2(248, -696)
 
-[node name="Flame206" parent="Flames" index="316" instance=ExtResource("5_a7r0a")]
+[node name="Flame206" parent="Flames" index="318" instance=ExtResource("5_a7r0a")]
 position = Vector2(264, -696)
 
-[node name="Flame207" parent="Flames" index="317" instance=ExtResource("5_a7r0a")]
+[node name="Flame207" parent="Flames" index="319" instance=ExtResource("5_a7r0a")]
 position = Vector2(280, -696)
 
-[node name="Flame208" parent="Flames" index="318" instance=ExtResource("5_a7r0a")]
+[node name="Flame208" parent="Flames" index="320" instance=ExtResource("5_a7r0a")]
 position = Vector2(296, -696)
 
-[node name="Flame209" parent="Flames" index="319" instance=ExtResource("5_a7r0a")]
+[node name="Flame209" parent="Flames" index="321" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -696)
 
-[node name="Flame210" parent="Flames" index="320" instance=ExtResource("5_a7r0a")]
+[node name="Flame210" parent="Flames" index="322" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -616)
 
-[node name="Flame211" parent="Flames" index="321" instance=ExtResource("5_a7r0a")]
+[node name="Flame211" parent="Flames" index="323" instance=ExtResource("5_a7r0a")]
 position = Vector2(136, -616)
 
-[node name="Flame212" parent="Flames" index="322" instance=ExtResource("5_a7r0a")]
+[node name="Flame212" parent="Flames" index="324" instance=ExtResource("5_a7r0a")]
 position = Vector2(152, -616)
 
-[node name="Flame213" parent="Flames" index="323" instance=ExtResource("5_a7r0a")]
+[node name="Flame213" parent="Flames" index="325" instance=ExtResource("5_a7r0a")]
 position = Vector2(168, -616)
 
-[node name="Flame214" parent="Flames" index="324" instance=ExtResource("5_a7r0a")]
+[node name="Flame214" parent="Flames" index="326" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -616)
 
-[node name="Flame215" parent="Flames" index="325" instance=ExtResource("5_a7r0a")]
+[node name="Flame215" parent="Flames" index="327" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -616)
 
-[node name="Flame216" parent="Flames" index="326" instance=ExtResource("5_a7r0a")]
+[node name="Flame216" parent="Flames" index="328" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -616)
 
-[node name="Flame217" parent="Flames" index="327" instance=ExtResource("5_a7r0a")]
+[node name="Flame217" parent="Flames" index="329" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -616)
 
-[node name="Flame218" parent="Flames" index="328" instance=ExtResource("5_a7r0a")]
+[node name="Flame218" parent="Flames" index="330" instance=ExtResource("5_a7r0a")]
 position = Vector2(248, -616)
 
-[node name="Flame219" parent="Flames" index="329" instance=ExtResource("5_a7r0a")]
+[node name="Flame219" parent="Flames" index="331" instance=ExtResource("5_a7r0a")]
 position = Vector2(264, -616)
 
-[node name="Flame220" parent="Flames" index="330" instance=ExtResource("5_a7r0a")]
+[node name="Flame220" parent="Flames" index="332" instance=ExtResource("5_a7r0a")]
 position = Vector2(280, -616)
 
-[node name="Flame221" parent="Flames" index="331" instance=ExtResource("5_a7r0a")]
+[node name="Flame221" parent="Flames" index="333" instance=ExtResource("5_a7r0a")]
 position = Vector2(296, -616)
 
-[node name="Flame222" parent="Flames" index="332" instance=ExtResource("5_a7r0a")]
+[node name="Flame222" parent="Flames" index="334" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -616)
 
-[node name="Flame223" parent="Flames" index="333" instance=ExtResource("5_a7r0a")]
+[node name="Flame223" parent="Flames" index="335" instance=ExtResource("5_a7r0a")]
 position = Vector2(120, -632)
 
-[node name="Flame224" parent="Flames" index="334" instance=ExtResource("5_a7r0a")]
+[node name="Flame224" parent="Flames" index="336" instance=ExtResource("5_a7r0a")]
 position = Vector2(136, -632)
 
-[node name="Flame225" parent="Flames" index="335" instance=ExtResource("5_a7r0a")]
+[node name="Flame225" parent="Flames" index="337" instance=ExtResource("5_a7r0a")]
 position = Vector2(152, -632)
 
-[node name="Flame226" parent="Flames" index="336" instance=ExtResource("5_a7r0a")]
+[node name="Flame226" parent="Flames" index="338" instance=ExtResource("5_a7r0a")]
 position = Vector2(168, -632)
 
-[node name="Flame227" parent="Flames" index="337" instance=ExtResource("5_a7r0a")]
+[node name="Flame227" parent="Flames" index="339" instance=ExtResource("5_a7r0a")]
 position = Vector2(184, -632)
 
-[node name="Flame228" parent="Flames" index="338" instance=ExtResource("5_a7r0a")]
+[node name="Flame228" parent="Flames" index="340" instance=ExtResource("5_a7r0a")]
 position = Vector2(200, -632)
 
-[node name="Flame229" parent="Flames" index="339" instance=ExtResource("5_a7r0a")]
+[node name="Flame229" parent="Flames" index="341" instance=ExtResource("5_a7r0a")]
 position = Vector2(216, -632)
 
-[node name="Flame230" parent="Flames" index="340" instance=ExtResource("5_a7r0a")]
+[node name="Flame230" parent="Flames" index="342" instance=ExtResource("5_a7r0a")]
 position = Vector2(232, -632)
 
-[node name="Flame231" parent="Flames" index="341" instance=ExtResource("5_a7r0a")]
+[node name="Flame231" parent="Flames" index="343" instance=ExtResource("5_a7r0a")]
 position = Vector2(248, -632)
 
-[node name="Flame232" parent="Flames" index="342" instance=ExtResource("5_a7r0a")]
+[node name="Flame232" parent="Flames" index="344" instance=ExtResource("5_a7r0a")]
 position = Vector2(264, -632)
 
-[node name="Flame233" parent="Flames" index="343" instance=ExtResource("5_a7r0a")]
+[node name="Flame233" parent="Flames" index="345" instance=ExtResource("5_a7r0a")]
 position = Vector2(280, -632)
 
-[node name="Flame234" parent="Flames" index="344" instance=ExtResource("5_a7r0a")]
+[node name="Flame234" parent="Flames" index="346" instance=ExtResource("5_a7r0a")]
 position = Vector2(296, -632)
 
-[node name="Flame235" parent="Flames" index="345" instance=ExtResource("5_a7r0a")]
+[node name="Flame235" parent="Flames" index="347" instance=ExtResource("5_a7r0a")]
 position = Vector2(312, -632)
 
 [node name="Checkpoints" type="Node" parent="." index="6"]

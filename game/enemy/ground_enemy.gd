@@ -16,7 +16,7 @@ func _ready() -> void:
     super()
     set_physics_process(false)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if not is_on_floor():
         velocity.y += fall_speed
         move_and_slide()

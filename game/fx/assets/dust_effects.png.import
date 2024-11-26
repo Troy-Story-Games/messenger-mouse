@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bewv8s2spvufw"
-path="res://.godot/imported/player_hurt_gradient.png-23e30dc58445030b2f368ec8716022e2.ctex"
+uid="uid://b23rkmeph3w0f"
+path="res://.godot/imported/dust_effects.png-1eb59989ea23d902454d89c5cdeae2d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/fx/assets/player_hurt_gradient.png"
-dest_files=["res://.godot/imported/player_hurt_gradient.png-23e30dc58445030b2f368ec8716022e2.ctex"]
+source_file="res://game/fx/assets/dust_effects.png"
+dest_files=["res://.godot/imported/dust_effects.png-1eb59989ea23d902454d89c5cdeae2d9.ctex"]
 
 [params]
 

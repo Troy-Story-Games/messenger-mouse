@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6kdrco45hlv8"]
+[gd_scene load_steps=8 format=3 uid="uid://b6kdrco45hlv8"]
 
 [ext_resource type="Script" path="res://game/world/world.gd" id="1_c40t4"]
 [ext_resource type="PackedScene" uid="uid://dn610j483y666" path="res://game/ui/ui.tscn" id="2_pmuhb"]
 [ext_resource type="Script" path="res://game/player/player_camera.gd" id="3_b112w"]
-[ext_resource type="PackedScene" uid="uid://cjc4ain06h2fv" path="res://game/fx/player_hurt_flash.tscn" id="3_kanvo"]
 [ext_resource type="PackedScene" uid="uid://c8bfy6cxbdm23" path="res://game/player/player.tscn" id="5_87y6g"]
 [ext_resource type="Script" path="res://game/world/cheats/cheat_code_listener.gd" id="6_alwes"]
 [ext_resource type="Script" path="res://game/utils/pause_manager.gd" id="7_2sena"]
@@ -17,8 +16,6 @@ script = ExtResource("1_c40t4")
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_cl8q0")]
 process_mode = 3
 visible = false
-
-[node name="PlayerHurtFlash" parent="." instance=ExtResource("3_kanvo")]
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 offset = Vector2(30, -15)

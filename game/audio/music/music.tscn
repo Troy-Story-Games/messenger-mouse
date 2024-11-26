@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://game/audio/music/music.gd" id="1_lepdw"]
 
 [node name="Music" type="Node"]
+process_mode = 3
 script = ExtResource("1_lepdw")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

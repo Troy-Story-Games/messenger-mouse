@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn610j483y666"]
+[gd_scene load_steps=14 format=3 uid="uid://dn610j483y666"]
 
 [ext_resource type="Script" path="res://game/ui/ui.gd" id="1_2geob"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_0sk53"]
 [ext_resource type="Texture2D" uid="uid://b5o5nklcsrdnp" path="res://game/ui/assets/ui_frame.png" id="2_alosx"]
 [ext_resource type="Texture2D" uid="uid://brg353xxf3be2" path="res://game/world/collectible/assets/flame.png" id="4_7xfxj"]
+[ext_resource type="Texture2D" uid="uid://bs3hfab1y71l0" path="res://game/ui/assets/up_arrow.png" id="5_83vsh"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_xa7ki"]
 color = Color(0.027451, 0.12549, 0.603922, 1)
@@ -56,9 +57,226 @@ _data = {
 "flame": SubResource("Animation_1e1xx")
 }
 
+[sub_resource type="Animation" id="Animation_lvgju"]
+resource_name = "tutorial"
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Control/Tutorial/HBoxContainer/LevelTimerTutorial:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control/Tutorial/HBoxContainer/FlameTutorial:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Control/Tutorial/HBoxContainer/SecretsTutorial:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Control/Tutorial/HBoxContainer/CheatsTutorial:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Control/Tutorial/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"tutorial_step"
+}, {
+"args": [],
+"method": &"tutorial_step"
+}, {
+"args": [],
+"method": &"tutorial_step"
+}, {
+"args": [],
+"method": &"tutorial_step"
+}, {
+"args": [],
+"method": &"tutorial_finished"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../TutorialFade:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.470588), Color(0, 0, 0, 0.470588), Color(0, 0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../TutorialFade:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_b3raj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Control/Tutorial/HBoxContainer/LevelTimerTutorial:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control/Tutorial/HBoxContainer/FlameTutorial:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Control/Tutorial/HBoxContainer/SecretsTutorial:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Control/Tutorial/HBoxContainer/CheatsTutorial:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Control/Tutorial/HBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TutorialFade:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.313726)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../TutorialFade:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ey6mq"]
+_data = {
+"RESET": SubResource("Animation_b3raj"),
+"tutorial": SubResource("Animation_lvgju")
+}
+
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_2geob")
+
+[node name="TutorialFade" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -137,48 +355,155 @@ anchors_preset = -1
 anchor_left = 0.803
 anchor_right = 0.803
 offset_left = 0.0799561
-offset_right = 66.08
-offset_bottom = 15.0
+offset_right = 62.08
+offset_bottom = 17.0
 theme_override_constants/margin_top = -3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Secrets"]
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Control/Secrets/HBoxContainer"]
-custom_minimum_size = Vector2(16, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="SecretsFoundLabel" type="Label" parent="Control/Secrets/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0sk53")
 theme_override_font_sizes/font_size = 16
-text = "0/10"
+text = "0/99"
 
 [node name="Cheats" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.911
-anchor_right = 0.911
-offset_left = -0.0400391
-offset_right = 56.96
-offset_bottom = 15.0
+anchor_left = 0.903
+anchor_right = 0.903
+offset_left = 0.0799561
+offset_right = 62.08
+offset_bottom = 17.0
 theme_override_constants/margin_top = -3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Cheats"]
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="Control/Cheats/HBoxContainer"]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(12, 0)
 layout_mode = 2
 
 [node name="CheatsFoundLabel" type="Label" parent="Control/Cheats/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0sk53")
 theme_override_font_sizes/font_size = 16
-text = "0/10"
+text = "0/99"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Tutorial" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.048
+anchor_bottom = 0.048
+offset_top = -0.280001
+offset_right = 640.0
+offset_bottom = 73.72
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Tutorial"]
+layout_mode = 2
+
+[node name="LevelTimerTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Tutorial/HBoxContainer/LevelTimerTutorial"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Tutorial/HBoxContainer/LevelTimerTutorial/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_83vsh")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/Tutorial/HBoxContainer/LevelTimerTutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0sk53")
+theme_override_font_sizes/font_size = 8
+text = "Level timer"
+
+[node name="Spacer" type="Control" parent="Control/Tutorial/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="FlameTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Tutorial/HBoxContainer/FlameTutorial"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Tutorial/HBoxContainer/FlameTutorial/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_83vsh")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/Tutorial/HBoxContainer/FlameTutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0sk53")
+theme_override_font_sizes/font_size = 8
+text = "Don't let the flame run out!"
+
+[node name="Spacer2" type="Control" parent="Control/Tutorial/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="SecretsTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Tutorial/HBoxContainer/SecretsTutorial"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Tutorial/HBoxContainer/SecretsTutorial/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_83vsh")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/Tutorial/HBoxContainer/SecretsTutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0sk53")
+theme_override_font_sizes/font_size = 8
+text = "Secrets
+Found"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="Control/Tutorial/HBoxContainer"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 2
+
+[node name="CheatsTutorial" type="VBoxContainer" parent="Control/Tutorial/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Tutorial/HBoxContainer/CheatsTutorial"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Tutorial/HBoxContainer/CheatsTutorial/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_83vsh")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="Control/Tutorial/HBoxContainer/CheatsTutorial"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0sk53")
+theme_override_font_sizes/font_size = 8
+text = "Cheats
+Found"
+
+[node name="FlameAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_hv28o")
 }
 autoplay = "flame"
+
+[node name="TutorialAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../FlameAnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_ey6mq")
+}

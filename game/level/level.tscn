@@ -30,4 +30,14 @@ texture = ExtResource("3_5l5ss")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelExit"]
 shape = SubResource("RectangleShape2D_lyhi4")
 
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Flames" type="Node" parent="."]
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Secrets" type="Node" parent="."]
+
+[node name="Cheats" type="Node" parent="."]
+
 [connection signal="area_entered" from="LevelExit" to="." method="_on_level_exit_area_entered"]

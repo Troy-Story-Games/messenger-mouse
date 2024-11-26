@@ -1,13 +1,16 @@
 extends CanvasLayer
 class_name UI
 
+signal ui_tutorial_complete()
+
 var running: bool = false
 var time_ms: = 0.0 : set = set_time_ms
 
-@onready var clock: Label = $Control/MarginContainer/Clock
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var secrets_found_label: Label = $Control/Secrets/HBoxContainer/SecretsFoundLabel
 @onready var cheats_found_label: Label = $Control/Cheats/HBoxContainer/CheatsFoundLabel
+@onready var clock: Label = $Control/Timer/Clock
+@onready var tutorial: MarginContainer = $Control/Tutorial
+@onready var tutorial_animation_player: AnimationPlayer = $TutorialAnimationPlayer
 
 func start_timer() -> void:
     time_ms = 0.0
@@ -18,6 +21,21 @@ func stop_timer() -> float:
     time_ms = 0.0
     running = false
     return ret
+
+func show_tutorial() -> void:
+    tutorial_animation_player.play("tutorial")
+
+func tutorial_finished() -> void:
+    ui_tutorial_complete.emit()
+
+func tutorial_step() -> void:
+    SoundFx.play("ui_tutorial_step")
+
+func set_total_cheats(count: int) -> void:
+    pass
+
+func set_total_secrets(count: int) -> void:
+    pass
 
 func _process(delta: float) -> void:
     if not running:

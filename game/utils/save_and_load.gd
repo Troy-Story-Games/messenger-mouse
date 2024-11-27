@@ -27,7 +27,3 @@ func load_game() -> void:
     if not file.eof_reached():
         save_data = JSON.parse_string(file.get_line())
     file.close()
-
-func quit_game(exit_code: int = 0) -> void:
-    save_game()
-    get_tree().quit(exit_code)

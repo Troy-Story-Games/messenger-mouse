@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://css4bbxa6vo05"]
+[gd_scene load_steps=23 format=3 uid="uid://css4bbxa6vo05"]
 
 [ext_resource type="Script" path="res://game/ui/level_complete.gd" id="1_7veru"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_6bc8g"]
@@ -19,15 +19,27 @@ vertical = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asnur"]
 bg_color = Color(1, 1, 1, 1)
-border_width_left = 6
+border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.431373, 0.529412, 1, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7oeb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aatid"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubnim"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhibg"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wdaa"]
 bg_color = Color(0.027451, 0.12549, 0.603922, 1)
@@ -93,6 +105,25 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7oeb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubnim"]
+
+[sub_resource type="Animation" id="Animation_a1nfi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_kmvff"]
 resource_name = "show"
 length = 0.4
@@ -108,21 +139,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_a1nfi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k0nvf"]
@@ -219,7 +235,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_5pnlc")
 [node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -227,8 +243,8 @@ theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_6bc8g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_asnur")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_n7oeb")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ubnim")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_aatid")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rhibg")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_1wdaa")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_t2w3o")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_cahce")
@@ -237,10 +253,11 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_uox35")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yx0f2")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_e12sh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_j2ha4")
-text = "Continue"
+disabled = true
+text = "Continue "
 script = ExtResource("3_icn1g")
 
-[node name="SaveAndQuit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SaveAndQuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -270,4 +287,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndQuit" to="." method="_on_save_and_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]

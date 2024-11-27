@@ -63,7 +63,7 @@ bouncy_enemy = true
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_gcjek")
-hframes = 2
+hframes = 6
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 polygon = PackedVector2Array(0, 10, 7, 2, 0, -9, -7, 2)

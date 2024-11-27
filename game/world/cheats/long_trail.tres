@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_kdnju")
 button_combo = Array[String](["move_left", "move_left", "move_left", "move_left", "attack", "attack", "jump", "pause"])
-cheat_name = "Long trail effect"
+cheat_name = "Long Trail Effect"

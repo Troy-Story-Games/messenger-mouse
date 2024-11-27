@@ -5,7 +5,7 @@ const PLAYER_DEATH_HOP_HEIGHT: int = 25
 
 func enter() -> void:
 	var player: Player = actor as Player
-	player.attack_animation_player.play("RESET")
+	player.attack_animation_player.play(&"RESET")
 	player.remote_transform_2d.remote_path = ""
 	player.animation_player.play("die")
 	player.collision_polygon_2d.set_deferred("disabled", true)

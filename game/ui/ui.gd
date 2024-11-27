@@ -3,7 +3,6 @@ class_name UI
 
 signal ui_tutorial_complete()
 
-var running: bool = false
 var time_ms: = 0.0 : set = set_time_ms
 var total_cheats: int = 0 : set = set_total_cheats
 var total_secrets: int = 0 : set = set_total_secrets
@@ -17,65 +16,48 @@ var secrets_found: int = 0 : set = set_secrets_found
 @onready var tutorial_animation_player: AnimationPlayer = $TutorialAnimationPlayer
 @onready var flame_progress_bar: ProgressBar = $Control/Flame/HBoxContainer/MarginContainer/FlameProgressBar
 
-func start_timer() -> void:
-    time_ms = 0.0
-    running = true
-
-func stop_timer() -> float:
-    var ret: = time_ms
-    time_ms = 0.0
-    running = false
-    return ret
-
 func set_flame_progress_max(value: float) -> void:
-    flame_progress_bar.max_value = value
+	flame_progress_bar.max_value = value
 
 func set_flame_progress(value: float) -> void:
-    flame_progress_bar.value = value
-    # TODO: Tween progress bar y-scale
-    # TODO: Shake progress bar when close to 0
+	flame_progress_bar.value = value
+	# TODO: Tween progress bar y-scale
+	# TODO: Shake progress bar when close to 0
 
 func show_tutorial() -> void:
-    tutorial_animation_player.play("tutorial")
+	tutorial_animation_player.play("tutorial")
 
 func tutorial_finished() -> void:
-    ui_tutorial_complete.emit()
+	ui_tutorial_complete.emit()
 
 func tutorial_step() -> void:
-    SoundFx.play("ui_tutorial_step")
+	SoundFx.play("ui_tutorial_step")
+
+func tutorial_go() -> void:
+	SoundFx.play("tutorial_go_sound")
 
 func update_cheats_label() -> void:
-    cheats_found_label.text = "%02d/%02d" % [cheats_found, total_cheats]
+	cheats_found_label.text = "%02d/%02d" % [cheats_found, total_cheats]
 
 func update_secrets_label() -> void:
-    secrets_found_label.text = "%02d/%02d" % [secrets_found, total_secrets]
+	secrets_found_label.text = "%02d/%02d" % [secrets_found, total_secrets]
 
 func set_cheats_found(value: int) -> void:
-    cheats_found = value
-    update_cheats_label()
+	cheats_found = value
+	update_cheats_label()
 
 func set_secrets_found(value: int) -> void:
-    secrets_found = value
-    update_secrets_label()
+	secrets_found = value
+	update_secrets_label()
 
 func set_total_cheats(value: int) -> void:
-    total_cheats = value
-    update_cheats_label()
+	total_cheats = value
+	update_cheats_label()
 
 func set_total_secrets(value: int) -> void:
-    total_secrets = value
-    update_secrets_label()
-
-func _process(delta: float) -> void:
-    if not running:
-        return
-    time_ms += delta * 1000
+	total_secrets = value
+	update_secrets_label()
 
 func set_time_ms(value: float) -> void:
-    time_ms = value
-    var rem_ms: = time_ms
-    var rem_m: = int(floor((rem_ms / 1000.0) / 60.0))
-    rem_ms -= rem_m * 60 * 1000
-    var rem_s: = int(floor(rem_ms / 1000.0))
-    rem_ms -= rem_s * 1000
-    clock.text = "%02d:%02d:%02d" % [rem_m, rem_s, int(floor(rem_ms / 10.0))]
+	time_ms = value
+	clock.text = Utils.ms_to_string(time_ms)

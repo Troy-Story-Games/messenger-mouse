@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ijv2t8ul05bd"]
+[gd_scene load_steps=19 format=3 uid="uid://ijv2t8ul05bd"]
 
 [ext_resource type="Script" path="res://game/ui/pause_menu.gd" id="1_khoi7"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_3qqyd"]
@@ -80,6 +80,62 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_0ergr"]
+resource_name = "show"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wx6ov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uydjy"]
+resource_name = "hide"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ghf6"]
+_data = {
+"RESET": SubResource("Animation_wx6ov"),
+"hide": SubResource("Animation_uydjy"),
+"show": SubResource("Animation_0ergr")
+}
+
 [node name="PauseMenu" type="Control"]
 process_mode = 2
 layout_mode = 3
@@ -97,7 +153,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.470588)
+color = Color(0, 0, 0, 0.705882)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -156,6 +212,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_uohbi")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
 text = "Save and Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ghf6")
+}
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndQuit" to="." method="_on_save_and_quit_pressed"]

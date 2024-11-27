@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="3_0vp2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igts1"]
-size = Vector2(96, 3278)
+size = Vector2(96, 6962)
 
 [sub_resource type="Animation" id="Animation_67apy"]
 length = 0.001

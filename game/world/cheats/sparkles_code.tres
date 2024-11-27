@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CheatCode" load_steps=2 format=3 uid="uid://jcs7aga7q7c1"]
+
+[ext_resource type="Script" path="res://game/world/cheats/cheat_code.gd" id="1_prraa"]
+
+[resource]
+script = ExtResource("1_prraa")
+button_combo = Array[String](["jump", "crouch", "jump", "crouch", "pause"])
+cheat_name = ""

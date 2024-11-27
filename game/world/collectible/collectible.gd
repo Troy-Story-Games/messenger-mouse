@@ -8,17 +8,17 @@ var start_visible: bool
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-    start_visible = visible
-    Events.player_died.connect(_on_player_died)
+	start_visible = visible
+	Events.player_died.connect(_on_player_died)
 
 func collect() -> void:
-    SoundFx.play("collect_coin")
-    Events.flame_collected.emit()
-    start_visible = true
-    hide()
-    collision_shape_2d.set_deferred("disabled", true)
+	SoundFx.play("collect_coin")
+	Events.flame_collected.emit()
+	start_visible = true
+	hide()
+	collision_shape_2d.set_deferred("disabled", true)
 
 func _on_player_died() -> void:
-    collision_shape_2d.set_deferred("disabled", false)
-    if start_visible:
-        show()
+	collision_shape_2d.set_deferred("disabled", false)
+	if start_visible:
+		show()

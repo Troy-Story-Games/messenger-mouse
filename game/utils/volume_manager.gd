@@ -1,28 +1,28 @@
 extends Node
 
-var saved_volume: Dictionary
+var saved_audio: Dictionary
 
 func _ready() -> void:
 	SaveAndLoad.load_game()
-	var volume = SaveAndLoad.save_data.get("volume")
-	if not volume:
-		saved_volume = {"Master": 1.0, "SoundFX": 1.0, "Music": 1.0}
+	var audio = SaveAndLoad.save_data.settings.audio
+	if not audio:
+		saved_audio = {"Master": 1.0, "SoundFX": 1.0, "Music": 1.0}
 	else:
-		saved_volume = volume as Dictionary
+		saved_audio = audio as Dictionary
 
-	if "Master" not in saved_volume:
-		saved_volume["Master"] = 1.0
-	if "SoundFX" not in saved_volume:
-		saved_volume["SoundFX"] = 1.0
-	if "Music" not in saved_volume:
-		saved_volume["Music"] = 1.0
+	if "Master" not in saved_audio:
+		saved_audio["Master"] = 1.0
+	if "SoundFX" not in saved_audio:
+		saved_audio["SoundFX"] = 1.0
+	if "Music" not in saved_audio:
+		saved_audio["Music"] = 1.0
 
-	print("Setting master volume: ", saved_volume["Master"])
-	print("Setting music volume: ", saved_volume["Music"])
-	print("Setting soundfx volume: ", saved_volume["SoundFX"])
+	print("Setting master volume: ", saved_audio["Master"])
+	print("Setting music volume: ", saved_audio["Music"])
+	print("Setting soundfx volume: ", saved_audio["SoundFX"])
 
-	SaveAndLoad.add_sub_dict("volume", saved_volume)
-	Utils.set_volume("Master", saved_volume["Master"])
-	Utils.set_volume("SoundFX", saved_volume["SoundFX"])
-	Utils.set_volume("Music", saved_volume["Music"])
+	SaveAndLoad.save_data.settings.audio = saved_audio
+	Utils.set_volume("Master", saved_audio["Master"])
+	Utils.set_volume("SoundFX", saved_audio["SoundFX"])
+	Utils.set_volume("Music", saved_audio["Music"])
 	SaveAndLoad.save_game()

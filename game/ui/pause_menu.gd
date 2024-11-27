@@ -6,10 +6,7 @@ class_name PauseMenu
 
 func _on_resume_button_pressed() -> void:
     hide_menu()
-    get_tree().paused = false
-
-func _on_save_and_quit_pressed() -> void:
-    SaveAndLoad.quit_game()
+    Events.request_script_pause.emit(false)
 
 func hide_menu() -> void:
     resume_button.disabled = true
@@ -29,3 +26,6 @@ func _on_pause_manager_paused() -> void:
 
 func _on_pause_manager_unpaused() -> void:
     hide_menu()
+
+func _on_quit_pressed() -> void:
+    get_tree().quit(0)

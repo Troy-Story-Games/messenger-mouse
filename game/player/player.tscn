@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c8bfy6cxbdm23"]
+[gd_scene load_steps=38 format=3 uid="uid://c8bfy6cxbdm23"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_1oiqi"]
 [ext_resource type="Script" path="res://game/player/movement_stats.gd" id="2_4b2h1"]
@@ -39,6 +39,10 @@ wall_slide_acceleration = 100.0
 wall_slide_max_speed = 300.0
 wall_jump_force = 350.0
 wall_jump_speed = 50.0
+
+[sub_resource type="Curve" id="Curve_8hotc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.491917, 0.398253), 2.57513, 2.57513, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c8vyh"]
 shader = ExtResource("3_48ic7")
@@ -1695,6 +1699,22 @@ size = Vector2(8, 8)
 collision_layer = 2
 script = ExtResource("1_1oiqi")
 movement_stats = SubResource("Resource_2ksf3")
+
+[node name="SparkleTrail" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 24
+explosiveness = 0.16
+randomness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 5)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_8hotc")
+color = Color(0.431373, 0.529412, 1, 1)
 
 [node name="FlipAnchor" type="Node2D" parent="."]
 

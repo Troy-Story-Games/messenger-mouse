@@ -7,6 +7,7 @@ var direction := Vector2.RIGHT : set = set_direction
 var facing_direction := Vector2.RIGHT : set = set_facing_direction
 var sprite_shader_material: ShaderMaterial
 var long_trail: bool = false
+var sparkle_trail_enabled: bool = false
 var dead: bool = false
 
 @onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
@@ -25,6 +26,7 @@ var dead: bool = false
 @onready var collection_area_2d: Area2D = $CollectionArea2D
 @onready var hitbox: Hitbox = $FlipAnchor/Hitbox
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+@onready var sparkle_trail: CPUParticles2D = $SparkleTrail
 
 # Stats
 @onready var stats: Stats = MainInstances.player_stats as Stats
@@ -64,6 +66,14 @@ func _on_toggle_cheat(cheat_name: String) -> void:
         else:
             long_trail = false
             sprite_shader_material.set_shader_parameter("trail_size", 12)
+    if cheat_name == "sparkle_trail":
+        if not sparkle_trail_enabled:
+            print("SPARKLE TRAIL!")
+            sparkle_trail_enabled = true
+            sparkle_trail.emitting = true
+        else:
+            sparkle_trail_enabled = false
+            sparkle_trail.emitting = false
 
 func _process(_delta: float) -> void:
     sprite_shader_material.set_shader_parameter("frame_coords", sprite_2d.frame_coords)

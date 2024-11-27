@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_prraa")
 button_combo = Array[String](["jump", "crouch", "jump", "crouch", "pause"])
-cheat_name = ""
+cheat_name = "Sparkle Trail"

@@ -1,9 +1,9 @@
 extends Node2D
 class_name Level
 
-@export var flame_value: float = 0.2
-@export var checkpoint_value: float = 5.0
-@export var time_limit: float = 30.0
+@export var flame_value: float = 0.4
+@export var checkpoint_value: float = 10.0
+@export var time_limit: float = 60.0
 @export var player_outside_limit_threshold: int = 25
 
 var level_stats: Dictionary
@@ -26,7 +26,7 @@ func _ready() -> void:
     Events.flame_collected.connect(_on_flame_collected)
     Events.cheat_found.connect(_on_cheat_found)
     Events.secret_found.connect(_on_secret_found)
-    level_stats = load_level_stats()
+    load_level_stats()
 
 func _on_player_checkpoint(_pos: Vector2) -> void:
     var new_time_left = clamp(flame_timer.time_left + checkpoint_value, 0, time_limit)
@@ -100,17 +100,8 @@ func _physics_process(_delta: float) -> void:
 
     check_player_position(player)
 
-func load_level_stats() -> Dictionary:
-    return SaveAndLoad.save_data.levels.get(scene_file_path, {})
-
-func update_stats() -> Dictionary:
-    if "best_time" in level_stats and time_ms < level_stats.best_time:
-        print("New record: ", time_ms)
-        level_stats.best_time = time_ms
-    elif "best_time" not in level_stats:
-        level_stats.best_time = time_ms
-
-    level_stats.last_time = time_ms
+func load_level_stats() -> void:
+    level_stats = SaveAndLoad.save_data.levels.get(scene_file_path, {})
     level_stats.num_cheats = get_num_cheats()
     level_stats.num_secrets = get_num_secrets()
 
@@ -124,9 +115,22 @@ func update_stats() -> Dictionary:
     elif "secrets_found" not in level_stats:
         level_stats.secrets_found = secrets_found
 
+    cheats_found = level_stats.cheats_found
+    secrets_found = level_stats.secrets_found
+
+func update_stats() -> void:
+    if "best_time" in level_stats and time_ms < level_stats.best_time:
+        print("New record: ", time_ms)
+        level_stats.best_time = time_ms
+    elif "best_time" not in level_stats:
+        level_stats.best_time = time_ms
+
+    level_stats.last_time = time_ms
+    level_stats.cheats_found = cheats_found
+    level_stats.secrets_found = secrets_found
+
     SaveAndLoad.save_data.levels[scene_file_path] = level_stats
     SaveAndLoad.save_game()
-    return level_stats
 
 func _on_level_exit_area_entered(area: Area2D) -> void:
     if not exiting:
@@ -135,7 +139,8 @@ func _on_level_exit_area_entered(area: Area2D) -> void:
         exiting = true
         flame_timer.stop()
         SoundFx.play("level_complete", 1, -15, 0)
-        Events.next_level.emit(update_stats())
+        update_stats()
+        Events.next_level.emit(level_stats)
         level_exit.set_deferred("monitoring", false)
         level_exit.set_deferred("monitorable", false)
 

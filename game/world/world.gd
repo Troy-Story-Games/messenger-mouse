@@ -6,7 +6,7 @@ const PlayerScene = preload("res://game/player/player.tscn")
 @export var min_time_left_on_respawn: float = 15.0
 
 var current_level: Level
-var current_level_idx: int = 4
+var current_level_idx: int = 5
 var zoom_out_enabled: bool = false
 var last_checkpoint: Vector2
 
@@ -76,9 +76,9 @@ func start_level() -> void:
 
     if current_level_idx == 0:
         ui.show_tutorial()
-        get_tree().paused = true
+        Events.request_script_pause.emit(true)
         await ui.ui_tutorial_complete
-        get_tree().paused = false
+        Events.request_script_pause.emit(false)
 
 func _process(_delta: float) -> void:
     var time_left = current_level.get_time_left()

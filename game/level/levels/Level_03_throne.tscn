@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_cojwg"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_jpvsb"]
 
-[node name="Level" instance=ExtResource("1_cojwg")]
+[node name="Level2" instance=ExtResource("1_cojwg")]
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -473.0

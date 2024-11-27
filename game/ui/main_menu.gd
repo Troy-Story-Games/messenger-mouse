@@ -18,7 +18,7 @@ func _on_options_pressed() -> void:
     get_tree().change_scene_to_file("res://game/ui/options.tscn")
 
 func _on_quit_pressed() -> void:
-    SaveAndLoad.quit_game()
+    get_tree().quit(0)
 
 func _on_leaderboard_pressed() -> void:
     get_tree().change_scene_to_file("res://game/ui/leaderboard.tscn")

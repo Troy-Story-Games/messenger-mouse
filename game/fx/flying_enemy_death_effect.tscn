@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://bolbeoumkcmvt"]
+
+[ext_resource type="PackedScene" uid="uid://d3dyjx8whfgvh" path="res://game/fx/animated_sprite_effect.tscn" id="1_io3wj"]
+[ext_resource type="Texture2D" uid="uid://bx3gdars6ugx1" path="res://game/fx/assets/enemy_death_effect.png" id="2_qnvw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1osi2"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tcjy"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2gxq"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w22k"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pfpk"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk1rq"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmind"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rux3y"]
+atlas = ExtResource("2_qnvw6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsk3v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1osi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tcjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2gxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w22k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pfpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk1rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmind")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rux3y")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="FlyingEnemyDeathEffect" instance=ExtResource("1_io3wj")]
+sprite_frames = SubResource("SpriteFrames_bsk3v")
+frame_progress = 1.0

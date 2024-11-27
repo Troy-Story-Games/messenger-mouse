@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwy1h22k1o32"]
+
+[ext_resource type="PackedScene" uid="uid://dcvg1i7ut5foi" path="res://game/fx/enemy_slice_death_effect.tscn" id="1_bccgv"]
+[ext_resource type="Texture2D" uid="uid://cs4nhs47lmct0" path="res://game/enemy/assets/flying_enemy.png" id="2_qlqvn"]
+
+[node name="FlyingEnemySliceDeathEffect" instance=ExtResource("1_bccgv")]
+top_collision_shape = PackedVector2Array(7, 0, -7, 0, -6, -7, 6, -7)
+bottom_collision_shape = PackedVector2Array(7, 0, -7, 0, -7, 5, -4, 7, 0, 5, 4, 7, 7, 5)
+left_collision_shape = PackedVector2Array(0, -7, 0, 5, -3, 7, -5, 7, -7, 5, -7, -2, -6, -7)
+right_collision_shape = PackedVector2Array(0, -7, 0, 5, 3, 7, 7, 5, 7, -2, 6, -7)
+
+[node name="Top" parent="Half1" index="0"]
+texture = ExtResource("2_qlqvn")
+hframes = 6
+frame = 5
+
+[node name="Left" parent="Half1" index="1"]
+texture = ExtResource("2_qlqvn")
+hframes = 6
+frame = 2
+
+[node name="Bottom" parent="Half2" index="0"]
+texture = ExtResource("2_qlqvn")
+hframes = 6
+frame = 4
+
+[node name="Right" parent="Half2" index="1"]
+texture = ExtResource("2_qlqvn")
+hframes = 6
+frame = 3

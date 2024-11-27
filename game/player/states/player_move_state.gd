@@ -384,16 +384,16 @@ func update_attack_animations(player: Player, input_vector: Vector2) -> void:
     player.hitbox.clear_stored_targets()
     var attack_direction: = Vector2.RIGHT
     var attack_list: Array[String] = side_attack_animations
-    if Input.is_action_pressed("move_up"):
+    if input_vector.x > 0:
+        attack_direction = Vector2.RIGHT
+    elif input_vector.x < 0:
+        attack_direction = Vector2.LEFT
+    elif Input.is_action_pressed("move_up"):
         attack_direction = Vector2.UP
         attack_list = top_attack_animations
     elif Input.is_action_pressed("move_down") and not player.is_on_floor() and not player.is_on_wall():
         attack_direction = Vector2.DOWN
         attack_list = bottom_attack_animations
-    elif input_vector.x > 0:
-        attack_direction = Vector2.RIGHT
-    elif input_vector.x < 0:
-        attack_direction = Vector2.LEFT
 
     if player.combo_attack_timer.time_left == 0 or attack_direction != last_attack_direction:
         player.combo_attack_timer.stop()
@@ -404,9 +404,8 @@ func update_attack_animations(player: Player, input_vector: Vector2) -> void:
     var next_attack: String = combo_attack_animations.pop_front()
     combo_attack_animations.append(next_attack)
     player.attack_animation_player.play(next_attack)
-
+    player.hitbox.knockback = attack_direction
     SoundFx.play("slash")
-
 
 func process_state(delta: float) -> void:
     just_jumped = false

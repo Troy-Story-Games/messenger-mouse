@@ -6,7 +6,7 @@ const PlayerScene = preload("res://game/player/player.tscn")
 @export var min_time_left_on_respawn: float = 15.0
 
 var current_level: Level
-var current_level_idx: int = 4
+var current_level_idx: int = 2
 var zoom_out_enabled: bool = false
 var last_checkpoint: Vector2
 

@@ -376,7 +376,7 @@ func update_animations(player: Player, input_vector: Vector2) -> void:
         player.walk_sound_fx.stop()
 
 func update_attack_animations(player: Player, input_vector: Vector2) -> void:
-    if sliding or climbing or player.is_on_wall_only() or (player.is_on_floor() and Input.is_action_pressed("move_down")):
+    if sliding or (player.is_on_floor() and Input.is_action_pressed("move_down")):
         return
 
     if not Input.is_action_just_pressed("attack"):

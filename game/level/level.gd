@@ -2,8 +2,8 @@ extends Node2D
 class_name Level
 
 @export var flame_value: float = 0.4
-@export var checkpoint_value: float = 10.0
-@export var time_limit: float = 60.0
+@export var checkpoint_value: float = 20.0
+@export var time_limit: float = 120.0
 @export var player_outside_limit_threshold: int = 25
 
 var level_stats: Dictionary
@@ -26,7 +26,23 @@ func _ready() -> void:
     Events.flame_collected.connect(_on_flame_collected)
     Events.cheat_found.connect(_on_cheat_found)
     Events.secret_found.connect(_on_secret_found)
+    Events.flame_relight_start.connect(_on_flame_relight_start)
+    Events.flame_relight_complete.connect(_on_flame_relight_complete)
+    Events.flame_relight_progress.connect(_on_flame_relight_progress)
     load_level_stats()
+
+func _on_flame_relight_start() -> void:
+    flame_timer.paused = true
+
+func _on_flame_relight_progress(amount: float) -> void:
+    var new_time_left = time_limit * amount
+    print("Flame relight: ", new_time_left)
+    set_time_left(new_time_left)
+    flame_timer.paused = true
+
+func _on_flame_relight_complete() -> void:
+    set_time_left(time_limit)
+    flame_timer.paused = false
 
 func _on_player_checkpoint(_pos: Vector2) -> void:
     var new_time_left = clamp(flame_timer.time_left + checkpoint_value, 0, time_limit)
@@ -145,4 +161,4 @@ func _on_level_exit_area_entered(area: Area2D) -> void:
         level_exit.set_deferred("monitorable", false)
 
 func _on_flame_timer_timeout() -> void:
-    Events.level_timeout.emit()
+    Events.flame_timer_timeout.emit()

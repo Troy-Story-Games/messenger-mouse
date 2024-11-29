@@ -50,10 +50,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj8dt"]
-radius = 11.0
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yanie"]
-radius = 8.0
+radius = 7.0
 
 [node name="FlyingEnemy" instance=ExtResource("1_xai6e")]
 script = ExtResource("2_eaiml")

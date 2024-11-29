@@ -33,15 +33,15 @@ func slice(attack_direction: Vector2) -> void:
     if attack_direction == Vector2.UP or attack_direction == Vector2.DOWN:
         left.show()
         right.show()
-        collision_poly_half1.polygon = left_collision_shape
-        collision_poly_half2.polygon = right_collision_shape
+        collision_poly_half1.set_deferred("polygon", left_collision_shape)
+        collision_poly_half2.set_deferred("polygon", right_collision_shape)
         half_1.apply_central_impulse(Vector2.LEFT * impulse_strength)
         half_2.apply_central_impulse(Vector2.RIGHT * impulse_strength)
     else:
         top.show()
         bottom.show()
-        collision_poly_half1.polygon = top_collision_shape
-        collision_poly_half2.polygon = bottom_collision_shape
+        collision_poly_half1.set_deferred("polygon", top_collision_shape)
+        collision_poly_half2.set_deferred("polygon", bottom_collision_shape)
         half_1.apply_central_impulse(Vector2.UP * impulse_strength / 2)
         half_2.apply_central_impulse(Vector2.DOWN * impulse_strength / 2)
         if attack_direction == Vector2.LEFT:

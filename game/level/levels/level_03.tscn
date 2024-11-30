@@ -1,11 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://y3oxrjy4gqdr"]
 
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_lal58"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cnhbqa0w4qvm8" path="res://game/enemy/enemy_spawner.tscn" id="2_o0qyp"]
-=======
 [ext_resource type="Texture2D" uid="uid://dqsfyp1u8x8v7" path="res://game/level/assets/level_images/level_03.png" id="2_2vd8x"]
->>>>>>> main
 [ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="3_f3d8k"]
 [ext_resource type="PackedScene" uid="uid://twyv0mvik1eg" path="res://game/level/checkpoint.tscn" id="4_d2ptp"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="6_rwvba"]

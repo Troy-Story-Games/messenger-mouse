@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx4duxj7u14f6"]
+[gd_scene load_steps=6 format=3 uid="uid://bx4duxj7u14f6"]
 
 [ext_resource type="Script" path="res://game/level/level.gd" id="1_oojed"]
 [ext_resource type="Script" path="res://game/player/camera_limits.gd" id="2_c3aqe"]
 [ext_resource type="Texture2D" uid="uid://p6waudhqsime" path="res://game/world/assets/door.png" id="3_5l5ss"]
+[ext_resource type="Texture2D" uid="uid://3q1r4i4cmjud" path="res://game/level/assets/bonfire.png" id="4_nbmsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyhi4"]
 size = Vector2(16, 16)
@@ -43,6 +44,14 @@ shape = SubResource("RectangleShape2D_lyhi4")
 
 [node name="FlameTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Bonfire" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Bonfire"]
+texture = ExtResource("4_nbmsr")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bonfire"]
 
 [connection signal="area_entered" from="LevelExit" to="." method="_on_level_exit_area_entered"]
 [connection signal="timeout" from="FlameTimer" to="." method="_on_flame_timer_timeout"]

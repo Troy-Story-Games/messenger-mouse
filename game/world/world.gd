@@ -53,6 +53,8 @@ func respawn() -> void:
 	player.global_position = last_checkpoint
 
 func next_level() -> void:
+	var player: Player = MainInstances.player
+
 	if current_level_idx >= len(Utils.levels):
 		SaveAndLoad.save_data.next_level_index = 0
 		SaveAndLoad.save_data.game_completed = true
@@ -61,6 +63,16 @@ func next_level() -> void:
 		# TODO: Credits
 		get_tree().change_scene_to_file("res://game/ui/main_menu.tscn")
 		return
+
+	if player and is_instance_valid(player):
+		player.hurtbox.is_invincible = true
+		player.hurtbox.set_deferred("monitorable", false)
+		player.hurtbox.set_deferred("monitoring", false)
+		player.hitbox.set_deferred("monitorable", false)
+		player.hitbox.set_deferred("monitoring", false)
+		player.collision_polygon_2d.disabled = true
+		player.global_position = Vector2.ZERO
+		player.hide()
 
 	if current_level:
 		current_level.queue_free()
@@ -72,11 +84,21 @@ func next_level() -> void:
 
 	current_level = Utils.get_level(current_level_idx).instantiate()
 	add_child(current_level)
+	print("Start position updated to: ", current_level.start_position.global_position)
 	last_checkpoint = current_level.start_position.global_position
 	MainInstances.current_level = current_level
-	start_level()
+	start_level(player)
 
-func start_level() -> void:
+func start_level(player: Player) -> void:
+	if player and is_instance_valid(player):
+		player.hurtbox.is_invincible = false
+		player.hurtbox.set_deferred("monitorable", true)
+		player.hurtbox.set_deferred("monitoring", true)
+		player.hitbox.set_deferred("monitorable", true)
+		player.hitbox.set_deferred("monitoring", true)
+		player.collision_polygon_2d.disabled = false
+		player.show()
+
 	level_fade.show()
 	ui.set_total_cheats(current_level.get_num_cheats())
 	ui.set_total_secrets(current_level.get_num_secrets())

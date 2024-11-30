@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://d0hok7nwuiptg"]
+[gd_scene load_steps=10 format=4 uid="uid://d0hok7nwuiptg"]
 
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_rsmgt"]
+[ext_resource type="Texture2D" uid="uid://css60te7nji5t" path="res://game/level/assets/level_images/level_00.png" id="2_fbd38"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_m6ao3"]
 [ext_resource type="PackedScene" uid="uid://cnhbqa0w4qvm8" path="res://game/enemy/enemy_spawner.tscn" id="3_4sn6p"]
 [ext_resource type="PackedScene" uid="uid://twyv0mvik1eg" path="res://game/level/checkpoint.tscn" id="4_bpr03"]
@@ -10,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://jcs7aga7q7c1" path="res://game/world/cheats/sparkle_trail.tres" id="7_n8ami"]
 
 [node name="Level00" instance=ExtResource("1_rsmgt")]
+level_image = ExtResource("2_fbd38")
+level_name = "Tutorial Level"
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -56.0

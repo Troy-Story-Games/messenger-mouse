@@ -8,6 +8,7 @@ const COYOTE_JUMP_REACTION_TIME: = 0.2
 const WALL_STICK_TIME: = 0.4
 const COMBO_ATTACK_BUTTON_TIME: = 5.0
 
+var need_relight_flame: bool = false
 var unlimited_jump: bool = false
 var unlimited_slide_boost: bool = false
 var just_jumped: bool = false
@@ -26,10 +27,25 @@ var last_attack_direction: Vector2 = Vector2.RIGHT
 
 func enter() -> void:
     var player: Player = actor as Player
-    player.wall_stick_timer.timeout.connect(func(): wall_stick = false)
+    player.wall_stick_timer.timeout.connect(_on_wall_stick_timer_timeout)
     Events.toggle_cheat.connect(_on_toggle_cheat)
     Events.enemy_killed.connect(_on_enemy_killed)
+    Events.flame_timer_timeout.connect(_on_flame_timer_timeout)
     player.stats.no_health.connect(_on_player_no_health)
+
+func _on_wall_stick_timer_timeout() -> void:
+    wall_stick = false
+
+func exit() -> void:
+    var player: Player = actor as Player
+    player.wall_stick_timer.timeout.disconnect(_on_wall_stick_timer_timeout)
+    Events.toggle_cheat.disconnect(_on_toggle_cheat)
+    Events.enemy_killed.disconnect(_on_enemy_killed)
+    Events.flame_timer_timeout.disconnect(_on_flame_timer_timeout)
+    player.stats.no_health.disconnect(_on_player_no_health)
+
+func _on_flame_timer_timeout() -> void:
+    need_relight_flame = true
 
 func _on_player_no_health() -> void:
     finished.emit()
@@ -251,8 +267,12 @@ func apply_verticle_force(player: Player, delta: float) -> void:
     if player.is_on_wall_only() and player.velocity.y >= 0:  # Wall slide
         accel = player.movement_stats.wall_slide_acceleration
         max_vel = player.movement_stats.wall_slide_max_speed
-    player.velocity.y += accel * delta
-    player.velocity.y = min(player.velocity.y, max_vel)
+
+    if player.is_on_wall_only() and Input.is_action_pressed("crouch"):
+        player.velocity.y = max_vel
+    else:
+        player.velocity.y += accel * delta
+        player.velocity.y = min(player.velocity.y, max_vel)
 
 func play_landing_effect() -> void:
     var player: Player = actor as Player
@@ -316,6 +336,11 @@ func move(player: Player, _delta: float):
     if not was_on_wall_only and player.is_on_wall_only() and not just_jumped:
         wall_stick = true
         double_jump = true
+
+    # We are on the ground and the flame timer has run out - re-light
+    if player.is_on_floor() and not sliding and not climbing and not player.is_on_ceiling() and not player.is_ceiling_raycast_colliding() and need_relight_flame:
+        need_relight_flame = false
+        finished.emit()
 
 func update_animations(player: Player, input_vector: Vector2) -> void:
     var last_animation = player.animation_player.assigned_animation

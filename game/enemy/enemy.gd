@@ -22,6 +22,18 @@ func _ready() -> void:
     assert(stats, "Missing enemy stats")
     hurtbox.hurt.connect(take_hit)
     stats.no_health.connect(die)
+    Events.flame_relight_start.connect(flame_relight_start)
+    Events.flame_relight_complete.connect(flame_relight_complete)
+
+func flame_relight_start():
+    set_process(false)
+    set_physics_process(false)
+    animation_player.pause()
+
+func flame_relight_complete():
+    set_process(true)
+    set_physics_process(true)
+    animation_player.play()
 
 func take_hit(hitbox: Hitbox) -> void:
     attack_direction = hitbox.knockback

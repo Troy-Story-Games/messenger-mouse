@@ -19,6 +19,16 @@ func _ready() -> void:
     motion_tween.set_loops()
     motion_tween.play()
 
+func flame_relight_start():
+    fire_timer.paused = true
+    motion_tween.pause()
+    super()
+
+func flame_relight_complete():
+    fire_timer.paused = false
+    motion_tween.play()
+    super()
+
 func _on_fire_timer_timeout() -> void:
     var bullet: EnemyBullet = Utils.instantiate_scene_on_level(
         EnemyBulletScene, global_position) as EnemyBullet

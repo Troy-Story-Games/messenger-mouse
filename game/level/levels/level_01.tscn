@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://5pfe8mykqnba"]
+[gd_scene load_steps=6 format=4 uid="uid://5pfe8mykqnba"]
 
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_kp542"]
+[ext_resource type="Texture2D" uid="uid://wbemixgy6s7v" path="res://game/level/assets/level_images/level_01.png" id="2_3xba1"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_j3txu"]
 [ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="3_uo0ox"]
 [ext_resource type="PackedScene" uid="uid://twyv0mvik1eg" path="res://game/level/checkpoint.tscn" id="4_l0oqv"]
 
 [node name="Level01" instance=ExtResource("1_kp542")]
+level_image = ExtResource("2_3xba1")
+level_name = "Level 01"
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -243.0

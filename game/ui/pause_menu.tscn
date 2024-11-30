@@ -1,8 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://ijv2t8ul05bd"]
+[gd_scene load_steps=23 format=3 uid="uid://ijv2t8ul05bd"]
 
 [ext_resource type="Script" path="res://game/ui/pause_menu.gd" id="1_khoi7"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_3qqyd"]
 [ext_resource type="Script" path="res://game/ui/beep_ui/beep_button.gd" id="3_w5aca"]
+[ext_resource type="PackedScene" uid="uid://dl5f0i7ogijos" path="res://game/ui/options.tscn" id="4_mx5t1"]
+[ext_resource type="PackedScene" uid="uid://sc22lhdymeb4" path="res://game/ui/cheat_code_list_ui.tscn" id="5_vbg8c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84d8p"]
 bg_color = Color(1, 1, 1, 1)
@@ -206,7 +208,79 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
 text = "Resume "
 script = ExtResource("3_w5aca")
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3qqyd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_84d8p")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_hefrx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kbuef")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_hm8u1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7prld")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7pemy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xphc1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_d4ds6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uohbi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
+text = "Options"
+script = ExtResource("3_w5aca")
+
+[node name="CheatsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3qqyd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_84d8p")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_hefrx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kbuef")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_hm8u1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7prld")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7pemy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xphc1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_d4ds6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uohbi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
+text = "Cheats"
+script = ExtResource("3_w5aca")
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_3qqyd")
+theme_override_styles/focus = SubResource("StyleBoxFlat_84d8p")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_hefrx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kbuef")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_hm8u1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7prld")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_7pemy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xphc1")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_d4ds6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uohbi")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
+text = "Return To Main Menu"
+script = ExtResource("3_w5aca")
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -229,10 +303,23 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_adeyj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uk650")
 text = "Quit"
 
+[node name="Options" parent="." instance=ExtResource("4_mx5t1")]
+visible = false
+layout_mode = 1
+go_back_to = ""
+
+[node name="CheatCodeListUI" parent="." instance=ExtResource("5_vbg8c")]
+visible = false
+layout_mode = 1
+go_back_to = ""
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_7ghf6")
 }
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

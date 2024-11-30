@@ -1,6 +1,8 @@
 extends Node2D
 class_name Level
 
+const BonfireParticlesScene = preload("res://game/fx/bonfire_particles.tscn")
+
 @export var level_image: Texture2D
 @export var level_name: String = ""
 @export var flame_value: float = 0.3
@@ -8,6 +10,7 @@ class_name Level
 @export var time_limit: float = 75.0
 @export var player_outside_limit_threshold: int = 25
 
+var bon_fire_lit: bool = false
 var level_stats: Dictionary
 var level_timer_running: bool = false
 var time_ms: float = 0.0
@@ -24,6 +27,8 @@ var cheats_found: Dictionary = {}
 @onready var secrets: Node = $Secrets
 @onready var cheats: Node = $Cheats
 @onready var flame_timer: Timer = $FlameTimer
+@onready var bon_fire_animation_player: AnimationPlayer = $BonFireAnimationPlayer
+@onready var bonfire_area: Area2D = $BonfireArea
 
 func _ready() -> void:
     assert(level_image, "Levels need an image now! Set the level_image export with a Texture2D")
@@ -176,16 +181,25 @@ func update_stats() -> void:
     SaveAndLoad.save_game()
 
 func _on_level_exit_area_entered(area: Area2D) -> void:
-    if not exiting:
-        # Switch levels
-        level_timer_running = false
-        exiting = true
-        flame_timer.stop()
-        SoundFx.play("level_complete", 1, -15, 0)
-        update_stats()
-        Events.next_level.emit(level_stats)
-        level_exit.set_deferred("monitoring", false)
-        level_exit.set_deferred("monitorable", false)
+	if not exiting and bon_fire_lit:
+		# Switch levels
+		level_timer_running = false
+		exiting = true
+		flame_timer.stop()
+		SoundFx.play("level_complete", 1, -15, 0)
+		update_stats()
+		Events.next_level.emit(level_stats)
+		level_exit.set_deferred("monitoring", false)
+		level_exit.set_deferred("monitorable", false)
 
 func _on_flame_timer_timeout() -> void:
-    Events.flame_timer_timeout.emit()
+	Events.flame_timer_timeout.emit()
+
+func _on_bonfire_area_area_entered(_area: Area2D) -> void:
+	if not bon_fire_lit:
+		var particles: CPUParticles2D = Utils.instantiate_scene_on_level(BonfireParticlesScene, bonfire_area.global_position)
+		particles.emitting = true
+		bon_fire_animation_player.play("spawn")
+		await bon_fire_animation_player.animation_finished
+		bon_fire_animation_player.play("burn")
+		bon_fire_lit = true

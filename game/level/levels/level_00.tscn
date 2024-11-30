@@ -1325,7 +1325,7 @@ secret_name = "tutorial_secret_4"
 polygon = PackedVector2Array(5779, -19, 5836, -19, 5836, 3, 5779, 4)
 
 [node name="MaskTiles" parent="Secrets/SecretArea4" index="2"]
-tile_map_data = PackedByteArray("AABqAf7/AQALAAYAAABqAf//AQALAAYAAABqAQAAAQALAAYAAABrAQAAAQALAAYAAABrAf//AQALAAYAAABrAf7/AQALAAYAAABsAQAAAQALAAYAAABpAQAAAQALAAYAAABpAf7/AQAPAAYAAABpAf//AQAPAAYAAABsAf7/AQARAAYAAABsAf//AQARAAYAAAA=")
+tile_map_data = PackedByteArray("AABqAf7/AQALAAYAAABqAf//AQALAAYAAABqAQAAAQALAAYAAABrAQAAAQALAAYAAABrAf//AQALAAYAAABrAf7/AQALAAYAAABsAQAAAQALAAYAAABpAQAAAQALAAYAAABpAf7/AQAPAAYAAABsAf7/AQARAAYAAABpAf//AQAAAAoAAABsAf//AQACAAoAAAA=")
 
 [node name="SecretArea5" parent="Secrets" index="4" instance=ExtResource("5_qoy1y")]
 secret_name = "tutorial_secret_5"

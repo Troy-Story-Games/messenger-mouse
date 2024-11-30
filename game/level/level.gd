@@ -3,6 +3,7 @@ class_name Level
 
 const BonfireParticlesScene = preload("res://game/fx/bonfire_particles.tscn")
 
+@export var need_light_bon_fire: bool = true
 @export var level_image: Texture2D
 @export var level_name: String = ""
 @export var flame_value: float = 0.3
@@ -181,25 +182,25 @@ func update_stats() -> void:
     SaveAndLoad.save_game()
 
 func _on_level_exit_area_entered(area: Area2D) -> void:
-	if not exiting and bon_fire_lit:
-		# Switch levels
-		level_timer_running = false
-		exiting = true
-		flame_timer.stop()
-		SoundFx.play("level_complete", 1, -15, 0)
-		update_stats()
-		Events.next_level.emit(level_stats)
-		level_exit.set_deferred("monitoring", false)
-		level_exit.set_deferred("monitorable", false)
+    if not exiting and (bon_fire_lit or not need_light_bon_fire):
+        # Switch levels
+        level_timer_running = false
+        exiting = true
+        flame_timer.stop()
+        SoundFx.play("level_complete", 1, -15, 0)
+        update_stats()
+        Events.next_level.emit(level_stats)
+        level_exit.set_deferred("monitoring", false)
+        level_exit.set_deferred("monitorable", false)
 
 func _on_flame_timer_timeout() -> void:
-	Events.flame_timer_timeout.emit()
+    Events.flame_timer_timeout.emit()
 
 func _on_bonfire_area_area_entered(_area: Area2D) -> void:
-	if not bon_fire_lit:
-		var particles: CPUParticles2D = Utils.instantiate_scene_on_level(BonfireParticlesScene, bonfire_area.global_position)
-		particles.emitting = true
-		bon_fire_animation_player.play("spawn")
-		await bon_fire_animation_player.animation_finished
-		bon_fire_animation_player.play("burn")
-		bon_fire_lit = true
+    if not bon_fire_lit:
+        var particles: CPUParticles2D = Utils.instantiate_scene_on_level(BonfireParticlesScene, bonfire_area.global_position)
+        particles.emitting = true
+        bon_fire_animation_player.play("spawn")
+        await bon_fire_animation_player.animation_finished
+        bon_fire_animation_player.play("burn")
+        bon_fire_lit = true

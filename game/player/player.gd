@@ -27,6 +27,9 @@ var dead: bool = false
 @onready var hitbox: Hitbox = $FlipAnchor/Hitbox
 @onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
 @onready var sparkle_trail: CPUParticles2D = $SparkleTrail
+@onready var light_flame_background_mask: ColorRect = $LightFlameBackgroundMask
+@onready var relight_flame_ui: MarginContainer = $UI/RelightFlameUI
+@onready var relight_sparks: CPUParticles2D = $RelightSparks
 
 # Stats
 @onready var stats: Stats = MainInstances.player_stats as Stats
@@ -34,6 +37,7 @@ var dead: bool = false
 # FMS Init
 @onready var move_state: PlayerMoveState = PlayerMoveState.new().set_actor(self) as PlayerMoveState
 @onready var die_state: PlayerDieState = PlayerDieState.new().set_actor(self) as PlayerDieState
+@onready var light_flame_state: PlayerLightFlameState = PlayerLightFlameState.new().set_actor(self) as PlayerLightFlameState
 @onready var fsm: FSM = FSM.new().set_state(move_state)
 
 func _enter_tree() -> void:
@@ -41,6 +45,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
     assert(movement_stats, "movement_stats must be set")
+    stats.health = stats.max_health
     Events.request_camera_target.emit.call_deferred(remote_transform_2d)
     hurtbox.hurt.connect(_on_hurtbox_hurt)
     hurtbox.environment_damage.connect(take_environment_hit)
@@ -48,12 +53,21 @@ func _ready() -> void:
     sprite_shader_material.set_shader_parameter("nb_frames", Vector2(sprite_2d.hframes, sprite_2d.vframes))
     collection_area_2d.area_entered.connect(collect_item)
     Events.toggle_cheat.connect(_on_toggle_cheat)
-    move_state.finished.connect(die)
-    die_state.finished.connect(func():
-        Events.player_died.emit()
-        queue_free()
-    )
+    move_state.finished.connect(_on_move_state_finished)
+    die_state.finished.connect(_on_die_state_finished)
+    light_flame_state.finished.connect(fsm.change_state.bind(move_state))
     hitbox.hit_hurtbox.connect(_on_hit_enemy)
+    light_flame_background_mask.hide()
+
+func _on_die_state_finished() -> void:
+    Events.player_died.emit()
+    queue_free()
+
+func _on_move_state_finished() -> void:
+    if stats.health <= 0:
+        die()
+    else:
+        fsm.change_state(light_flame_state)
 
 func _on_hit_enemy(_enemy_hurtbox: Hurtbox) -> void:
     SoundFx.play("slice_impact")

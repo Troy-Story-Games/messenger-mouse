@@ -1,0 +1,140 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxdgqaxa5i0ah"]
+
+[ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_k6e00"]
+[ext_resource type="Texture2D" uid="uid://1pvl3k6bba73" path="res://game/player/assets/smash_directions.png" id="2_y4w0x"]
+[ext_resource type="Texture2D" uid="uid://cxbwky7m0rftv" path="res://game/player/assets/smash_buttons.png" id="3_2nisw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyg7y"]
+atlas = ExtResource("2_y4w0x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncy6y"]
+atlas = ExtResource("2_y4w0x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i42cw"]
+atlas = ExtResource("2_y4w0x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk4iw"]
+atlas = ExtResource("2_y4w0x")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30m74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyg7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncy6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i42cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk4iw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsg10"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v44r"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l2j2"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfvgf"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydbq7"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkql0"]
+atlas = ExtResource("3_2nisw")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihdbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsg10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v44r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l2j2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfvgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydbq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkql0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="RelightFlameUI" type="MarginContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.0
+offset_right = 79.0
+offset_bottom = 63.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_k6e00")
+text = "Relight the flame!
+Smash the buttons!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/Control"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_30m74")
+autoplay = "default"
+frame = 1
+frame_progress = 0.269373
+offset = Vector2(8, 8)
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/Control2"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ihdbd")
+autoplay = "default"
+offset = Vector2(8, 8)

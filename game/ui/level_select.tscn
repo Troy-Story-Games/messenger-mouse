@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://4rg5ocshlkvo"]
+[gd_scene load_steps=23 format=3 uid="uid://4rg5ocshlkvo"]
 
-[ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_38qab"]
-[ext_resource type="Script" path="res://game/ui/leaderboard.gd" id="1_i4r2u"]
+[ext_resource type="Script" path="res://game/ui/level_select.gd" id="1_jfykl"]
+[ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_uaibi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drmds"]
 bg_color = Color(1, 1, 1, 1)
@@ -43,14 +43,72 @@ border_color = Color(1, 1, 1, 1)
 color = Color(0.431373, 0.529412, 1, 1)
 thickness = 4
 
-[node name="Leaderboard" type="Control"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_mw6mk"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yxawr"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+thickness = 6
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kwy86"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_y03ky"]
+thickness = 8
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1l2bb"]
+color = Color(0.027451, 0.12549, 0.603922, 1)
+thickness = 5
+vertical = true
+
+[sub_resource type="Theme" id="Theme_immpx"]
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_mw6mk")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxLine_yxawr")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxLine_kwy86")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_y03ky")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_1l2bb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4hnjv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drd1n"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8nlv6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bth74"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.027451, 0.12549, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvqvc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.431373, 0.529412, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3moq4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e5322"]
+
+[node name="LevelSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_i4r2u")
+script = ExtResource("1_jfykl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -72,9 +130,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_38qab")
+theme_override_fonts/font = ExtResource("2_uaibi")
 theme_override_font_sizes/font_size = 24
-text = "Leaderboard"
+text = "Level Select"
 
 [node name="Spacer" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -89,7 +147,7 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_38qab")
+theme_override_fonts/font = ExtResource("2_uaibi")
 theme_override_styles/focus = SubResource("StyleBoxFlat_drmds")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_sg4mx")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_uddr4")
@@ -107,4 +165,22 @@ text = "Back"
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_o7vb6")
 
+[node name="Levels" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_immpx")
+theme_override_colors/guide_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_uaibi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4hnjv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_drd1n")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_8nlv6")
+theme_override_styles/selected = SubResource("StyleBoxFlat_bth74")
+theme_override_styles/selected_focus = SubResource("StyleBoxFlat_wvqvc")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxTexture_3moq4")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_e5322")
+allow_search = false
+fixed_icon_size = Vector2i(128, 128)
+
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_clicked" from="VBoxContainer/Levels" to="." method="_on_levels_item_clicked"]

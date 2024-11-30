@@ -568,6 +568,24 @@ tracks/7/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_yo3cy"]
+resource_name = "fire"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [26, 27]
+}
+
 [sub_resource type="Animation" id="Animation_vv2kw"]
 resource_name = "flip"
 length = 0.2
@@ -1372,24 +1390,6 @@ tracks/7/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_yo3cy"]
-resource_name = "fire"
-length = 0.2
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipAnchor/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [26, 27]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xj5lj"]
 _data = {
 "RESET": SubResource("Animation_efl54"),
@@ -1713,7 +1713,7 @@ radius = 6.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7j52"]
-size = Vector2(6, 3.5)
+size = Vector2(10, 5.5)
 
 [sub_resource type="Curve" id="Curve_donf3"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.590717, 0.692308), 1.69286, 1.69286, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -1847,7 +1847,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeadJumpArea2D"]
-position = Vector2(0, -0.75)
 shape = SubResource("RectangleShape2D_w7j52")
 
 [node name="RelightSparks" type="CPUParticles2D" parent="."]

@@ -19,12 +19,13 @@ func _ready() -> void:
 	Events.toggle_cheat.connect(_on_toggle_cheat)
 	Events.player_checkpoint.connect(_on_player_checkpoint)
 	Events.player_died.connect(_on_player_died)
-	if SaveAndLoad.save_data.play_selected_level != -1:
-		current_level_idx = SaveAndLoad.save_data.play_selected_level
-		SaveAndLoad.save_data.play_selected_level = -1
-		SaveAndLoad.save_game()
-	else:
-		current_level_idx = SaveAndLoad.save_data.next_level_index
+	if current_level_idx == 0:
+		if SaveAndLoad.save_data.play_selected_level != -1:
+			current_level_idx = SaveAndLoad.save_data.play_selected_level
+			SaveAndLoad.save_data.play_selected_level = -1
+			SaveAndLoad.save_game()
+		else:
+			current_level_idx = SaveAndLoad.save_data.next_level_index
 	call_deferred("next_level")
 
 func _on_player_checkpoint(checkpoint_pos: Vector2) -> void:

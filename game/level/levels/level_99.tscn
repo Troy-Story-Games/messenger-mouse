@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cnhbqa0w4qvm8" path="res://game/enemy/enemy_spawner.tscn" id="3_axgg8"]
 
 [node name="Level99" instance=ExtResource("1_cojwg")]
+level_name = "End Game"
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -473.0

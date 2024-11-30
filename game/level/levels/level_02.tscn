@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://btvq33jxi5px7"]
+[gd_scene load_steps=14 format=4 uid="uid://btvq33jxi5px7"]
 
 [ext_resource type="PackedScene" uid="uid://bx4duxj7u14f6" path="res://game/level/level.tscn" id="1_f3clu"]
 [ext_resource type="PackedScene" uid="uid://cnhbqa0w4qvm8" path="res://game/enemy/enemy_spawner.tscn" id="2_8nyb3"]
+[ext_resource type="Texture2D" uid="uid://cvglh5modgbx" path="res://game/level/assets/level_images/level_02.png" id="2_jvbax"]
 [ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="2_mblsg"]
 [ext_resource type="PackedScene" uid="uid://twyv0mvik1eg" path="res://game/level/checkpoint.tscn" id="3_1p47m"]
 [ext_resource type="PackedScene" uid="uid://b81cdgypw2roy" path="res://game/world/collectible/flame.tscn" id="3_83hlv"]
@@ -22,6 +23,8 @@ size = Vector2(22.2444, 414.753)
 size = Vector2(161, 229)
 
 [node name="Level02" instance=ExtResource("1_f3clu")]
+level_image = ExtResource("2_jvbax")
+level_name = "Level 02"
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -2275.0

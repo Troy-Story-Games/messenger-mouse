@@ -114,7 +114,7 @@ text = "Messenger Mouse"
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_rbd3o")
 
-[node name="NewGameContinue" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="NewGameContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -138,7 +138,31 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "New Game"
 script = ExtResource("3_1421p")
 
-[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qdl4o")
+theme_override_styles/focus = SubResource("StyleBoxFlat_d57g1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tvrpg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vqohc")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_v5it3")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gchnk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5uxvs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_16qfq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bbs6m")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
+text = "Select Level"
+script = ExtResource("3_1421p")
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -162,7 +186,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Options"
 script = ExtResource("3_1421p")
 
-[node name="Leaderboard" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CheatsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -183,10 +207,10 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bbs6m")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lnkwb")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_pm37m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
-text = "Leaderboard"
+text = "Cheats"
 script = ExtResource("3_1421p")
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -210,7 +234,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_n4rre")
 text = "Quit"
 script = ExtResource("3_1421p")
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameContinue" to="." method="_on_new_game_continue_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameContinueButton" to="." method="_on_new_game_continue_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CheatsButton" to="." method="_on_cheats_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -4,6 +4,7 @@ class_name PauseManager
 signal paused()
 signal unpaused()
 
+var block_unpause: bool = false
 var paused_by_script: bool = false
 var is_paused: bool = false :
     set(value):
@@ -30,5 +31,7 @@ func _on_script_pause(value: bool) -> void:
         get_tree().paused = false
 
 func _input(event: InputEvent) -> void:
+    if block_unpause:
+        return
     if event.is_action_pressed("pause") and not paused_by_script:
         is_paused = not get_tree().paused

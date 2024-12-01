@@ -6,9 +6,9 @@ const BonfireParticlesScene = preload("res://game/fx/bonfire_particles.tscn")
 @export var need_light_bon_fire: bool = true
 @export var level_image: Texture2D
 @export var level_name: String = ""
-@export var flame_value: float = 0.3
+@export var flame_value: float = 0.5
 @export var checkpoint_value: float = 15.0
-@export var time_limit: float = 75.0
+@export var time_limit: float = 45.0
 @export var player_outside_limit_threshold: int = 25
 
 var bon_fire_lit: bool = false

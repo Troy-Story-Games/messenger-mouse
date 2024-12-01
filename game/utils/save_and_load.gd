@@ -1,10 +1,10 @@
 extends Node
 
 const SAVE_FILE: String = "user://messenger_mouse_save_data.json"
-const CURRENT_SAVE_FILE_VERSION = "1.0.0"
+const CURRENT_SAVE_FILE_VERSION = "1.0.1"
 
 var default_save_data := {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "secrets": {},
     "cheats": {},
     "levels": {},

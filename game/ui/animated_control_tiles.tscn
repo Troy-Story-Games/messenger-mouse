@@ -122,6 +122,10 @@ texture = ExtResource("1_i7dt0")
 57:0/animation_frame_0/duration = 0.2
 57:0/animation_frame_1/duration = 0.2
 57:0/0 = 0
+59:0/animation_columns = 2
+59:0/animation_frame_0/duration = 0.2
+59:0/animation_frame_1/duration = 0.2
+59:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_2dv0k"]
 sources/0 = SubResource("TileSetAtlasSource_5t01q")

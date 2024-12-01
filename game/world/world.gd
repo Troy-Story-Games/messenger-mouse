@@ -18,12 +18,12 @@ var last_checkpoint: Vector2
 @onready var pause_manager: PauseManager = $PauseManager
 
 func _ready() -> void:
-    Music.play("song1")
     MainInstances.pause_manager = pause_manager
     Events.toggle_cheat.connect(_on_toggle_cheat)
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.player_died.connect(_on_player_died)
     if current_level_idx == 0:
+        Music.play("tutorial_song", 1, -20.0, 1.0)
         if SaveAndLoad.save_data.play_selected_level != -1:
             current_level_idx = SaveAndLoad.save_data.play_selected_level
             SaveAndLoad.save_data.play_selected_level = -1
@@ -58,6 +58,11 @@ func respawn() -> void:
 
 func next_level() -> void:
     var player: Player = MainInstances.player
+
+    if current_level_idx == 0 and not Music.is_playing("tutorial_song"):
+        Music.play("tutorial_song", 1, -20.0, 1.0)
+    elif current_level_idx != 0 and not Music.is_playing("song1"):
+        Music.play("song1", 1, -25.0, 1.0)
 
     if current_level_idx >= len(Utils.levels):
         SaveAndLoad.save_data.next_level_index = 0
@@ -119,6 +124,8 @@ func start_level(player: Player) -> void:
         Events.request_script_pause.emit(false)
 
 func _process(_delta: float) -> void:
+    if not current_level or not is_instance_valid(current_level):
+        return
     var time_left = current_level.get_time_left()
     var level_time = current_level.get_level_time()
     ui.set_flame_progress(time_left)

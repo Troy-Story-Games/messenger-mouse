@@ -22,6 +22,7 @@ func display_cheat_code_from_dict(cheat_code: Dictionary) -> void:
 	viewed_long_enough = false
 	animation_player.play("show")
 	if handle_pause:
+		MainInstances.pause_manager.ignore_pause = true
 		Events.request_script_pause.emit(true)
 	cheat_title_label.text = cheat_code.name
 	cheat_code_label.text = Utils.generate_cheat_string(cheat_code.button_combo)
@@ -58,6 +59,10 @@ func _input(event: InputEvent) -> void:
 		if handle_pause:
 			Events.request_script_pause.emit(false)
 		cheat_code_ui_closed.emit()
+		
+		if handle_pause:
+			await get_tree().create_timer(0.2).timeout
+			MainInstances.pause_manager.ignore_pause = false
 
 func _on_timer_timeout() -> void:
 	viewed_long_enough = true

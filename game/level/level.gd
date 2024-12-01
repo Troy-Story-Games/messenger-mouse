@@ -30,18 +30,9 @@ var cheats_found: Dictionary = {}
 @onready var flame_timer: Timer = $FlameTimer
 @onready var bon_fire_animation_player: AnimationPlayer = $BonFireAnimationPlayer
 @onready var bonfire_area: Area2D = $BonfireArea
-@onready var controller_animated_control_tiles: TileMapLayer = $ControllerAnimatedControlTiles
-@onready var keyboard_animated_control_tiles: TileMapLayer = $KeyboardAnimatedControlTiles
 
 func _ready() -> void:
 	assert(level_image, "Levels need an image now! Set the level_image export with a Texture2D")
-
-	if Input.get_connected_joypads():
-		controller_animated_control_tiles.show()
-		keyboard_animated_control_tiles.hide()
-	else:
-		keyboard_animated_control_tiles.show()
-		controller_animated_control_tiles.hide()
 
 	Events.player_checkpoint.connect(_on_player_checkpoint)
 	Events.flame_collected.connect(_on_flame_collected)

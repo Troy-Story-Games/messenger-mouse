@@ -2,6 +2,8 @@
 
 Game-off 2024 submission https://itch.io/jam/game-off-2024
 
+* Itch.io link: https://fire-bellied-toad.itch.io/messenger-mouse
+
 ## Refs
 
 * __Font:__ Kenney Pixel Fonts - Font

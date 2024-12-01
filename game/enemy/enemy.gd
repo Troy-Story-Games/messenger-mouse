@@ -19,56 +19,56 @@ var attack_direction: Vector2
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-    assert(stats, "Missing enemy stats")
-    hurtbox.hurt.connect(take_hit)
-    stats.no_health.connect(die)
-    Events.flame_relight_start.connect(flame_relight_start)
-    Events.flame_relight_complete.connect(flame_relight_complete)
+	assert(stats, "Missing enemy stats")
+	hurtbox.hurt.connect(take_hit)
+	stats.no_health.connect(die)
+	Events.flame_relight_start.connect(flame_relight_start)
+	Events.flame_relight_complete.connect(flame_relight_complete)
 
 func flame_relight_start():
-    set_process(false)
-    set_physics_process(false)
-    animation_player.pause()
+	set_process(false)
+	set_physics_process(false)
+	animation_player.pause()
 
 func flame_relight_complete():
-    set_process(true)
-    set_physics_process(true)
-    animation_player.play()
+	set_process(true)
+	set_physics_process(true)
+	animation_player.play()
 
-func take_hit(hitbox: Hitbox) -> void:
-    attack_direction = hitbox.knockback
-    stats.health -= hitbox.damage
+func take_hit(_hitbox: Hitbox) -> void:
+	attack_direction = hitbox.knockback
+	stats.health -= hitbox.damage
 
 func play_death_sound() -> void:
-    SoundFx.play("enemy_death")
+	SoundFx.play("enemy_death")
 
 func die() -> void:
-    play_death_sound()
-    Events.enemy_killed.emit(self)
-    died.emit()
-    queue_free()
+	play_death_sound()
+	Events.enemy_killed.emit(self)
+	died.emit()
+	queue_free()
 
 func squish_animation() -> void:
-    pass
+	pass
 
 func disable_hit_hurt() -> void:
-    hurtbox.set_deferred("monitoring", false)
-    hurtbox.set_deferred("monitorable", false)
-    hitbox.set_deferred("monitoring", false)
-    hitbox.set_deferred("monitorable", false)
+	hurtbox.set_deferred("monitoring", false)
+	hurtbox.set_deferred("monitorable", false)
+	hitbox.set_deferred("monitoring", false)
+	hitbox.set_deferred("monitorable", false)
 
 func enable_hit_hurt() -> void:
-    hurtbox.set_deferred("monitoring", true)
-    hurtbox.set_deferred("monitorable", true)
-    hitbox.set_deferred("monitoring", true)
-    hitbox.set_deferred("monitorable", true)
+	hurtbox.set_deferred("monitoring", true)
+	hurtbox.set_deferred("monitorable", true)
+	hitbox.set_deferred("monitoring", true)
+	hitbox.set_deferred("monitorable", true)
 
 func squish() -> void:
-    animation_player.stop(true)
-    set_physics_process(false)
-    SoundFx.play("enemy_head_stomp")
-    disable_hit_hurt()
-    await squish_animation()
-    Events.enemy_killed.emit(self)
-    died.emit()
-    queue_free()
+	animation_player.stop(true)
+	set_physics_process(false)
+	SoundFx.play("enemy_head_stomp")
+	disable_hit_hurt()
+	await squish_animation()
+	Events.enemy_killed.emit(self)
+	died.emit()
+	queue_free()

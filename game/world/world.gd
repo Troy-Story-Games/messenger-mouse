@@ -32,28 +32,28 @@ func _ready() -> void:
 	call_deferred("next_level")
 
 func _on_player_checkpoint(checkpoint_pos: Vector2) -> void:
-    last_checkpoint = checkpoint_pos
+	last_checkpoint = checkpoint_pos
 
 func _on_toggle_cheat(cheat_name: String):
-    if cheat_name == "zoom_out":
-        if not zoom_out_enabled:
-            zoom_out_enabled = true
-            player_camera.zoom = Vector2(0.55, 0.55)
-        else:
-            zoom_out_enabled = false
-            player_camera.zoom = Vector2(1, 1)
+	if cheat_name == "zoom_out":
+		if not zoom_out_enabled:
+			zoom_out_enabled = true
+			player_camera.zoom = Vector2(0.55, 0.55)
+		else:
+			zoom_out_enabled = false
+			player_camera.zoom = Vector2(1, 1)
 
 func _on_player_died() -> void:
-    var time_left = current_level.get_time_left()
-    if time_left < min_time_left_on_respawn:
-        current_level.set_time_left(min_time_left_on_respawn)
-    call_deferred("respawn")
+	var time_left = current_level.get_time_left()
+	if time_left < min_time_left_on_respawn:
+		current_level.set_time_left(min_time_left_on_respawn)
+	call_deferred("respawn")
 
 func respawn() -> void:
-    print_debug("respawn player at ", last_checkpoint)
-    var player: Player = PlayerScene.instantiate()
-    add_child(player)
-    player.global_position = last_checkpoint
+	print_debug("respawn player at ", last_checkpoint)
+	var player: Player = PlayerScene.instantiate()
+	add_child(player)
+	player.global_position = last_checkpoint
 
 func next_level() -> void:
 	var player: Player = MainInstances.player
@@ -80,10 +80,10 @@ func next_level() -> void:
 	if current_level:
 		current_level.queue_free()
 
-    if current_level_idx >= SaveAndLoad.save_data.next_level_index:
-        # So continue works
-        SaveAndLoad.save_data.next_level_index = current_level_idx
-        SaveAndLoad.save_game()
+	if current_level_idx >= SaveAndLoad.save_data.next_level_index:
+		# So continue works
+		SaveAndLoad.save_data.next_level_index = current_level_idx
+		SaveAndLoad.save_game()
 
 	current_level = Utils.get_level(current_level_idx).instantiate()
 	add_child(current_level)
@@ -111,20 +111,20 @@ func start_level(player: Player) -> void:
 	level_fade.hide()
 	animation_player.play(&"RESET")
 
-    if current_level_idx == 0:
-        ui.show_tutorial()
-        Events.request_script_pause.emit(true)
-        await ui.ui_tutorial_complete
-        Events.request_script_pause.emit(false)
+	if current_level_idx == 0:
+		ui.show_tutorial()
+		Events.request_script_pause.emit(true)
+		await ui.ui_tutorial_complete
+		Events.request_script_pause.emit(false)
 
 func _process(_delta: float) -> void:
-    var time_left = current_level.get_time_left()
-    var level_time = current_level.get_level_time()
-    ui.set_flame_progress(time_left)
-    ui.set_time_ms(level_time)
-    ui.set_secrets_found(current_level.num_secrets_found)
-    ui.set_cheats_found(current_level.num_cheats_found)
+	var time_left = current_level.get_time_left()
+	var level_time = current_level.get_level_time()
+	ui.set_flame_progress(time_left)
+	ui.set_time_ms(level_time)
+	ui.set_secrets_found(current_level.num_secrets_found)
+	ui.set_cheats_found(current_level.num_cheats_found)
 
 func _on_level_complete_next_level() -> void:
-    current_level_idx += 1
-    call_deferred("next_level")
+	current_level_idx += 1
+	call_deferred("next_level")

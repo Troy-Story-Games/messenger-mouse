@@ -16,8 +16,8 @@
 size = Vector2(40, 447)
 
 [node name="Level01" instance=ExtResource("1_kp542")]
+level_music = "level01"
 level_image = ExtResource("2_3xba1")
-level_name = "Level 01"
 
 [node name="CameraLimits" parent="." index="0"]
 offset_left = -309.0

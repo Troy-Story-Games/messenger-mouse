@@ -5,6 +5,7 @@ const CHEAT_CODE_INPUT_TIMEOUT: = 1.0
 
 var cheats_path := "res://game/world/cheats/"
 var current_seq: Array[String] = []
+var translated_codes: Dictionary = {}
 
 @onready var cheat_codes: Dictionary
 @onready var input_timer: Timer = Timer.new()
@@ -15,18 +16,29 @@ func _ready() -> void:
     input_timer.one_shot = true
     cheat_codes = Utils.load_dict_from_path(cheats_path, [".tres"])
 
+    # Translate button names (e.g. move_down is crouch)
+    for cheat_name in cheat_codes:
+        var cheat_code: CheatCode = cheat_codes[cheat_name] as CheatCode
+        var seq: Array = []
+        for button in cheat_code.button_combo:
+            if button == "move_down":
+                seq.append("crouch")
+            else:
+                seq.append(button)
+        translated_codes[cheat_name] = {"button_combo": seq}
+
 func check_sequence() -> void:
     var matched_some_cheat: bool = false
 
     print_verbose("Current cheat code sequence: ", current_seq)
     for cheat_name in cheat_codes:
-        var cheat_code: CheatCode = cheat_codes[cheat_name] as CheatCode
-        if current_seq != cheat_code.button_combo.slice(0, len(current_seq)):
+        var button_combo: Array = translated_codes[cheat_name].button_combo
+        if current_seq != button_combo.slice(0, len(current_seq)):
             continue
         matched_some_cheat = true
 
         # We matched partial at least - check if we're done
-        if current_seq == cheat_code.button_combo:
+        if current_seq == button_combo:
             print_verbose("Cheat activated! ", cheat_name)
             SoundFx.play("cheat_code")
             Events.toggle_cheat.emit(cheat_name)
@@ -49,7 +61,7 @@ func _physics_process(_delta: float) -> void:
     if Input.is_action_just_pressed("move_up"):
         pressed_action = "move_up"
     elif Input.is_action_just_pressed("move_down"):
-        pressed_action = "move_down"
+        pressed_action = "crouch"
     elif Input.is_action_just_pressed("move_left"):
         pressed_action = "move_left"
     elif Input.is_action_just_pressed("move_right"):

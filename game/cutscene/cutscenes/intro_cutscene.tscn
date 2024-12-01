@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cdr7qshr3nnnd"]
+[gd_scene load_steps=22 format=3 uid="uid://cdr7qshr3nnnd"]
 
 [ext_resource type="PackedScene" uid="uid://d4d1m5px7vb1h" path="res://game/cutscene/cutscene.tscn" id="1_sqjqh"]
 [ext_resource type="Script" path="res://game/cutscene/cutscenes/intro_cutscene.gd" id="2_kq3fr"]
@@ -8,9 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://bucyi76i2wvqo" path="res://game/audio/soundfx/sounds/pen_on_paper.wav" id="5_kgwc3"]
 [ext_resource type="Texture2D" uid="uid://sdtvombvht2m" path="res://game/ui/assets/text_box.png" id="6_r3y1c"]
 [ext_resource type="AudioStream" uid="uid://6t752afu0ctv" path="res://game/audio/soundfx/sounds/ambient_battle.mp3" id="7_3wab1"]
-[ext_resource type="PackedScene" uid="uid://cyvn3bwydg07u" path="res://game/world/world_tiles.tscn" id="7_ag320"]
-[ext_resource type="Texture2D" uid="uid://3q1r4i4cmjud" path="res://game/level/assets/bonfire.png" id="8_3wswp"]
-[ext_resource type="PackedScene" uid="uid://brsrhilte7l2m" path="res://game/fx/bonfire_particles.tscn" id="9_l046m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xokgw"]
 atlas = ExtResource("3_p6wb2")
@@ -55,68 +52,84 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_07obx"]
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_of46d"]
+resource_name = "fade_out"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k70tv"]
+_data = {
+"RESET": SubResource("Animation_07obx"),
+"fade_out": SubResource("Animation_of46d")
+}
+
 [sub_resource type="Animation" id="Animation_nmxht"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [Vector2(0, 300)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:position")
+tracks/1/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 300)]
+"update": 1,
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:frame")
+tracks/2/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/NoteContents:visible_ratio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/NoteContents:visible_ratio")
+tracks/3/path = NodePath("CanvasLayer/Control/CenterContainer:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/CenterContainer:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+
+[sub_resource type="Animation" id="Animation_n6nob"]
+resource_name = "convo"
+step = 1.0
 
 [sub_resource type="Animation" id="Animation_bmxuw"]
 resource_name = "secret_note"
@@ -125,58 +138,46 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
-tracks/0/interp = 1
+tracks/0/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 20),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 300), Vector2(0, 300), Vector2(0, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer/Control/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/CenterContainer/HBoxContainer/NoteContents:visible_ratio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/CenterContainer/HBoxContainer/NoteContents:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 1, 15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("WritingSounds")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WritingSounds")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -187,13 +188,13 @@ tracks/4/keys = {
 "method": &"stop"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/CenterContainer:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/CenterContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.2, 20),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -203,6 +204,7 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tojjm"]
 _data = {
 "RESET": SubResource("Animation_nmxht"),
+"convo": SubResource("Animation_n6nob"),
 "secret_note": SubResource("Animation_bmxuw")
 }
 
@@ -212,16 +214,16 @@ next_scene = ExtResource("3_um6ub")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" index="1"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control" index="0"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -229,25 +231,25 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer" index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CenterContainer" index="0"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CenterContainer/HBoxContainer" index="0"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/CenterContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[node name="Control" type="Control" parent="CanvasLayer/CenterContainer/HBoxContainer/CenterContainer" index="0"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer" index="0"]
 custom_minimum_size = Vector2(200, 225)
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/CenterContainer/HBoxContainer/CenterContainer/Control" index="0"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/CenterContainer/HBoxContainer/CenterContainer/Control" index="0"]
 position = Vector2(0, 300)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_x02v4")
 offset = Vector2(22, 22)
 
-[node name="NoteContents" type="RichTextLabel" parent="CanvasLayer/CenterContainer/HBoxContainer" index="1"]
+[node name="NoteContents" type="RichTextLabel" parent="CanvasLayer/Control/CenterContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(425, 150)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_1vf8p")
@@ -268,10 +270,10 @@ scroll_following = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="ChatBox" type="Control" parent="CanvasLayer" index="2"]
+[node name="ChatBox" type="Control" parent="CanvasLayer/Control" index="1"]
 visible = false
 custom_minimum_size = Vector2(640, 64)
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -280,12 +282,12 @@ grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_lock_ = true
 
-[node name="ChatBoxSprite" type="Sprite2D" parent="CanvasLayer/ChatBox" index="0"]
+[node name="ChatBoxSprite" type="Sprite2D" parent="CanvasLayer/Control/ChatBox" index="0"]
 texture = ExtResource("6_r3y1c")
 offset = Vector2(320, 32)
 hframes = 2
 
-[node name="CaptainChatText" type="Label" parent="CanvasLayer/ChatBox" index="1"]
+[node name="CaptainChatText" type="Label" parent="CanvasLayer/Control/ChatBox" index="1"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.112
@@ -303,7 +305,7 @@ autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.5
 
-[node name="MessengerChatText" type="Label" parent="CanvasLayer/ChatBox" index="2"]
+[node name="MessengerChatText" type="Label" parent="CanvasLayer/Control/ChatBox" index="2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.005
@@ -321,30 +323,69 @@ autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="ContinueLabelContainer" type="MarginContainer" parent="CanvasLayer/Control" index="2"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ContinueLabel" type="Label" parent="CanvasLayer/Control/ContinueLabelContainer" index="0"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1vf8p")
+theme_override_font_sizes/font_size = 8
+text = "Press A/B to continue"
+
+[node name="SkipLabelContainer" type="MarginContainer" parent="CanvasLayer/Control" index="3"]
+layout_mode = 0
+offset_right = 87.0
+offset_bottom = 10.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="SkipLabel" type="Label" parent="CanvasLayer/Control/SkipLabelContainer" index="0"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_1vf8p")
+theme_override_font_sizes/font_size = 8
+text = "Pause/start to skip
+"
+
+[node name="FadeOutAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_k70tv")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_tojjm")
 }
 autoplay = "secret_note"
 
-[node name="WritingSounds" type="AudioStreamPlayer" parent="." index="2"]
+[node name="WritingSounds" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource("5_kgwc3")
 bus = &"SoundFX"
 
-[node name="BattleSounds" type="AudioStreamPlayer" parent="." index="3"]
+[node name="BattleSounds" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("7_3wab1")
 volume_db = -30.0
 pitch_scale = 2.0
 bus = &"SoundFX"
 
-[node name="WorldTiles" parent="." index="4" instance=ExtResource("7_ag320")]
-tile_map_data = PackedByteArray("AAAOABgAAAARAAcAAAAOABcAAAARAAYAAAAOABYAAAARAAYAAAAOABUAAAATAAYAAAAOABQAAAAQAAYAAAAOABMAAAAQAAYAAAAOABIAAAAQAAYAAAAOABEAAAAQAAYAAAAOABAAAAAQAAYAAAANABgAAAAQAAcAAAANABcAAAAQAAYAAAANABYAAAAQAAYAAAANABUAAAAQAAYAAAANABQAAAAQAAYAAAANABMAAAAQAAYAAAANABIAAAAQAAYAAAANABEAAAAQAAYAAAANABAAAAAQAAYAAAAMABgAAAAQAAcAAAAMABcAAAAQAAYAAAAMABYAAAAQAAYAAAAMABUAAAAQAAYAAAAMABQAAAAQAAYAAAAMABMAAAAQAAYAAAAMABIAAAAQAAYAAAAMABEAAAAQAAYAAAAMABAAAAATAAgAAAALABgAAAAQAAcAAAALABcAAAAQAAYAAAALABYAAAAQAAYAAAALABUAAAAQAAYAAAALABQAAAAQAAYAAAALABMAAAAQAAYAAAALABIAAAAQAAYAAAALABEAAAAQAAYAAAALABAAAAAQAAUAAAAKABgAAAAQAAcAAAAKABcAAAAQAAYAAAAKABYAAAAQAAYAAAAKABUAAAAQAAYAAAAKABQAAAAQAAYAAAAKABMAAAAQAAYAAAAKABIAAAAQAAYAAAAKABEAAAAQAAYAAAAKABAAAAAQAAUAAAAJABgAAAAQAAcAAAAJABcAAAAQAAYAAAAJABYAAAAQAAYAAAAJABUAAAAQAAYAAAAJABQAAAAQAAYAAAAJABMAAAAQAAYAAAAJABIAAAAQAAYAAAAJABEAAAAQAAYAAAAJABAAAAAQAAUAAAAIABgAAAAQAAcAAAAIABcAAAAQAAYAAAAIABYAAAAQAAYAAAAIABUAAAAQAAYAAAAIABQAAAAQAAYAAAAIABMAAAAQAAYAAAAIABIAAAAQAAYAAAAIABEAAAAQAAYAAAAIABAAAAAQAAUAAAAHABgAAAAQAAcAAAAHABcAAAAQAAYAAAAHABYAAAAQAAYAAAAHABUAAAAQAAYAAAAHABQAAAAQAAYAAAAHABMAAAAQAAYAAAAHABIAAAAQAAYAAAAHABEAAAAQAAYAAAAHABAAAAAQAAUAAAAGABgAAAAQAAcAAAAGABcAAAAQAAYAAAAGABYAAAAQAAYAAAAGABUAAAAQAAYAAAAGABQAAAAQAAYAAAAGABMAAAAQAAYAAAAGABIAAAAQAAYAAAAGABEAAAAQAAYAAAAGABAAAAAQAAUAAAAFABgAAAAQAAcAAAAFABcAAAAQAAYAAAAFABYAAAAQAAYAAAAFABUAAAAQAAYAAAAFABQAAAAQAAYAAAAFABMAAAAQAAYAAAAFABIAAAAQAAYAAAAFABEAAAAQAAYAAAAFABAAAAAQAAUAAAAEABgAAAAQAAcAAAAEABcAAAAQAAYAAAAEABYAAAAQAAYAAAAEABUAAAAQAAYAAAAEABQAAAAQAAYAAAAEABMAAAAQAAYAAAAEABIAAAAQAAYAAAAEABEAAAAQAAYAAAAEABAAAAAQAAUAAAADABgAAAAQAAcAAAADABcAAAAQAAYAAAADABYAAAAQAAYAAAADABUAAAAQAAYAAAADABQAAAAQAAYAAAADABMAAAAQAAYAAAADABIAAAAQAAYAAAADABEAAAAQAAYAAAADABAAAAAQAAUAAAACABgAAAAQAAcAAAACABcAAAAQAAYAAAACABYAAAAQAAYAAAACABUAAAAQAAYAAAACABQAAAAQAAYAAAACABMAAAAQAAYAAAACABIAAAAQAAYAAAACABEAAAAQAAYAAAACABAAAAAQAAUAAAABABgAAAAQAAcAAAABABcAAAAQAAYAAAABABYAAAAQAAYAAAABABUAAAAQAAYAAAABABQAAAAQAAYAAAABABMAAAAQAAYAAAABABIAAAAQAAYAAAABABEAAAAQAAYAAAABABAAAAAQAAUAAAAAABgAAAAQAAcAAAAAABcAAAAQAAYAAAAAABYAAAAQAAYAAAAAABUAAAAQAAYAAAAAABQAAAAQAAYAAAAAABMAAAAQAAYAAAAAABIAAAAQAAYAAAAAABEAAAAQAAYAAAAAABAAAAAQAAUAAAD//xgAAAAQAAcAAAD//xcAAAAQAAYAAAD//xYAAAAQAAYAAAD//xUAAAAQAAYAAAD//xQAAAAQAAYAAAD//xMAAAAQAAYAAAD//xIAAAAQAAYAAAD//xEAAAAQAAYAAAD//xAAAAAQAAUAAAD+/xgAAAAQAAcAAAD+/xcAAAAQAAYAAAD+/xYAAAAQAAYAAAD+/xUAAAAQAAYAAAD+/xQAAAAQAAYAAAD+/xMAAAAQAAYAAAD+/xIAAAAQAAYAAAD+/xEAAAAQAAYAAAD+/xAAAAAQAAUAAAD9/xgAAAAPAAcAAAD9/xcAAAAPAAYAAAD9/xYAAAAPAAYAAAD9/xUAAAAPAAYAAAD9/xQAAAAPAAYAAAD9/xMAAAAPAAYAAAD9/xIAAAAPAAYAAAD9/xEAAAAPAAYAAAD9/xAAAAAPAAUAAAAXABUAAAAQAAYAAAAXABQAAAAQAAYAAAAXABMAAAATAAUAAAAXABIAAAARAAYAAAAXABEAAAARAAYAAAAXABAAAAARAAYAAAAXAA8AAAARAAYAAAAXAA4AAAATAAYAAAAWABUAAAAQAAYAAAAWABQAAAAQAAYAAAAWABMAAAAQAAYAAAAWABIAAAAQAAYAAAAWABEAAAAQAAYAAAAWABAAAAAQAAYAAAAWAA8AAAAQAAYAAAAWAA4AAAAQAAYAAAAVABUAAAATAAcAAAAVABQAAAAQAAYAAAAVABMAAAAQAAYAAAAVABIAAAAQAAYAAAAVABEAAAAQAAYAAAAVABAAAAAQAAYAAAAVAA8AAAAQAAYAAAAVAA4AAAATAAgAAAAUABUAAAAQAAcAAAAUABQAAAAQAAYAAAAUABMAAAAQAAYAAAAUABIAAAAQAAYAAAAUABEAAAAQAAYAAAAUABAAAAAQAAYAAAAUAA8AAAAQAAYAAAAUAA4AAAAQAAUAAAATABUAAAAQAAcAAAATABQAAAAQAAYAAAATABMAAAAQAAYAAAATABIAAAAQAAYAAAATABEAAAAQAAYAAAATABAAAAAQAAYAAAATAA8AAAAQAAYAAAATAA4AAAAQAAUAAAASABUAAAAQAAcAAAASABQAAAAQAAYAAAASABMAAAAQAAYAAAASABIAAAAQAAYAAAASABEAAAAQAAYAAAASABAAAAAQAAYAAAASAA8AAAAQAAYAAAASAA4AAAAQAAUAAAARABUAAAAQAAcAAAARABQAAAAQAAYAAAARABMAAAAQAAYAAAARABIAAAAQAAYAAAARABEAAAAQAAYAAAARABAAAAAQAAYAAAARAA8AAAAQAAYAAAARAA4AAAAQAAUAAAAQABUAAAAQAAcAAAAQABQAAAAQAAYAAAAQABMAAAAQAAYAAAAQABIAAAAQAAYAAAAQABEAAAAQAAYAAAAQABAAAAAQAAYAAAAQAA8AAAAQAAYAAAAQAA4AAAAQAAUAAAAPABUAAAAQAAcAAAAPABQAAAAQAAYAAAAPABMAAAAQAAYAAAAPABIAAAAQAAYAAAAPABEAAAAQAAYAAAAPABAAAAAQAAYAAAAPAA8AAAAQAAYAAAAPAA4AAAAQAAUAAAAOAA8AAAAQAAYAAAAOAA4AAAAQAAUAAAANAA8AAAAQAAYAAAANAA4AAAAQAAUAAAAMAA8AAAAPAAYAAAAMAA4AAAAPAAUAAAAeABkAAAATAAcAAAAeABgAAAAQAAYAAAAeABcAAAAQAAYAAAAeABYAAAAQAAYAAAAeABUAAAAQAAYAAAAeABQAAAATAAUAAAAeABMAAAARAAUAAAAdABkAAAAQAAcAAAAdABgAAAAQAAYAAAAdABcAAAAQAAYAAAAdABYAAAAQAAYAAAAdABUAAAAQAAYAAAAdABQAAAAQAAYAAAAdABMAAAAQAAUAAAAcABkAAAAQAAcAAAAcABgAAAAQAAYAAAAcABcAAAAQAAYAAAAcABYAAAAQAAYAAAAcABUAAAAQAAYAAAAcABQAAAAQAAYAAAAcABMAAAAQAAUAAAAbABkAAAAQAAcAAAAbABgAAAAQAAYAAAAbABcAAAAQAAYAAAAbABYAAAAQAAYAAAAbABUAAAAQAAYAAAAbABQAAAAQAAYAAAAbABMAAAAQAAUAAAAaABkAAAAQAAcAAAAaABgAAAAQAAYAAAAaABcAAAAQAAYAAAAaABYAAAAQAAYAAAAaABUAAAAQAAYAAAAaABQAAAAQAAYAAAAaABMAAAAQAAUAAAAZABkAAAAQAAcAAAAZABgAAAAQAAYAAAAZABcAAAAQAAYAAAAZABYAAAAQAAYAAAAZABUAAAAQAAYAAAAZABQAAAAQAAYAAAAZABMAAAAQAAUAAAAYABkAAAAQAAcAAAAYABgAAAAQAAYAAAAYABcAAAAQAAYAAAAYABYAAAAQAAYAAAAYABUAAAAQAAYAAAAYABQAAAAQAAYAAAAYABMAAAAQAAUAAAAXABkAAAAQAAcAAAAXABgAAAAQAAYAAAAXABcAAAAQAAYAAAAXABYAAAAQAAYAAAAWABkAAAAQAAcAAAAWABgAAAAQAAYAAAAWABcAAAAQAAYAAAAWABYAAAAQAAYAAAAVABkAAAAPAAcAAAAVABgAAAAPAAYAAAAVABcAAAAPAAYAAAAVABYAAAAPAAYAAAAdAA4AAAAQAAYAAAAdAA0AAAAQAAYAAAAdAAwAAAAQAAYAAAAdAAsAAAATAAUAAAAdAAoAAAARAAUAAAAcAA4AAAATAAcAAAAcAA0AAAAQAAYAAAAcAAwAAAAQAAYAAAAcAAsAAAAQAAYAAAAcAAoAAAAQAAUAAAAbAA4AAAAQAAcAAAAbAA0AAAAQAAYAAAAbAAwAAAAQAAYAAAAbAAsAAAAQAAYAAAAbAAoAAAAQAAUAAAAaAA4AAAAQAAcAAAAaAA0AAAAQAAYAAAAaAAwAAAAQAAYAAAAaAAsAAAAQAAYAAAAaAAoAAAAQAAUAAAAZAA4AAAAQAAcAAAAZAA0AAAAQAAYAAAAZAAwAAAAQAAYAAAAZAAsAAAAQAAYAAAAZAAoAAAAQAAUAAAAYAA4AAAAQAAcAAAAYAA0AAAAQAAYAAAAYAAwAAAAQAAYAAAAYAAsAAAAQAAYAAAAYAAoAAAAQAAUAAAAXAA0AAAAQAAYAAAAXAAwAAAAQAAYAAAAXAAsAAAAQAAYAAAAXAAoAAAAQAAUAAAAWAA0AAAAQAAYAAAAWAAwAAAAQAAYAAAAWAAsAAAAQAAYAAAAWAAoAAAAQAAUAAAAVAA0AAAAPAAYAAAAVAAwAAAAPAAYAAAAVAAsAAAAPAAYAAAAVAAoAAAAPAAUAAAAoABEAAAARAAcAAAAoABAAAAARAAYAAAAoAA8AAAARAAYAAAAoAA4AAAARAAYAAAAoAA0AAAARAAYAAAAoAAwAAAARAAYAAAAoAAsAAAARAAUAAAAnABEAAAAQAAcAAAAnABAAAAAQAAYAAAAnAA8AAAAQAAYAAAAnAA4AAAAQAAYAAAAnAA0AAAAQAAYAAAAnAAwAAAAQAAYAAAAnAAsAAAAQAAUAAAAmABEAAAAQAAcAAAAmABAAAAAQAAYAAAAmAA8AAAAQAAYAAAAmAA4AAAAQAAYAAAAmAA0AAAAQAAYAAAAmAAwAAAAQAAYAAAAmAAsAAAAQAAUAAAAlABEAAAAQAAcAAAAlABAAAAAQAAYAAAAlAA8AAAAQAAYAAAAlAA4AAAAQAAYAAAAlAA0AAAAQAAYAAAAlAAwAAAAQAAYAAAAlAAsAAAAQAAUAAAAkABEAAAAQAAcAAAAkABAAAAAQAAYAAAAkAA8AAAAQAAYAAAAkAA4AAAAQAAYAAAAkAA0AAAAQAAYAAAAkAAwAAAAQAAYAAAAkAAsAAAAQAAUAAAAjABEAAAAQAAcAAAAjABAAAAAQAAYAAAAjAA8AAAAQAAYAAAAjAA4AAAAQAAYAAAAjAA0AAAAQAAYAAAAjAAwAAAAQAAYAAAAjAAsAAAAQAAUAAAAiABEAAAAQAAcAAAAiABAAAAAQAAYAAAAiAA8AAAAQAAYAAAAiAA4AAAAQAAYAAAAiAA0AAAAQAAYAAAAiAAwAAAAQAAYAAAAiAAsAAAAQAAUAAAAhABEAAAAQAAcAAAAhABAAAAAQAAYAAAAhAA8AAAAQAAYAAAAhAA4AAAAQAAYAAAAhAA0AAAAQAAYAAAAhAAwAAAAQAAYAAAAhAAsAAAAQAAUAAAAgABEAAAAQAAcAAAAgABAAAAAQAAYAAAAgAA8AAAAQAAYAAAAgAA4AAAAQAAYAAAAgAA0AAAAQAAYAAAAgAAwAAAAQAAYAAAAgAAsAAAAQAAUAAAAfABEAAAAQAAcAAAAfABAAAAAQAAYAAAAfAA8AAAAQAAYAAAAfAA4AAAAQAAYAAAAfAA0AAAAQAAYAAAAfAAwAAAAQAAYAAAAfAAsAAAAQAAUAAAAeABEAAAAQAAcAAAAeABAAAAAQAAYAAAAeAA8AAAAQAAYAAAAeAA4AAAAQAAYAAAAeAA0AAAAQAAYAAAAeAAwAAAAQAAYAAAAeAAsAAAAQAAUAAAAdABEAAAAQAAcAAAAdABAAAAAQAAYAAAAdAA8AAAAQAAYAAAAcABEAAAAPAAcAAAAcABAAAAAPAAYAAAAcAA8AAAAPAAYAAAApABoAAAARAAcAAAApABkAAAARAAYAAAApABgAAAARAAYAAAApABcAAAARAAYAAAApABYAAAARAAYAAAApABUAAAARAAYAAAApABQAAAARAAUAAAAoABoAAAAQAAcAAAAoABkAAAAQAAYAAAAoABgAAAAQAAYAAAAoABcAAAAQAAYAAAAoABYAAAAQAAYAAAAoABUAAAAQAAYAAAAoABQAAAAQAAUAAAAnABoAAAAQAAcAAAAnABkAAAAQAAYAAAAnABgAAAAQAAYAAAAnABcAAAAQAAYAAAAnABYAAAAQAAYAAAAnABUAAAAQAAYAAAAnABQAAAAQAAUAAAAmABoAAAAQAAcAAAAmABkAAAAQAAYAAAAmABgAAAAQAAYAAAAmABcAAAAQAAYAAAAmABYAAAAQAAYAAAAmABUAAAAQAAYAAAAmABQAAAAQAAUAAAAlABoAAAAQAAcAAAAlABkAAAAQAAYAAAAlABgAAAAQAAYAAAAlABcAAAAQAAYAAAAlABYAAAAQAAYAAAAlABUAAAAQAAYAAAAlABQAAAAQAAUAAAAkABoAAAAQAAcAAAAkABkAAAAQAAYAAAAkABgAAAAQAAYAAAAkABcAAAAQAAYAAAAkABYAAAAQAAYAAAAkABUAAAAQAAYAAAAkABQAAAAQAAUAAAAjABoAAAAQAAcAAAAjABkAAAAQAAYAAAAjABgAAAAQAAYAAAAjABcAAAAQAAYAAAAjABYAAAAQAAYAAAAjABUAAAAQAAYAAAAjABQAAAAQAAUAAAAiABoAAAAQAAcAAAAiABkAAAAQAAYAAAAiABgAAAAQAAYAAAAiABcAAAAQAAYAAAAiABYAAAAQAAYAAAAiABUAAAAQAAYAAAAiABQAAAAQAAUAAAAhABoAAAAQAAcAAAAhABkAAAAQAAYAAAAhABgAAAAQAAYAAAAhABcAAAAQAAYAAAAhABYAAAAQAAYAAAAhABUAAAAQAAYAAAAhABQAAAAQAAUAAAAgABoAAAAQAAcAAAAgABkAAAAQAAYAAAAgABgAAAAQAAYAAAAgABcAAAAQAAYAAAAgABYAAAAQAAYAAAAgABUAAAAQAAYAAAAgABQAAAAQAAUAAAAfABoAAAAQAAcAAAAfABkAAAAQAAYAAAAfABgAAAAQAAYAAAAfABcAAAAQAAYAAAAfABYAAAAQAAYAAAAfABUAAAAQAAYAAAAfABQAAAAQAAUAAAAeABoAAAAPAAcAAAD9/w8AAAAQAAEAAAD+/w8AAAAQAAEAAAADAA8AAAARAAAAAAAIAA8AAAARAAEAAAANAA0AAAARAAEAAAARAA0AAAASAAAAAAAdAAkAAAARAAEAAAAKAA8AAAASAAAAAAAJAA8AAAARAAAAAAACAA8AAAARAAAAAAAPAA0AAAARAAAAAAAQAA0AAAASAAEAAAATAA0AAAARAAAAAAAUAA0AAAASAAEAAAAVAAkAAAAQAAAAAAAeAAoAAAASAAEAAAAfAAoAAAARAAAAAAAgAAoAAAAQAAAAAAAiAAoAAAARAAEAAAAjAAoAAAAQAAEAAAAkAAoAAAARAAEAAAAlAAoAAAASAAEAAAAoAAoAAAASAAAAAAApABMAAAAPAAIAAAAnABMAAAAQAAAAAAAmABMAAAAQAAEAAAAkABMAAAARAAEAAAAgABMAAAARAAEAAAAfABMAAAAQAAAAAAAeABIAAAASAAAAAAAdABIAAAARAAEAAAAcABIAAAAQAAAAAAAaABIAAAARAAEAAAAZABIAAAAQAAAAAAAYABIAAAASAAAAAAAaAA8AAAAOAAEAADAaABAAAAAOAAAAAAAYAA8AAAANAAEAACAGAA0AAAAPAAAAAAAGAA4AAAAPAAEAAAAGAA8AAAAPAAIAAAAhAAgAAAAPAAAAAAAhAAkAAAAPAAEAAAAhAAoAAAAPAAIAAAApABEAAAAPAAAAAAApABIAAAAPAAEAAAAWAAkAAQABAAsAAAAXAAgAAQABAAsAAAAcAAkAAQABAAsAABAbAAgAAQABAAsAABAYAAgAAQAAAA0AAAAZAAgAAQAAAA0AAAAaAAgAAQAAAA0AAAAbAAkAAQAAAA0AAAAaAAkAAQAAAA0AAAAZAAkAAQAAAA0AAAAYAAkAAQAAAA0AAAAXAAkAAQAAAA0AAAA=")
+[node name="SkipTimer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+one_shot = true
+autostart = true
 
-[node name="BonFire" type="Sprite2D" parent="." index="5"]
-position = Vector2(407.934, 125.033)
-texture = ExtResource("8_3wswp")
-hframes = 7
-
-[node name="BonfireParticles" parent="BonFire" index="0" instance=ExtResource("9_l046m")]
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="SkipTimer" to="." method="_on_skip_timer_timeout"]

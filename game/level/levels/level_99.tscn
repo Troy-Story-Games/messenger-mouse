@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cdo1fva7ejt37" path="res://game/world/king_goose.tscn" id="4_ha67x"]
 
 [node name="Level99" instance=ExtResource("1_cojwg")]
+level_music = "throne_room"
+level_music_volume = -20.0
 need_light_bon_fire = false
 level_image = ExtResource("2_keidi")
 level_name = "End Game"

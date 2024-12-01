@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_57tk2")
-button_combo = Array[String](["crouch", "crouch", "jump", "jump", "jump", "crouch", "jump", "pause"])
+button_combo = Array[String](["move_down", "move_down", "jump", "jump", "jump", "move_down", "jump", "pause"])
 cheat_name = "Super Jump"

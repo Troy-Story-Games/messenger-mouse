@@ -7,11 +7,13 @@ var song_playing: String = ""
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
+    process_mode = ProcessMode.PROCESS_MODE_ALWAYS
     songs = Utils.load_dict_from_path(songs_path, [".ogg", ".wav", ".mp3"])
 
 func play(song_string: String, pitch_scale: float = 1, volume_db: float = -25.0, crossfade: float = 0.0) -> void:
     if audio_stream_player.playing and crossfade > 0.0:
         var tween: Tween = get_tree().create_tween()
+        tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
         tween.tween_property(audio_stream_player, "volume_db", -80, crossfade / 2.0)
         await tween.finished
 
@@ -24,6 +26,7 @@ func play(song_string: String, pitch_scale: float = 1, volume_db: float = -25.0,
     if crossfade:
         audio_stream_player.volume_db = -80
         var tween: Tween = get_tree().create_tween()
+        tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
         tween.tween_property(audio_stream_player, "volume_db", volume_db, crossfade / 2.0)
 
 func is_playing(song_name: String) -> bool:

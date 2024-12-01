@@ -13,12 +13,11 @@ func enter() -> void:
     player.hurtbox.set_deferred("monitorable", false)
 
     Events.request_script_pause.emit(true)
-    await player.get_tree().create_timer(0.3).timeout
+    await player.get_tree().create_timer(0.4).timeout
     Events.request_script_pause.emit(false)
 
     SoundFx.play("player_death")
     Engine.time_scale = 0.5
-    Events.request_camera_screenshake.emit(4, 0.5)
     var tween: Tween = player.get_tree().create_tween()
     tween.tween_property(player, "position", player.position - Vector2(0, PLAYER_DEATH_HOP_HEIGHT), 0.2).set_ease(Tween.EASE_OUT)
     tween.chain().tween_property(player, "position", player.position + Vector2(0, PLAYER_DEATH_HOP_HEIGHT * 15), 0.4).set_ease(Tween.EASE_IN)

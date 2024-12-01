@@ -12,6 +12,7 @@ var is_paused: bool = false
 @onready var quit_button: Button = $CenterContainer/VBoxContainer/QuitButton
 @onready var cheats_button: BeepButton = $CenterContainer/VBoxContainer/CheatsButton
 @onready var cheat_code_list_ui: CheatCodeListUI = $CheatCodeListUI
+@onready var main_menu_button: BeepButton = $CenterContainer/VBoxContainer/MainMenuButton
 
 func _ready() -> void:
 	options.visibility_changed.connect(_on_options_visibility_changed)
@@ -76,25 +77,29 @@ func _on_pause_manager_unpaused() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit(0)
 
-func overlay_visibility_changed(visible: bool) -> void:
-	if visible:
+func overlay_visibility_changed(is_visible: bool) -> void:
+	if is_visible:
 		options_button.disabled = true
 		quit_button.disabled = true
 		resume_button.disabled = true
 		cheats_button.disabled = true
+		main_menu_button.disabled = true
 		options_button.hide()
 		cheats_button.hide()
 		quit_button.hide()
 		resume_button.hide()
+		main_menu_button.hide()
 	else:
 		options_button.disabled = false
 		quit_button.disabled = false
 		resume_button.disabled = false
 		cheats_button.disabled = false
+		main_menu_button.disabled = false
 		options_button.show()
 		cheats_button.show()
 		quit_button.show()
 		resume_button.show()
+		main_menu_button.show()
 		resume_button.grab_focus()
 
 func _on_options_visibility_changed() -> void:
@@ -103,6 +108,7 @@ func _on_options_visibility_changed() -> void:
 		# Without a timeout the "Input.is_action_just_pressed("ui_cancel") is true
 		# when using it to get out of the options and so the pause menu closes too
 		await get_tree().create_timer(0.2).timeout
+		MainInstances.pause_manager.block_unpause = false
 		set_deferred("options_open", false)
 
 func _on_cheats_ui_visibility_changed() -> void:
@@ -111,10 +117,12 @@ func _on_cheats_ui_visibility_changed() -> void:
 		# Without a timeout the "Input.is_action_just_pressed("ui_cancel") is true
 		# when using it to get out of the options and so the pause menu closes too
 		await get_tree().create_timer(0.2).timeout
+		MainInstances.pause_manager.block_unpause = false
 		set_deferred("cheats_open", false)
 
 func _on_options_button_pressed() -> void:
 	options_open = true
+	MainInstances.pause_manager.block_unpause = true
 	options.show()
 
 func _on_main_menu_button_pressed() -> void:
@@ -124,4 +132,5 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_cheats_button_pressed() -> void:
 	cheats_open = true
+	MainInstances.pause_manager.block_unpause = true
 	cheat_code_list_ui.show()

@@ -4,6 +4,28 @@ const levels_path = "res://game/level/levels/"
 
 var levels: Array[PackedScene] = []
 
+var cheat_keyboard_name_mappings: Dictionary = {
+	"move_left": "LEFT",
+	"move_right": "RIGHT",
+	"move_up": "UP",
+	"move_down": "DOWN",
+	"attack": "ATTACK",
+	"crouch": "SLIDE",
+	"jump": "JUMP",
+	"pause": "ESCAPE"
+}
+
+var cheat_controller_name_mappings: Dictionary = {
+	"move_left": "LEFT",
+	"move_right": "RIGHT",
+	"move_up": "UP",
+	"move_down": "DOWN",
+	"attack": "ATTACK",
+	"crouch": "SLIDE",
+	"jump": "JUMP",
+	"pause": "START"
+}
+
 func _ready() -> void:
 	var level_dict: Dictionary = Utils.load_dict_from_path(levels_path)
 	for key in level_dict:
@@ -75,13 +97,19 @@ func ms_to_string(time_ms: float) -> String:
 	rem_ms -= rem_s * 1000
 	return "%02d:%02d:%02d" % [rem_m, rem_s, int(floor(rem_ms / 10.0))]
 
+func _get_key_name(button: String) -> String:
+	if Input.get_connected_joypads():
+		return cheat_controller_name_mappings[button]
+	return cheat_keyboard_name_mappings[button]
+
 func generate_cheat_string(button_combo: Array, newline_after: int = 32) -> String:
 	var cheat_text: = ""
 	var idx = 0
 	var cur_line_len = 0
 	var last_newline_idx = 0
 	for button in button_combo:
-		cheat_text += button
+		var key_name: = _get_key_name(button)
+		cheat_text += key_name
 		cur_line_len = len(cheat_text) - last_newline_idx
 		if newline_after != 0 and cur_line_len >= newline_after:
 			cheat_text += "\n"

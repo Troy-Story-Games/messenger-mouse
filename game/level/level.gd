@@ -30,8 +30,11 @@ var cheats_found: Dictionary = {}
 @onready var flame_timer: Timer = $FlameTimer
 @onready var bon_fire_animation_player: AnimationPlayer = $BonFireAnimationPlayer
 @onready var bonfire_area: Area2D = $BonfireArea
+@onready var controller_animated_control_tiles: TileMapLayer = $ControllerAnimatedControlTiles
+@onready var keyboard_animated_control_tiles: TileMapLayer = $KeyboardAnimatedControlTiles
 
 func _ready() -> void:
+<<<<<<< HEAD
     assert(level_image, "Levels need an image now! Set the level_image export with a Texture2D")
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.flame_collected.connect(_on_flame_collected)
@@ -42,6 +45,26 @@ func _ready() -> void:
     Events.flame_relight_progress.connect(_on_flame_relight_progress)
     Events.level_stay_here.connect(_on_level_stay_here)
     load_level_stats()
+=======
+	assert(level_image, "Levels need an image now! Set the level_image export with a Texture2D")
+
+	if Input.get_connected_joypads():
+		controller_animated_control_tiles.show()
+		keyboard_animated_control_tiles.hide()
+	else:
+		keyboard_animated_control_tiles.show()
+		controller_animated_control_tiles.hide()
+
+	Events.player_checkpoint.connect(_on_player_checkpoint)
+	Events.flame_collected.connect(_on_flame_collected)
+	Events.cheat_found.connect(_on_cheat_found)
+	Events.secret_found.connect(_on_secret_found)
+	Events.flame_relight_start.connect(_on_flame_relight_start)
+	Events.flame_relight_complete.connect(_on_flame_relight_complete)
+	Events.flame_relight_progress.connect(_on_flame_relight_progress)
+	Events.level_stay_here.connect(_on_level_stay_here)
+	load_level_stats()
+>>>>>>> main
 
 func _on_level_stay_here() -> void:
     # Not switching levels yet
@@ -181,17 +204,17 @@ func update_stats() -> void:
     SaveAndLoad.save_data.levels[scene_file_path] = level_stats
     SaveAndLoad.save_game()
 
-func _on_level_exit_area_entered(area: Area2D) -> void:
-    if not exiting and (bon_fire_lit or not need_light_bon_fire):
-        # Switch levels
-        level_timer_running = false
-        exiting = true
-        flame_timer.stop()
-        SoundFx.play("level_complete", 1, -15, 0)
-        update_stats()
-        Events.next_level.emit(level_stats)
-        level_exit.set_deferred("monitoring", false)
-        level_exit.set_deferred("monitorable", false)
+func _on_level_exit_area_entered(_area: Area2D) -> void:
+	if not exiting and (bon_fire_lit or not need_light_bon_fire):
+		# Switch levels
+		level_timer_running = false
+		exiting = true
+		flame_timer.stop()
+		SoundFx.play("level_complete", 1, -15, 0)
+		update_stats()
+		Events.next_level.emit(level_stats)
+		level_exit.set_deferred("monitoring", false)
+		level_exit.set_deferred("monitorable", false)
 
 func _on_flame_timer_timeout() -> void:
     Events.flame_timer_timeout.emit()

@@ -23,7 +23,6 @@ func _ready() -> void:
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.player_died.connect(_on_player_died)
     if current_level_idx == 0:
-        Music.play("tutorial_song", 1, -20.0, 1.0)
         if SaveAndLoad.save_data.play_selected_level != -1:
             current_level_idx = SaveAndLoad.save_data.play_selected_level
             SaveAndLoad.save_data.play_selected_level = -1
@@ -58,11 +57,6 @@ func respawn() -> void:
 
 func next_level() -> void:
     var player: Player = MainInstances.player
-
-    if current_level_idx == 0 and not Music.is_playing("tutorial_song"):
-        Music.play("tutorial_song", 1, -20.0, 1.0)
-    elif current_level_idx != 0 and not Music.is_playing("song1"):
-        Music.play("song1", 1, -25.0, 1.0)
 
     if current_level_idx >= len(Utils.levels):
         SaveAndLoad.save_data.next_level_index = 0

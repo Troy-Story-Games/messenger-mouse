@@ -3,6 +3,8 @@ class_name Level
 
 const BonfireParticlesScene = preload("res://game/fx/bonfire_particles.tscn")
 
+@export var level_music: String = "level00"
+@export var level_music_volume: float = -25.0
 @export var need_light_bon_fire: bool = true
 @export var level_image: Texture2D
 @export var level_name: String = ""
@@ -33,6 +35,9 @@ var cheats_found: Dictionary = {}
 
 func _ready() -> void:
     assert(level_image, "Levels need an image now! Set the level_image export with a Texture2D")
+
+    if not Music.is_playing(level_music):
+        Music.play(level_music, 1, level_music_volume, 1.0)
 
     Events.player_checkpoint.connect(_on_player_checkpoint)
     Events.flame_collected.connect(_on_flame_collected)

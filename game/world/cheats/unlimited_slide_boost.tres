@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_ejxnf")
-button_combo = Array[String](["move_up", "move_up", "move_up", "crouch", "crouch", "crouch", "pause"])
+button_combo = Array[String](["move_up", "move_up", "move_up", "move_down", "move_down", "move_down", "pause"])
 cheat_name = "Unlimited Slide Boost"

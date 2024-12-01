@@ -19,6 +19,9 @@ func _ready() -> void:
 func _on_next_level(stats: Dictionary):
     show()
 
+    if not Music.is_playing("end_of_level"):
+        Music.play("end_of_level", 1, -25.0, 0.5)
+
     var current_level: Level = MainInstances.current_level
     if current_level and is_instance_valid(current_level) and current_level.level_name:
         level_name.text = current_level.level_name

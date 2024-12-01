@@ -26,6 +26,7 @@ size = Vector2(161, 229)
 size = Vector2(97.3738, 60.2859)
 
 [node name="Level02" instance=ExtResource("1_f3clu")]
+level_music = "level02"
 level_image = ExtResource("2_jvbax")
 level_name = "Level 02"
 

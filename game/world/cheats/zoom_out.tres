@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_mi0gp")
-button_combo = Array[String](["move_down", "move_down", "move_down", "move_down", "attack", "attack", "crouch", "attack"])
+button_combo = Array[String](["move_down", "move_down", "move_down", "move_down", "attack", "attack", "move_down", "attack"])
 cheat_name = "Zoom Out"

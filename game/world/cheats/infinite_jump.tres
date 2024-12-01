@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_ngm8f")
-button_combo = Array[String](["move_left", "move_left", "move_left", "move_right", "crouch", "jump", "jump", "pause"])
+button_combo = Array[String](["move_left", "move_left", "move_left", "move_right", "move_down", "jump", "jump", "pause"])
 cheat_name = "Infinite Jump"

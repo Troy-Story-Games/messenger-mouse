@@ -162,7 +162,7 @@ func jump_check(player: Player) -> void:
         player.velocity.x = player.get_wall_normal().x * player.movement_stats.wall_jump_speed
         jump(player, player.movement_stats.wall_jump_force)
         just_jumped = true
-        SoundFx.play("jump")
+        SoundFx.play("jump", 1, -25.0, 0.3)
         var dust_effect: AnimatedSpriteEffect = Utils.instantiate_scene_on_level(JumpDustEffectScene, player.global_position) as AnimatedSpriteEffect
         var rotation = deg_to_rad(90 * sign(player.get_wall_normal().x))
         dust_effect.rotate(rotation)
@@ -175,7 +175,7 @@ func jump_check(player: Player) -> void:
             SoundFx.play("launch")
             force += player.movement_stats.ground_slide_launch_boost
         else:
-            SoundFx.play("jump")
+            SoundFx.play("jump", 1, -25.0, 0.3)
         jump(player, force)
         just_jumped = true
         play_jumping_effect()
@@ -268,7 +268,8 @@ func apply_verticle_force(player: Player, delta: float) -> void:
         accel = player.movement_stats.wall_slide_acceleration
         max_vel = player.movement_stats.wall_slide_max_speed
 
-    if player.is_on_wall_only() and Input.is_action_pressed("crouch"):
+    # Fast fall - only if falling already and on wall
+    if player.is_on_wall_only() and player.velocity.y > 0 and Input.is_action_pressed("crouch"):
         player.velocity.y = max_vel
     else:
         player.velocity.y += accel * delta

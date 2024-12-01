@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_dldf3")
-button_combo = Array[String](["move_up", "move_up", "move_down", "move_down", "move_left", "move_right", "move_left", "move_right", "crouch", "jump", "pause"])
+button_combo = Array[String](["move_up", "move_up", "move_down", "move_down", "move_left", "move_right", "move_left", "move_right", "move_down", "jump", "pause"])
 cheat_name = "Double Ground Speed"

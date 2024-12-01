@@ -22,13 +22,13 @@ boot_splash/minimum_display_time=3000
 
 [autoload]
 
+MainInstances="*res://game/utils/main_instances.gd"
 Events="*res://game/utils/events.gd"
 Utils="*res://game/utils/utils.gd"
-MainInstances="*res://game/utils/main_instances.gd"
-Music="*res://game/audio/music/music.tscn"
-SoundFx="*res://game/audio/soundfx/sound_fx.tscn"
 SaveAndLoad="*res://game/utils/save_and_load.gd"
 VolumeManager="*res://game/utils/volume_manager.gd"
+Music="*res://game/audio/music/music.tscn"
+SoundFx="*res://game/audio/soundfx/sound_fx.tscn"
 
 [display]
 
@@ -122,6 +122,7 @@ pause={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

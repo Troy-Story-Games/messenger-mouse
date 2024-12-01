@@ -12,7 +12,7 @@ func _ready() -> void:
     Events.player_died.connect(_on_player_died)
 
 func collect() -> void:
-    SoundFx.play("collect_coin")
+    SoundFx.play("collect_coin", 1, -20.0)
     Events.flame_collected.emit()
     start_visible = true
     hide()

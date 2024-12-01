@@ -8,8 +8,8 @@ var new_game: bool = true
 @onready var level_select_button: BeepButton = $CenterContainer/VBoxContainer/LevelSelectButton
 
 func _ready() -> void:
-    if not Music.is_playing("song1"):
-        Music.play("song1")
+    if not Music.is_playing("main_menu"):
+        Music.play("main_menu")
     RenderingServer.set_default_clear_color(Color.BLACK)
     SaveAndLoad.load_game()
     new_game_continue_button.grab_focus()

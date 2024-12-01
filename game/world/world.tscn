@@ -72,7 +72,7 @@ color = Color(0, 0, 0, 1)
 process_mode = 3
 offset = Vector2(30, -15)
 drag_vertical_enabled = true
-drag_top_margin = 0.5
+drag_top_margin = 0.3
 script = ExtResource("3_b112w")
 
 [node name="Player" parent="." instance=ExtResource("5_87y6g")]

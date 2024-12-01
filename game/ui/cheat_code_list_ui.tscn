@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://sc22lhdymeb4"]
+[gd_scene load_steps=25 format=3 uid="uid://sc22lhdymeb4"]
 
 [ext_resource type="Script" path="res://game/ui/cheat_code_list_ui.gd" id="1_erbjh"]
 [ext_resource type="Texture2D" uid="uid://bvppy1w185ns0" path="res://game/level/assets/cheat_cheese.png" id="2_k6q3h"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="2_p04nm"]
+[ext_resource type="PackedScene" uid="uid://53523cpi3u76" path="res://game/ui/cheat_code_ui.tscn" id="4_7d3yr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drmds"]
 bg_color = Color(1, 1, 1, 1)
@@ -174,6 +175,7 @@ theme = SubResource("Theme_a50wt")
 theme_override_colors/guide_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_p04nm")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wbrnr")
 theme_override_styles/panel = SubResource("StyleBoxFlat_vbw5k")
 theme_override_styles/hovered = SubResource("StyleBoxEmpty_djfsi")
@@ -184,4 +186,10 @@ theme_override_styles/cursor = SubResource("StyleBoxEmpty_xjagl")
 allow_search = false
 fixed_icon_size = Vector2i(48, 48)
 
+[node name="CheatCodeUI" parent="." instance=ExtResource("4_7d3yr")]
+layout_mode = 1
+handle_pause = false
+
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_activated" from="VBoxContainer/Cheats" to="." method="_on_cheats_item_activated"]
+[connection signal="cheat_code_ui_closed" from="CheatCodeUI" to="." method="_on_cheat_code_ui_cheat_code_ui_closed"]

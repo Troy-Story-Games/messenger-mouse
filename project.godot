@@ -13,6 +13,7 @@ config_version=5
 config/name="Messenger Mouse"
 run/main_scene="res://game/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://logo.png"
 boot_splash/use_filter=false
@@ -21,8 +22,8 @@ boot_splash/minimum_display_time=3000
 
 [autoload]
 
-Utils="*res://game/utils/utils.gd"
 Events="*res://game/utils/events.gd"
+Utils="*res://game/utils/utils.gd"
 MainInstances="*res://game/utils/main_instances.gd"
 Music="*res://game/audio/music/music.tscn"
 SoundFx="*res://game/audio/soundfx/sound_fx.tscn"

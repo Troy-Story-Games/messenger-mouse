@@ -1,7 +1,11 @@
 extends Control
 class_name CheatCodeUI
 
+signal cheat_code_ui_closed()
+
 var viewed_long_enough: bool = false
+
+@export var handle_pause: bool = true
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cheat_title_label: Label = $CenterContainer/HBoxContainer/CheatTitleLabel
@@ -13,19 +17,28 @@ func _ready() -> void:
 	viewed_long_enough = false
 	hide()
 
-func display_cheat_code(cheat_code: CheatCode) -> void:
+func display_cheat_code_from_dict(cheat_code: Dictionary) -> void:
 	show()
+	viewed_long_enough = false
 	animation_player.play("show")
-	Events.request_script_pause.emit(true)
-	cheat_title_label.text = cheat_code.cheat_name
+	if handle_pause:
+		Events.request_script_pause.emit(true)
+	cheat_title_label.text = cheat_code.name
 	cheat_code_label.text = Utils.generate_cheat_string(cheat_code.button_combo)
+
+func display_cheat_code(cheat_code: CheatCode) -> void:
+	var dict = {
+		"button_combo": cheat_code.button_combo,
+		"name": cheat_code.cheat_name
+	}
+	display_cheat_code_from_dict(dict)
 
 func _process(_delta: float) -> void:
 	if viewed_long_enough:
 		if Input.get_connected_joypads():
-			viewed_long_enough_label.text = "A to continue"
+			viewed_long_enough_label.text = "pause/start to continue"
 		else:
-			viewed_long_enough_label.text = "SPACE to continue"
+			viewed_long_enough_label.text = "ESC to continue"
 		return
 	var show_time = 4
 	if not timer.is_stopped():
@@ -38,11 +51,13 @@ func _input(event: InputEvent) -> void:
 	if not viewed_long_enough:
 		return
 
-	if event.is_action_pressed("jump") or event.is_action_pressed("crouch") or event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause"):
 		animation_player.play(&"RESET")
 		hide()
 		viewed_long_enough = false
-		Events.request_script_pause.emit(false)
+		if handle_pause:
+			Events.request_script_pause.emit(false)
+		cheat_code_ui_closed.emit()
 
 func _on_timer_timeout() -> void:
 	viewed_long_enough = true

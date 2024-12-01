@@ -23,7 +23,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Flame/HBoxContainer/Control/Control/Sprite2D:frame")
+tracks/0/path = NodePath("Control/Flame/HBoxContainer/Control/Control/ProgressBarFlameSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ step = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/Flame/HBoxContainer/Control/Control/Sprite2D:frame")
+tracks/0/path = NodePath("Control/Flame/HBoxContainer/Control/Control/ProgressBarFlameSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -393,7 +393,7 @@ theme_override_constants/margin_top = -1
 [node name="Control" type="Control" parent="Control/Flame/HBoxContainer/Control"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/Flame/HBoxContainer/Control/Control"]
+[node name="ProgressBarFlameSprite2D" type="Sprite2D" parent="Control/Flame/HBoxContainer/Control/Control"]
 texture = ExtResource("4_7xfxj")
 centered = false
 hframes = 2
@@ -584,3 +584,9 @@ root_node = NodePath("../FlameAnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_ey6mq")
 }
+
+[node name="FlameShakeTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="FlameShakeTimer" to="." method="_on_flame_shake_timer_timeout"]

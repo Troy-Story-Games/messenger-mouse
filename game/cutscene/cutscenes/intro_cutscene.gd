@@ -1,7 +1,7 @@
 extends Cutscene
 class_name IntroCutscene
 
-var animation_order: Array = ["secret_note", "convo"]
+var animation_order: Array = ["secret_note", "convo_cap_1", "convo_mouse_1", "convo_cap_2"]
 var current_animation = null
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -13,6 +13,7 @@ var current_animation = null
 @onready var chat_box_sprite: Sprite2D = $CanvasLayer/Control/ChatBox/ChatBoxSprite
 @onready var continue_label: Label = $CanvasLayer/Control/ContinueLabelContainer/ContinueLabel
 @onready var skip_label: Label = $CanvasLayer/Control/SkipLabelContainer/SkipLabel
+@onready var note_contents: RichTextLabel = $CanvasLayer/Control/CenterContainer/HBoxContainer/NoteContents
 
 func _ready() -> void:
     if not Music.is_playing("intro_cutscene"):
@@ -49,10 +50,10 @@ func set_messenger_text(value: String) -> void:
 
 func _input(event: InputEvent) -> void:
     if skip_label.visible and event.is_action_pressed("pause"):
-        print("Fade out!")
         fade_out_animation_player.play("fade_out")
+    if not continue_label.visible and (event.is_action_pressed("jump") or event.is_action_pressed("crouch")) and animation_player.is_playing():
+        skip_ahead(animation_player.current_animation)
     if continue_label.visible and (event.is_action_pressed("jump") or event.is_action_pressed("crouch")):
-        print("Continue")
         continue_label.hide()
         current_animation = animation_order.pop_front()
         if current_animation:
@@ -60,15 +61,15 @@ func _input(event: InputEvent) -> void:
         else:
             fade_out_animation_player.play("fade_out")
 
+func skip_ahead(_anim_name: String) -> void:
+    animation_player.speed_scale = clamp(animation_player.speed_scale + 3.0, 0.0, 9.0)
+
 func _on_animation_player_finished(anim_name: String) -> void:
-    print("Finished: ", anim_name)
-    match anim_name:
-        "secret_note":
-            continue_label.show()
-        "convo":
-            continue_label.show()
-        "fade_out":
-            finished()
+    animation_player.speed_scale = 1.0
+    if anim_name == "fade_out":
+        finished()
+        return
+    continue_label.show()
 
 func _on_skip_timer_timeout() -> void:
     skip_label.show()

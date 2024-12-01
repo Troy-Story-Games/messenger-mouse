@@ -1,6 +1,8 @@
 extends CanvasLayer
 class_name UI
 
+const FLAME_SHAKE_THRESHOLD: = 20.0
+
 signal ui_tutorial_complete()
 
 var time_ms: = 0.0 : set = set_time_ms
@@ -15,14 +17,13 @@ var secrets_found: int = 0 : set = set_secrets_found
 @onready var tutorial: MarginContainer = $Control/Tutorial
 @onready var tutorial_animation_player: AnimationPlayer = $TutorialAnimationPlayer
 @onready var flame_progress_bar: ProgressBar = $Control/Flame/HBoxContainer/MarginContainer/FlameProgressBar
+@onready var progress_bar_flame_sprite_2d: Sprite2D = $Control/Flame/HBoxContainer/Control/Control/ProgressBarFlameSprite2D
 
 func set_flame_progress_max(value: float) -> void:
     flame_progress_bar.max_value = value
 
 func set_flame_progress(value: float) -> void:
     flame_progress_bar.value = value
-    # TODO: Tween progress bar y-scale
-    # TODO: Shake progress bar when close to 0
 
 func show_tutorial() -> void:
     tutorial_animation_player.play("tutorial")
@@ -61,3 +62,11 @@ func set_total_secrets(value: int) -> void:
 func set_time_ms(value: float) -> void:
     time_ms = value
     clock.text = Utils.ms_to_string(time_ms)
+
+func _on_flame_shake_timer_timeout() -> void:
+    var percentage: float = (flame_progress_bar.value / flame_progress_bar.max_value) * 100.0
+    if percentage <= FLAME_SHAKE_THRESHOLD:
+        progress_bar_flame_sprite_2d.scale.x = randf_range(0.75, 1.25)
+        progress_bar_flame_sprite_2d.scale.y = randf_range(0.75, 1.25)
+    else:
+        progress_bar_flame_sprite_2d.scale = Vector2.ONE

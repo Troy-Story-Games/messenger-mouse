@@ -1,7 +1,8 @@
 extends Node2D
 class_name World
 
-const PlayerScene = preload("res://game/player/player.tscn")
+const MainMenuScene: PackedScene = preload("res://game/ui/main_menu.tscn")
+const PlayerScene: PackedScene = preload("res://game/player/player.tscn")
 
 @export var min_time_left_on_respawn: float = 15.0
 
@@ -14,19 +15,21 @@ var last_checkpoint: Vector2
 @onready var ui: UI = $UI
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var level_fade: ColorRect = $UI/LevelFade
+@onready var pause_manager: PauseManager = $PauseManager
 
 func _ready() -> void:
-    Events.toggle_cheat.connect(_on_toggle_cheat)
-    Events.player_checkpoint.connect(_on_player_checkpoint)
-    Events.player_died.connect(_on_player_died)
-    if current_level_idx == 0:
-        if SaveAndLoad.save_data.play_selected_level != -1:
-            current_level_idx = SaveAndLoad.save_data.play_selected_level
-            SaveAndLoad.save_data.play_selected_level = -1
-            SaveAndLoad.save_game()
-        else:
-            current_level_idx = SaveAndLoad.save_data.next_level_index
-    call_deferred("next_level")
+	MainInstances.pause_manager = pause_manager
+	Events.toggle_cheat.connect(_on_toggle_cheat)
+	Events.player_checkpoint.connect(_on_player_checkpoint)
+	Events.player_died.connect(_on_player_died)
+	if current_level_idx == 0:
+		if SaveAndLoad.save_data.play_selected_level != -1:
+			current_level_idx = SaveAndLoad.save_data.play_selected_level
+			SaveAndLoad.save_data.play_selected_level = -1
+			SaveAndLoad.save_game()
+		else:
+			current_level_idx = SaveAndLoad.save_data.next_level_index
+	call_deferred("next_level")
 
 func _on_player_checkpoint(checkpoint_pos: Vector2) -> void:
     last_checkpoint = checkpoint_pos
@@ -53,38 +56,60 @@ func respawn() -> void:
     player.global_position = last_checkpoint
 
 func next_level() -> void:
-    if current_level_idx >= len(Utils.levels):
-        SaveAndLoad.save_data.next_level_index = 0
-        SaveAndLoad.save_data.game_completed = true
-        SaveAndLoad.save_game()
+	var player: Player = MainInstances.player
 
-        # TODO: Credits
-        get_tree().change_scene_to_file("res://game/ui/main_menu.tscn")
-        return
+	if current_level_idx >= len(Utils.levels):
+		SaveAndLoad.save_data.next_level_index = 0
+		SaveAndLoad.save_data.game_completed = true
+		SaveAndLoad.save_game()
 
-    if current_level:
-        current_level.queue_free()
+		# TODO: Credits
+		get_tree().change_scene_to_packed(MainMenuScene)
+		return
+
+	if player and is_instance_valid(player):
+		player.hurtbox.is_invincible = true
+		player.hurtbox.set_deferred("monitorable", false)
+		player.hurtbox.set_deferred("monitoring", false)
+		player.hitbox.set_deferred("monitorable", false)
+		player.hitbox.set_deferred("monitoring", false)
+		player.collision_polygon_2d.disabled = true
+		player.global_position = Vector2.ZERO
+		player.hide()
+
+	if current_level:
+		current_level.queue_free()
 
     if current_level_idx >= SaveAndLoad.save_data.next_level_index:
         # So continue works
         SaveAndLoad.save_data.next_level_index = current_level_idx
         SaveAndLoad.save_game()
 
-    current_level = Utils.get_level(current_level_idx).instantiate()
-    add_child(current_level)
-    last_checkpoint = current_level.start_position.global_position
-    MainInstances.current_level = current_level
-    start_level()
+	current_level = Utils.get_level(current_level_idx).instantiate()
+	add_child(current_level)
+	print("Start position updated to: ", current_level.start_position.global_position)
+	last_checkpoint = current_level.start_position.global_position
+	MainInstances.current_level = current_level
+	start_level(player)
 
-func start_level() -> void:
-    level_fade.show()
-    ui.set_total_cheats(current_level.get_num_cheats())
-    ui.set_total_secrets(current_level.get_num_secrets())
-    ui.set_flame_progress_max(current_level.time_limit)
-    animation_player.play("fade_to_transparent")
-    await animation_player.animation_finished
-    level_fade.hide()
-    animation_player.play(&"RESET")
+func start_level(player: Player) -> void:
+	if player and is_instance_valid(player):
+		player.hurtbox.is_invincible = false
+		player.hurtbox.set_deferred("monitorable", true)
+		player.hurtbox.set_deferred("monitoring", true)
+		player.hitbox.set_deferred("monitorable", true)
+		player.hitbox.set_deferred("monitoring", true)
+		player.collision_polygon_2d.disabled = false
+		player.show()
+
+	level_fade.show()
+	ui.set_total_cheats(current_level.get_num_cheats())
+	ui.set_total_secrets(current_level.get_num_secrets())
+	ui.set_flame_progress_max(current_level.time_limit)
+	animation_player.play("fade_to_transparent")
+	await animation_player.animation_finished
+	level_fade.hide()
+	animation_player.play(&"RESET")
 
     if current_level_idx == 0:
         ui.show_tutorial()

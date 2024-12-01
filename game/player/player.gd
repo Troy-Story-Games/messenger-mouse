@@ -116,13 +116,13 @@ func _on_hurtbox_hurt(other_hitbox: Hitbox) -> void:
     take_hit(other_hitbox.damage)
 
 func take_hit(damage: float) -> void:
-    SoundFx.play("player_hurt")
-    hurtbox.is_invincible = true
-    Events.player_hurt.emit()
-    Events.request_camera_screenshake.emit(4, 0.3)
-    stats.health -= damage
-    await get_tree().create_timer(0.5).timeout
-    hurtbox.is_invincible = false
+	SoundFx.play("player_hurt")
+	Events.request_camera_screenshake.emit(4, 0.3)
+	hurtbox.is_invincible = true
+	Events.player_hurt.emit()
+	stats.health -= damage
+	await get_tree().create_timer(0.5).timeout
+	hurtbox.is_invincible = false
 
 func die() -> void:
     dead = true

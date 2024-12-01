@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dl5f0i7ogijos"]
+[gd_scene load_steps=60 format=3 uid="uid://dl5f0i7ogijos"]
 
 [ext_resource type="Script" path="res://game/ui/options.gd" id="1_8tisi"]
 [ext_resource type="FontFile" uid="uid://8v3hsck5sfa" path="res://game/font/Kenney Mini Square.ttf" id="1_uehsl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://pkd5r6j57c6w" path="res://game/player/assets/player.png" id="9_1fw54"]
 [ext_resource type="Texture2D" uid="uid://yyho5fgdaf31" path="res://game/ui/assets/slider_grabber.png" id="10_ri03l"]
 [ext_resource type="Texture2D" uid="uid://dxu1xt7l7ff0p" path="res://game/ui/assets/slider_grabber_highlight.png" id="11_kpmyg"]
+[ext_resource type="Texture2D" uid="uid://biq185625p4c8" path="res://game/ui/assets/start_button.png" id="13_xq0d2"]
 [ext_resource type="Script" path="res://game/ui/beep_ui/beep_h_slider.gd" id="16_rix16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebuf"]
@@ -650,6 +651,35 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_uehsl")
 theme_override_font_sizes/font_size = 20
 text = "K+SPACE,Z+SPACE"
+
+[node name="Pause" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/Pause"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "Pause"
+
+[node name="Control" type="HSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/Pause"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_f3a2l")
+
+[node name="Controller" type="TextureRect" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/Pause"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("13_xq0d2")
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/Pause"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_n83q0")
+
+[node name="Keyboard" type="Label" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer/ControlItems/Pause"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uehsl")
+theme_override_font_sizes/font_size = 20
+text = "ESC,P"
 
 [node name="AnimatedSprite" type="CenterContainer" parent="VBoxContainer/MarginContainer2/TabContainer/Controls/ControlsPanel/HBoxContainer"]
 layout_mode = 2

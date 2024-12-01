@@ -466,8 +466,8 @@ tracks/17/keys = {
 "args": [&"jump", -1, 1.0, false],
 "method": &"play"
 }, {
-"args": [&"", -1, 1.0, false],
-"method": &"fall"
+"args": [&"fall", -1, 1.0, false],
+"method": &"play"
 }, {
 "args": [&"run", -1, 1.0, false],
 "method": &"play"

@@ -7,7 +7,7 @@ const PlayerScene: PackedScene = preload("res://game/player/player.tscn")
 @export var min_time_left_on_respawn: float = 15.0
 
 var current_level: Level
-var current_level_idx: int = 1
+var current_level_idx: int = 0
 var zoom_out_enabled: bool = false
 var last_checkpoint: Vector2
 
@@ -18,6 +18,7 @@ var last_checkpoint: Vector2
 @onready var pause_manager: PauseManager = $PauseManager
 
 func _ready() -> void:
+	Music.play("song1")
 	MainInstances.pause_manager = pause_manager
 	Events.toggle_cheat.connect(_on_toggle_cheat)
 	Events.player_checkpoint.connect(_on_player_checkpoint)

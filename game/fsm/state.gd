@@ -7,14 +7,14 @@ signal finished()
 var actor: Node2D : set = set_actor
 
 func set_actor(value: Node2D) -> State:
-	actor = value
-	return self
+    actor = value
+    return self
 
 func enter() -> void:
-	pass
+    pass
 
 func process_state(_delta: float) -> void:
-	pass
+    pass
 
 func exit() -> void:
-	pass
+    pass
